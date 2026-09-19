@@ -1,0 +1,8 @@
+0001-arm64-family.patch
+0002-base-registrations-arm-native.patch
+0003-runtime-ports.patch
+0004-museair-v2.patch
+0005-halftime24.patch
+0006-chainhash-variants.patch
+0007-build-and-192-bit-speed.patch
+0008-arm64-rng-counter-type.patch

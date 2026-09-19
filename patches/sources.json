@@ -1,0 +1,160 @@
+{
+  "platform/family.cmake": {
+    "origin": "m2-rerun/smhasher3/platform/family.cmake",
+    "sha256": "65bcdcc09ad03332f5f9402c0e9b1e2ded8a5e0ebd71afab7f2e37dc696e2968"
+  },
+  "hashes/chainhash.cpp": {
+    "origin": "m2-rerun/smhasher3/hashes/chainhash.cpp",
+    "sha256": "0bb191c1f4d36534e7ed87cda4374d3c1638e07caf0724b63af9d77ce2242f7d"
+  },
+  "hashes/foldhash.cpp": {
+    "origin": "m2-rerun/smhasher3/hashes/foldhash.cpp",
+    "sha256": "622b197fe034285fb97b3d2098a464fbcfe626021a176971180472edc7a6a642"
+  },
+  "hashes/classic_openssl.cpp": {
+    "origin": "m2-rerun/smhasher3/hashes/classic_openssl.cpp",
+    "sha256": "24e018a229f9bcd1e211f5456d1e26c64a6a8228265c51a3a5ab7d2eb68801b1"
+  },
+  "hashes/umash.cpp": {
+    "origin": "m2-rerun/smhasher3/hashes/umash.cpp",
+    "sha256": "4753998119fa81b0e8fd12fc44269e862af5ac16b591ebc747aa2b0082fabcb1"
+  },
+  "hashes/clhash.cpp": {
+    "origin": "m2-rerun/smhasher3/hashes/clhash.cpp",
+    "sha256": "a099f4cfc33526c02c967a34553db2b56dabb9a6ddac9e27820ce8a9ee7911b3"
+  },
+  "hashes/vendor/clhash/clhash.h": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/clhash/clhash.h",
+    "sha256": "c98cda6a1f9d9d1abcab3faa6bdc3a67fa5832c54956e637d07eff3b3be41f31"
+  },
+  "hashes/vendor/clhash/LICENSE": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/clhash/LICENSE",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  "hashes/vendor/clhash/clhash_bswap.c": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/clhash/clhash_bswap.c",
+    "sha256": "84733ae275a16e6ef2d10502772c7ccdd7f8117131c79b29bae564bf526bb5ea"
+  },
+  "hashes/vendor/clhash/clhash.c": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/clhash/clhash.c",
+    "sha256": "812091f0ce27f3bdb481b0911ac993c872038ebd0a7e9ceb390df387283dd98c"
+  },
+  "hashes/vendor/umash/LICENSE": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/LICENSE",
+    "sha256": "237142d0618b9ef064cf5bc8fd689797a8520ec5979ca44290664d83b44849f0"
+  },
+  "hashes/vendor/umash/umash.h": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/umash.h",
+    "sha256": "a0a2a69bdd59a172fd090a7f321d94eecf718b64b63a6ef5962f31c409401291"
+  },
+  "hashes/vendor/umash/umash_bswap.c": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/umash_bswap.c",
+    "sha256": "4d4517695298b065757eee4eeb740ba5dce07da166da32e022628da9083489a4"
+  },
+  "hashes/vendor/umash/umash.c": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/umash.c",
+    "sha256": "f2aef87a75b361a63c2c60c620077d5046e88aa357e30ae66f334e87f1f4a852"
+  },
+  "hashes/vendor/umash/umash_impl.c": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/umash_impl.c",
+    "sha256": "3ed89ba254d47fcf12bd45ed8f083cc9cd04f8c7ab19e600a1d42f6efeff61fc"
+  },
+  "hashes/vendor/umash/umash_long.inc": {
+    "origin": "m2-rerun/smhasher3/hashes/vendor/umash/umash_long.inc",
+    "sha256": "3be37d5f826acc7a858974d2c5e90244d4174a197e815c16c779e5d9eeb0920f"
+  },
+  "hashes/newhashes.cpp": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/newhashes.cpp",
+    "snapshot_sha256": "5a28392b0c3c26efee30edb2d0db40c50c0c647f192172e81d657d50536bc432",
+    "sha256": "b73bb869a98685f25b338676073c7843a324e6682c121f7d3f0bac17a3c30125",
+    "integration_note": "Select the two archived hosts' Go and Abseil verification constants with architecture macros; hash functions unchanged."
+  },
+  "hashes/go_hardware.h": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/go_hardware.h",
+    "sha256": "e3a5fbd60fddeaff6085b3f6cc02d8d7df123a30b9b9b87c6fd4cc899e37d54a"
+  },
+  "hashes/go_key.inc": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/go_key.inc",
+    "sha256": "24571dd6fec4607fb9e26ba22f5ae6c108777c80239f6357514afbda2351d3db"
+  },
+  "hashes/absl_hardware.h": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/absl_hardware.h",
+    "sha256": "a61f8a4492e98ec16049c7e2b03907559a645b9afe64d17bd0904b456277ab68"
+  },
+  "hashes/absl_hash_port.h": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/absl_hash_port.h",
+    "sha256": "820d38818378a36e4310f0ba90254817bb76cc394247dc139e622d24ea645e1a"
+  },
+  "hashes/absl_native_arm.h": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/absl_native_arm.h",
+    "sha256": "5a9ecbd4cf11a5a33a3ad10f6b1a13c195aabcc78cca3af6a000372e9e895df2"
+  },
+  "hashes/marvin.h": {
+    "origin": "new-hashes-timing/smhasher3-m2/hashes/marvin.h",
+    "sha256": "abcbe0ebf65631c90f5bae3625e7bfbefea31c599acad70f5ad160516acc96cf"
+  },
+  "hashes/museair_v2.cpp": {
+    "origin": "museair-v2-timing/smhasher3-m2/hashes/museair_v2.cpp",
+    "sha256": "123b057b67fbdce79484618093755afc97c0ae159a865aac110d4f851713c40a"
+  },
+  "hashes/museair2.h": {
+    "origin": "museair-v2-timing/smhasher3-m2/hashes/museair2.h",
+    "sha256": "1f94bb8c848eeb891b2e089e445356da064135f1ff00475af0f1de092ae02d33"
+  },
+  "hashes/halftimefixed.cpp": {
+    "origin": "halftime-fixed/smhasher3-m2/hashes/halftimefixed.cpp",
+    "sha256": "ed9280c26c5c81b1aa63f501883350b13210acd084e92709cc96d6a249dc0651"
+  },
+  "hashes/halftime-fixed.hpp": {
+    "origin": "halftime-fixed/smhasher3-m2/hashes/halftime-fixed.hpp",
+    "sha256": "77d30baf4c6dc12e270236400e5323ccd4ef7a17e0aac877b3cbe4bc325ecbad"
+  },
+  "hashes/halftime-current.hpp": {
+    "origin": "halftime-fixed/smhasher3-m2/hashes/halftime-current.hpp",
+    "sha256": "7ef5dd48f54537b430f85bc1867b23a93551ab1c56415cfcef362d1651956cc3"
+  },
+  "hashes/halftimeshipped.cpp": {
+    "origin": "halftime24-shipped-timing/bench/halftimeshipped.cpp",
+    "sha256": "a5de8d63ce55339f97322ff9d6747e29b9d20728f2458f9d4831ee4d8f6b7dfa"
+  },
+  "hashes/chainhash_v3.cpp": {
+    "origin": "chainhash-v3-horner/bench/chainhash_v3.cpp",
+    "sha256": "6dd8612947e88b88979a2ebb5fa5b710d936fd1aafacedc245cdb6483a7b3546"
+  },
+  "hashes/chainhash_v3.h": {
+    "origin": "chainhash-v3-horner/chainhash_v3.h",
+    "sha256": "402e3c31638aec9154bd896e2269736119d7be2c530a934f3625abd80ccf1825"
+  },
+  "hashes/chainhash128.h": {
+    "origin": "chainhash-128/smhasher3/hashes/chainhash128.h",
+    "sha256": "329f3181135ffba9816577bc5292f03bfbc6b7bfc6f9be041e0ac3cedd9f5481"
+  },
+  "hashes/chainhash_128.cpp": {
+    "origin": "chainhash-128/smhasher3/hashes/chainhash_128.cpp",
+    "sha256": "7b8567596202009e692253512c9b1e7c807862992c8ba8440d9d4cc913e35abb"
+  },
+  "hashes/chainhash_128__schoolbook.cpp": {
+    "origin": "chainhash-128/smhasher3/hashes/chainhash_128__schoolbook.cpp",
+    "sha256": "08a5bd4269647724636981dbb84e19665a6a59151dc532ca6af7150290abeafa"
+  },
+  "hashes/chainhash_x86.cpp": {
+    "origin": "chainhash-x86/experiments/smhasher_chainhash_x86.cpp",
+    "sha256": "146d0fd430b6b650402e75b1c8a3055cab8c48fcef7bd9aa5ae32216d00789db"
+  },
+  "hashes/chainhash_x86.h": {
+    "origin": "chainhash-x86/chainhash_x86.h",
+    "sha256": "98d6cc3729691ef490c8019d312e76d2b0558bd2159aff741127c68847220698"
+  },
+  "hashes/chainhash_arm.h": {
+    "origin": "chainhash-m2-adjacent/chainhash_arm.h",
+    "sha256": "5d6d8b20dfc7f59b160a5e80e4d9c13eef09329f6e0f0072c09d450d0e423eaa"
+  },
+  "hashes/chainhash_smhasher3_adjacent_common.h": {
+    "origin": "chainhash-m2-adjacent/chainhash_smhasher3_adjacent_common.h",
+    "sha256": "54927cecf3d039da7a19d49e90eec80413ee195bde1f1a707c68a82b1473f381"
+  },
+  "hashes/chainhash_smhasher3_adjacent1024.cpp": {
+    "origin": "chainhash-m2-adjacent/chainhash_smhasher3_adjacent1024.cpp",
+    "sha256": "5d9603816d91263eb1e55e27acd82dcd0c7786f9145689dab3e01b63798a15da"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "host": "Xeon8375C",
+  "tolerance_percent": 5.0,
+  "rows": [
+    {
+      "name": "rapidhash",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 10.67,
+      "measured": 10.74,
+      "delta_percent": 0.6560449859418949,
+      "within_tolerance": true
+    },
+    {
+      "name": "rapidhash",
+      "metric": "small_cycles",
+      "recorded": 27.58,
+      "measured": 26.12,
+      "delta_percent": -5.293691080493101,
+      "within_tolerance": false
+    },
+    {
+      "name": "XXH3-64",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 19.69,
+      "measured": 19.89,
+      "delta_percent": 1.0157440325037959,
+      "within_tolerance": true
+    },
+    {
+      "name": "XXH3-64",
+      "metric": "small_cycles",
+      "recorded": 30.16,
+      "measured": 29.38,
+      "delta_percent": -2.5862068965517238,
+      "within_tolerance": true
+    },
+    {
+      "name": "komihash",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 7.35,
+      "measured": 7.37,
+      "delta_percent": 0.2721088435374108,
+      "within_tolerance": true
+    },
+    {
+      "name": "komihash",
+      "metric": "small_cycles",
+      "recorded": 27.49,
+      "measured": 26.18,
+      "delta_percent": -4.765369225172789,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-256",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 14.42,
+      "measured": 14.35,
+      "delta_percent": -0.4854368932038833,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-256",
+      "metric": "small_cycles",
+      "recorded": 103.9,
+      "measured": 103.25,
+      "delta_percent": -0.6256015399422554,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-v3",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 28.31,
+      "measured": 28.27,
+      "delta_percent": -0.14129282938890597,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-v3",
+      "metric": "small_cycles",
+      "recorded": 155.14,
+      "measured": 155.14,
+      "delta_percent": 0.0,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-128",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 8.16,
+      "measured": 8.13,
+      "delta_percent": -0.367647058823517,
+      "within_tolerance": true
+    },
+    {
+      "name": "chainhash-128",
+      "metric": "small_cycles",
+      "recorded": 165.06,
+      "measured": 164.11,
+      "delta_percent": -0.5755482854719385,
+      "within_tolerance": true
+    },
+    {
+      "name": "HalftimeHash24-shipped",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 12.81,
+      "measured": 13.22,
+      "delta_percent": 3.2006245120999255,
+      "within_tolerance": true
+    },
+    {
+      "name": "HalftimeHash24-shipped",
+      "metric": "small_cycles",
+      "recorded": 64.91,
+      "measured": 66.05,
+      "delta_percent": 1.7562779232783932,
+      "within_tolerance": true
+    },
+    {
+      "name": "MuseAir-v2",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 7.53,
+      "measured": 7.51,
+      "delta_percent": -0.26560424966800555,
+      "within_tolerance": true
+    },
+    {
+      "name": "MuseAir-v2",
+      "metric": "small_cycles",
+      "recorded": 29.27,
+      "measured": 28.2,
+      "delta_percent": -3.6556200888281487,
+      "within_tolerance": true
+    },
+    {
+      "name": "foldhash-fast",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 9.07,
+      "measured": 9.06,
+      "delta_percent": -0.11025358324144863,
+      "within_tolerance": true
+    },
+    {
+      "name": "foldhash-fast",
+      "metric": "small_cycles",
+      "recorded": 20.09,
+      "measured": 19.74,
+      "delta_percent": -1.7421602787456525,
+      "within_tolerance": true
+    },
+    {
+      "name": "GoMapHash",
+      "metric": "bulk_bytes_per_cycle",
+      "recorded": 17.66,
+      "measured": 17.68,
+      "delta_percent": 0.11325028312569874,
+      "within_tolerance": true
+    },
+    {
+      "name": "GoMapHash",
+      "metric": "small_cycles",
+      "recorded": 64.32,
+      "measured": 63.37,
+      "delta_percent": -1.4769900497512367,
+      "within_tolerance": true
+    }
+  ],
+  "errors": [],
+  "passed": false
+}

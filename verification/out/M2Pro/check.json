@@ -1,0 +1,7 @@
+{
+  "cpu": "Apple M2 Pro",
+  "logical_cpus": "12",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428",
+  "manifest_registrations_present": 43,
+  "timing_run": false
+}

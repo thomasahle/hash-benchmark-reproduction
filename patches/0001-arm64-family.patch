@@ -1,0 +1,12 @@
+diff --git a/platform/family.cmake b/platform/family.cmake
+index 3ae67389..a5757b36 100644
+--- a/platform/family.cmake
++++ b/platform/family.cmake
+@@ -13,6 +13,7 @@ if ((CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+     OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86"))
+   set(PROCESSOR_FAMILY "x86")
+ elseif ((CMAKE_SYSTEM_PROCESSOR STREQUAL "arm")
++    OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
+     OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64"))
+   set(PROCESSOR_FAMILY "Arm")
+ else ()

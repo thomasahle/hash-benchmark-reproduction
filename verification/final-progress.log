@@ -1,0 +1,88 @@
++ git clone --no-checkout https://gitlab.com/lobais/smhasher3.git ./.work/smhasher3
++ git -C ./.work/smhasher3 fetch origin 3de870c7ab449ad11cf450848d9270e3f54102d1
++ git -C ./.work/smhasher3 checkout --detach 3de870c7ab449ad11cf450848d9270e3f54102d1
++ git -C ./.work/smhasher3 apply --check ./patches/0001-arm64-family.patch
++ git -C ./.work/smhasher3 apply ./patches/0001-arm64-family.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0002-base-registrations-arm-native.patch
++ git -C ./.work/smhasher3 apply ./patches/0002-base-registrations-arm-native.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0003-runtime-ports.patch
++ git -C ./.work/smhasher3 apply ./patches/0003-runtime-ports.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0004-museair-v2.patch
++ git -C ./.work/smhasher3 apply ./patches/0004-museair-v2.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0005-halftime24.patch
++ git -C ./.work/smhasher3 apply ./patches/0005-halftime24.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0006-chainhash-variants.patch
++ git -C ./.work/smhasher3 apply ./patches/0006-chainhash-variants.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0007-build-and-192-bit-speed.patch
++ git -C ./.work/smhasher3 apply ./patches/0007-build-and-192-bit-speed.patch
++ git -C ./.work/smhasher3 apply --check ./patches/0008-arm64-rng-counter-type.patch
++ git -C ./.work/smhasher3 apply ./patches/0008-arm64-rng-counter-type.patch
++ cmake -S ./.work/smhasher3 -B ./.work/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DENDIAN_DETECT_BUILDTIME=OFF -DDETECTED_LITTLE_ENDIAN=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
++ cmake --build ./.work/build --target SMHasher3 -j 8
++ c++ --version
++ cmake --version
+CityHash-64 PASS
+FarmHash-64.NA PASS
+MurmurHash3-128 PASS
+mx3.v3 PASS
+fasthash-64 PASS
+fasthash-32 PASS
+MuseAir PASS
+MuseAir-v2 PASS
+komihash PASS
+t1ha2-64 PASS
+a5hash PASS
+a5hash-128 PASS
+rapidhash PASS
+foldhash-fast FAIL
+foldhash-quality FAIL
+mum3.exact.unroll3 PASS
+mir.exact PASS
+XXH3-64 PASS
+XXH3-128 PASS
+HighwayHash-64 PASS
+SpookyHash2-64 PASS
+pengyhash PASS
+NMHASH PASS
+NMHASHX PASS
+gxhash-64 PASS
+rust-ahash PASS
+SipHash-1-3 PASS
+SipHash-2-4 PASS
+HalftimeHash24-shipped FAIL
+GoMapHash PASS
+AbseilHash-default PASS
+Marvin32 FAIL
+polymurhash PASS
+poly1305-hash PASS
+ghash PASS
+UMASH-64 PASS
+UMASH-128 PASS
+CLhash PASS
+chainhash-v3 PASS
+chainhash-256 PASS
+HalftimeHash24-fixed PASS
+chainhash-x86 PASS
+chainhash-128 PASS
+Saved all Sanity outcomes; inspect failures in sanity.json.
+2026-09-19T07:58:54.744513+00:00 Xeon8375C MuseAir-v2 pass 1
+2026-09-19T08:00:15.894135+00:00 Xeon8375C komihash pass 1
+2026-09-19T08:01:42.107277+00:00 Xeon8375C rapidhash pass 1
+2026-09-19T08:02:43.008750+00:00 Xeon8375C foldhash-fast pass 1
+2026-09-19T08:03:54.032733+00:00 Xeon8375C XXH3-64 pass 1
+2026-09-19T08:04:34.694713+00:00 Xeon8375C HalftimeHash24-shipped pass 1
+2026-09-19T08:05:35.635549+00:00 Xeon8375C GoMapHash pass 1
+2026-09-19T08:06:21.369534+00:00 Xeon8375C chainhash-v3 pass 1
+2026-09-19T08:07:07.114705+00:00 Xeon8375C chainhash-256 pass 1
+2026-09-19T08:08:08.075484+00:00 Xeon8375C chainhash-128 pass 1
+2026-09-19T08:09:39.451639+00:00 Xeon8375C MuseAir-v2 pass 2
+2026-09-19T08:11:05.690716+00:00 Xeon8375C komihash pass 2
+2026-09-19T08:12:31.946197+00:00 Xeon8375C rapidhash pass 2
+2026-09-19T08:13:32.898100+00:00 Xeon8375C foldhash-fast pass 2
+2026-09-19T08:14:44.012199+00:00 Xeon8375C XXH3-64 pass 2
+2026-09-19T08:15:24.690056+00:00 Xeon8375C HalftimeHash24-shipped pass 2
+2026-09-19T08:16:25.630608+00:00 Xeon8375C GoMapHash pass 2
+2026-09-19T08:17:11.381609+00:00 Xeon8375C chainhash-v3 pass 2
+2026-09-19T08:17:57.113411+00:00 Xeon8375C chainhash-256 pass 2
+2026-09-19T08:18:58.046397+00:00 Xeon8375C chainhash-128 pass 2
+Wrote speeds.json

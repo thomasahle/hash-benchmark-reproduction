@@ -1,0 +1,13 @@
+{
+  "commit": "3de870c7ab449ad11cf450848d9270e3f54102d1",
+  "patches": {
+    "0001-arm64-family.patch": "2752ed7709eebbc39afbb68aec85aa186c45c3278492f2e824e04248569e6c2e",
+    "0002-base-registrations-arm-native.patch": "403f9201a6af7a1ef1a397ad2aaad89b3d1d0efcf52d1742db07d457a8f80cac",
+    "0003-runtime-ports.patch": "a5530c585cbb481e74fa126963845ec0191528d84a84dcea324087c9e4c4bc64",
+    "0004-museair-v2.patch": "2f35281d968baa4978b974bb71c8a0319253e3af2c64b01b06e667873c75fa5d",
+    "0005-halftime24.patch": "944565a24ebe7462d9aea59a350331d791d16e00ab3fe6295bfa10a7982bb29d",
+    "0006-chainhash-variants.patch": "79b18646e8314caa75ecd1c9971b9d8250f295c79aeefeaf2b751cfc742c17f8",
+    "0007-build-and-192-bit-speed.patch": "879098fd8ffb0091322a4c4fc7df94e6691eaf49752e1bbfd282fe79d550f426",
+    "0008-arm64-rng-counter-type.patch": "0f0c9be0889357ea0c25e91696c838620f071f26d8a8cc05f6fa9be99b7c98bc"
+  }
+}

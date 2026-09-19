@@ -1,0 +1,1710 @@
+{
+  "heuristics": [
+    {
+      "id": "city",
+      "name": "CityHash64 v1.1.1",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 6.1,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/CityHash-64/M2Pro",
+          "registered_name": "CityHash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 5.43,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/CityHash-64/Xeon8375C",
+          "registered_name": "CityHash-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 42.3,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/CityHash-64/M2Pro",
+          "registered_name": "CityHash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 46.68,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/CityHash-64/Xeon8375C",
+          "registered_name": "CityHash-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "farm",
+      "name": "FarmHash64 NA v1.1",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 5.96,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/FarmHash-64.NA/M2Pro",
+          "registered_name": "FarmHash-64.NA",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 5.43,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C",
+          "registered_name": "FarmHash-64.NA",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 43.15,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/FarmHash-64.NA/M2Pro",
+          "registered_name": "FarmHash-64.NA",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 45.11,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C",
+          "registered_name": "FarmHash-64.NA",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "murmur",
+      "name": "MurmurHash3 x64_128",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.92,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/MurmurHash3-128/M2Pro",
+          "registered_name": "MurmurHash3-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 2.73,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/MurmurHash3-128/Xeon8375C",
+          "registered_name": "MurmurHash3-128",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 40.31,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/MurmurHash3-128/M2Pro",
+          "registered_name": "MurmurHash3-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 41.3,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/MurmurHash3-128/Xeon8375C",
+          "registered_name": "MurmurHash3-128",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "mx3",
+      "name": "mx3 v3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 4.32,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mx3.v3/M2Pro",
+          "registered_name": "mx3.v3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 4.82,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mx3.v3/Xeon8375C",
+          "registered_name": "mx3.v3",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 43.23,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mx3.v3/M2Pro",
+          "registered_name": "mx3.v3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 41.59,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mx3.v3/Xeon8375C",
+          "registered_name": "mx3.v3",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "fasthash-64",
+      "name": "fasthash-64",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.39,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/fasthash-64/M2Pro",
+          "registered_name": "fasthash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 2.3,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/fasthash-64/Xeon8375C",
+          "registered_name": "fasthash-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 34.96,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/fasthash-64/M2Pro",
+          "registered_name": "fasthash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 34.0,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/fasthash-64/Xeon8375C",
+          "registered_name": "fasthash-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "fasthash-32",
+      "name": "fasthash-32",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.4,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/fasthash-32/M2Pro",
+          "registered_name": "fasthash-32",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 2.3,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/fasthash-32/Xeon8375C",
+          "registered_name": "fasthash-32",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 36.81,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/fasthash-32/M2Pro",
+          "registered_name": "fasthash-32",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 36.2,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/fasthash-32/Xeon8375C",
+          "registered_name": "fasthash-32",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "muse",
+      "name": "MuseAir v0.3 (SMHasher3)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 10.21,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/MuseAir/M2Pro",
+          "registered_name": "MuseAir",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 7.82,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/MuseAir/Xeon8375C",
+          "registered_name": "MuseAir",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 24.65,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/MuseAir/M2Pro",
+          "registered_name": "MuseAir",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 19.91,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/MuseAir/Xeon8375C",
+          "registered_name": "MuseAir",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "muse-v2",
+      "name": "MuseAir v2 (crate 0.6.0)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 10.42,
+          "source": "SMHasher3 registered MuseAir-v2 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/M2Pro",
+          "registered_name": "MuseAir-v2",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 7.53,
+          "source": "SMHasher3 registered MuseAir-v2 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C",
+          "registered_name": "MuseAir-v2",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 22.32,
+          "source": "SMHasher3 registered MuseAir-v2 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/M2Pro",
+          "registered_name": "MuseAir-v2",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 29.27,
+          "source": "SMHasher3 registered MuseAir-v2 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C",
+          "registered_name": "MuseAir-v2",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "komi",
+      "name": "komihash v5.27 / v5.34",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 7.96,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/komihash/M2Pro",
+          "registered_name": "komihash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 7.35,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/komihash/Xeon8375C",
+          "registered_name": "komihash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 25.05,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/komihash/M2Pro",
+          "registered_name": "komihash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 27.49,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/komihash/Xeon8375C",
+          "registered_name": "komihash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "t1ha",
+      "name": "t1ha2_atonce-64 v2.1.4",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 6.19,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/t1ha2-64/M2Pro",
+          "registered_name": "t1ha2-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 5.82,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/t1ha2-64/Xeon8375C",
+          "registered_name": "t1ha2-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 39.3,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/t1ha2-64/M2Pro",
+          "registered_name": "t1ha2-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 39.16,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/t1ha2-64/Xeon8375C",
+          "registered_name": "t1ha2-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "a5",
+      "name": "a5hash v5.21, 64-bit",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 3.2,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/a5hash/M2Pro",
+          "registered_name": "a5hash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 3.17,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/a5hash/Xeon8375C",
+          "registered_name": "a5hash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 22.36,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/a5hash/M2Pro",
+          "registered_name": "a5hash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 19.32,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/a5hash/Xeon8375C",
+          "registered_name": "a5hash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "a5wide",
+      "name": "a5hash v5.21, 128-bit",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 12.22,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/a5hash-128/M2Pro",
+          "registered_name": "a5hash-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 7.93,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/a5hash-128/Xeon8375C",
+          "registered_name": "a5hash-128",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 21.47,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/a5hash-128/M2Pro",
+          "registered_name": "a5hash-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 22.23,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/a5hash-128/Xeon8375C",
+          "registered_name": "a5hash-128",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "wyhash",
+      "name": "wyhash final v4.3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "rapid1",
+      "name": "rapidhash v1",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "rapid3",
+      "name": "rapidhash v3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 15.03,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/rapidhash/M2Pro",
+          "registered_name": "rapidhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 10.67,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/rapidhash/Xeon8375C",
+          "registered_name": "rapidhash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 21.08,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/rapidhash/M2Pro",
+          "registered_name": "rapidhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 27.58,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/rapidhash/Xeon8375C",
+          "registered_name": "rapidhash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "foldhash-fast",
+      "name": "foldhash-fast 0.2.0",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 14.24,
+          "source": "SMHasher3 C++ port; M2Pro",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/M2Pro",
+          "registered_name": "foldhash-fast",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 14.94,
+          "source": "SMHasher3 C++ port; M2Pro",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/M2Pro",
+          "registered_name": "foldhash-fast",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 9.07,
+          "source": "SMHasher3 C++ port; Xeon8375C",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C",
+          "registered_name": "foldhash-fast",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 20.09,
+          "source": "SMHasher3 C++ port; Xeon8375C",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C",
+          "registered_name": "foldhash-fast",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "foldhash-quality",
+      "name": "foldhash-quality 0.2.0",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 14.42,
+          "source": "SMHasher3 C++ port; M2Pro",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/M2Pro",
+          "registered_name": "foldhash-quality",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 18.92,
+          "source": "SMHasher3 C++ port; M2Pro",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/M2Pro",
+          "registered_name": "foldhash-quality",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 9.07,
+          "source": "SMHasher3 C++ port; Xeon8375C",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C",
+          "registered_name": "foldhash-quality",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 25.28,
+          "source": "SMHasher3 C++ port; Xeon8375C",
+          "record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C",
+          "registered_name": "foldhash-quality",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "mum",
+      "name": "MUM v3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 7.54,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mum3.exact.unroll3/M2Pro",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 6.57,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 23.42,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mum3.exact.unroll3/M2Pro",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 23.92,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "mir",
+      "name": "mir.exact / mir.inexact",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.86,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mir.exact/M2Pro",
+          "registered_name": "mir.exact",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 2.59,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/mir.exact/Xeon8375C",
+          "registered_name": "mir.exact",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 34.63,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mir.exact/M2Pro",
+          "registered_name": "mir.exact",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 32.18,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/mir.exact/Xeon8375C",
+          "registered_name": "mir.exact",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "xxh3-64",
+      "name": "XXH3-64 0.8.3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 13.16,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/XXH3-64/M2Pro",
+          "registered_name": "XXH3-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 19.69,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/XXH3-64/Xeon8375C",
+          "registered_name": "XXH3-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 24.51,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/XXH3-64/M2Pro",
+          "registered_name": "XXH3-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 30.16,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/XXH3-64/Xeon8375C",
+          "registered_name": "XXH3-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "xxh3-128",
+      "name": "XXH3-128 0.8.3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 13.37,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/XXH3-128/M2Pro",
+          "registered_name": "XXH3-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 19.82,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/XXH3-128/Xeon8375C",
+          "registered_name": "XXH3-128",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 29.76,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/XXH3-128/M2Pro",
+          "registered_name": "XXH3-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 34.92,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/XXH3-128/Xeon8375C",
+          "registered_name": "XXH3-128",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "highway",
+      "name": "HighwayHash-64, frozen",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.48,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/HighwayHash-64/M2Pro",
+          "registered_name": "HighwayHash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 3.24,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/HighwayHash-64/Xeon8375C",
+          "registered_name": "HighwayHash-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 90.16,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/HighwayHash-64/M2Pro",
+          "registered_name": "HighwayHash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 61.88,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/HighwayHash-64/Xeon8375C",
+          "registered_name": "HighwayHash-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "spooky",
+      "name": "SpookyHash V2-64",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 5.81,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SpookyHash2-64/M2Pro",
+          "registered_name": "SpookyHash2-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 5.08,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SpookyHash2-64/Xeon8375C",
+          "registered_name": "SpookyHash2-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 37.74,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SpookyHash2-64/M2Pro",
+          "registered_name": "SpookyHash2-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 45.59,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SpookyHash2-64/Xeon8375C",
+          "registered_name": "SpookyHash2-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "pengyhash",
+      "name": "pengyhash v0.3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 3.68,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/pengyhash/M2Pro",
+          "registered_name": "pengyhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 4.41,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/pengyhash/Xeon8375C",
+          "registered_name": "pengyhash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 74.39,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/pengyhash/M2Pro",
+          "registered_name": "pengyhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 72.62,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/pengyhash/Xeon8375C",
+          "registered_name": "pengyhash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "nmhash32",
+      "name": "nmhash32 v2",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.99,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/NMHASH/M2Pro",
+          "registered_name": "NMHASH",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 6.88,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/NMHASH/Xeon8375C",
+          "registered_name": "NMHASH",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 59.96,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/NMHASH/M2Pro",
+          "registered_name": "NMHASH",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 49.21,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/NMHASH/Xeon8375C",
+          "registered_name": "NMHASH",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "nmhash32x",
+      "name": "nmhash32x v2",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.94,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/NMHASHX/M2Pro",
+          "registered_name": "NMHASHX",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 6.88,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/NMHASHX/Xeon8375C",
+          "registered_name": "NMHASHX",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 37.18,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/NMHASHX/M2Pro",
+          "registered_name": "NMHASHX",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 30.62,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/NMHASHX/Xeon8375C",
+          "registered_name": "NMHASHX",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "gx",
+      "name": "gxhash-64 v3.5.0",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 31.81,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/gxhash-64/M2Pro",
+          "registered_name": "gxhash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 18.28,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/gxhash-64/Xeon8375C",
+          "registered_name": "gxhash-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 40.02,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/gxhash-64/M2Pro",
+          "registered_name": "gxhash-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 31.35,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/gxhash-64/Xeon8375C",
+          "registered_name": "gxhash-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "ahash",
+      "name": "aHash 0.8.12, AES path",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.12,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/rust-ahash/M2Pro",
+          "registered_name": "rust-ahash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 0.81,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/rust-ahash/Xeon8375C",
+          "registered_name": "rust-ahash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 39.3,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/rust-ahash/M2Pro",
+          "registered_name": "rust-ahash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 79.77,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/rust-ahash/Xeon8375C",
+          "registered_name": "rust-ahash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "siphash-1-3",
+      "name": "SipHash-1-3",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.13,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SipHash-1-3/M2Pro",
+          "registered_name": "SipHash-1-3",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 50.39,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SipHash-1-3/M2Pro",
+          "registered_name": "SipHash-1-3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 1.01,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SipHash-1-3/Xeon8375C",
+          "registered_name": "SipHash-1-3",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 70.58,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SipHash-1-3/Xeon8375C",
+          "registered_name": "SipHash-1-3",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "siphash-2-4",
+      "name": "SipHash-2-4",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 0.59,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SipHash-2-4/M2Pro",
+          "registered_name": "SipHash-2-4",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 73.41,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SipHash-2-4/M2Pro",
+          "registered_name": "SipHash-2-4",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 0.53,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/SipHash-2-4/Xeon8375C",
+          "registered_name": "SipHash-2-4",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 95.55,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/SipHash-2-4/Xeon8375C",
+          "registered_name": "SipHash-2-4",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "halftime24",
+      "name": "HalftimeHash24 (shipped advanced 24-byte API)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 1.37,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle, median of three; the unmodified header falls back to its scalar path on arm64 because its NEON dispatch does not compile (issue #1, PR #2); with the dispatch fix the same core measures about 5.6",
+          "record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": 60.69,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash (scalar fallback)",
+          "record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 12.81,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle; scratch registration of the unmodified header (AVX-512 V4<3>), higher of two passes",
+          "record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 64.91,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+        }
+      }
+    },
+    {
+      "id": "go-maphash",
+      "name": "Go runtime map hash / hash/maphash (go1.27.1, amd64 AES path)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 15.69,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle, median of three (scratch registration; Abseil timed on its arm64 default path)",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 17.66,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C",
+          "registered_name": "GoMapHash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 26.94,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 64.32,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C",
+          "registered_name": "GoMapHash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "abseil-hash",
+      "name": "absl::Hash (abseil-cpp 20260817.0 / HEAD 73d2688)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 14.31,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle, median of three (scratch registration; Abseil timed on its arm64 default path)",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 8.22,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C",
+          "registered_name": "AbseilHash-default",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 16.15,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 20.67,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C",
+          "registered_name": "AbseilHash-default",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "dotnet-marvin",
+      "name": "Marvin32 (.NET 10 string.GetHashCode)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 0.64,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle, median of three (scratch registration; Abseil timed on its arm64 default path)",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 0.95,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C",
+          "registered_name": "Marvin32",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 46.72,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/new-hashes-timing/speeds_new_hashes.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 31.07,
+          "source": "SMHasher3 Xeon8375C; completed timing runs",
+          "record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C",
+          "registered_name": "Marvin32",
+          "host": "Xeon8375C"
+        }
+      }
+    }
+  ],
+  "proven": [
+    {
+      "id": "polymur",
+      "name": "PolymurHash 2.0",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 5.59,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/polymurhash/M2Pro",
+          "registered_name": "polymurhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 4.97,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/polymurhash/Xeon8375C",
+          "registered_name": "polymurhash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 32.86,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/polymurhash/M2Pro",
+          "registered_name": "polymurhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 39.16,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/polymurhash/Xeon8375C",
+          "registered_name": "polymurhash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "poly1305",
+      "name": "Poly1305",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 2.2,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/poly1305-hash/M2Pro",
+          "registered_name": "poly1305-hash",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 156.96,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/poly1305-hash/M2Pro",
+          "registered_name": "poly1305-hash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 4.48,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/poly1305-hash/Xeon8375C",
+          "registered_name": "poly1305-hash",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 250.51,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/poly1305-hash/Xeon8375C",
+          "registered_name": "poly1305-hash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "horner",
+      "name": "Horner / unrolled, GF(2^64)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "brw",
+      "name": "BRW, GF(2^64)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "recurrence",
+      "name": "Injective recurrence, one chain",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "lanes",
+      "name": "Injective recurrence, eight lanes",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "ghash",
+      "name": "GHASH",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 2.48,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/ghash/M2Pro",
+          "registered_name": "ghash",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 1382.75,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/ghash/M2Pro",
+          "registered_name": "ghash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 7.02,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/ghash/Xeon8375C",
+          "registered_name": "ghash",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 1912.96,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/ghash/Xeon8375C",
+          "registered_name": "ghash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "nh",
+      "name": "NH with 64-bit words",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "halftimehash",
+      "name": "HalftimeHash, shipped 64-bit API",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "umash",
+      "name": "UMASH-64",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 14.21,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/UMASH-64/M2Pro",
+          "registered_name": "UMASH-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 11.33,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/UMASH-64/Xeon8375C",
+          "registered_name": "UMASH-64",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 34.19,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/UMASH-64/M2Pro",
+          "registered_name": "UMASH-64",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 38.76,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/UMASH-64/Xeon8375C",
+          "registered_name": "UMASH-64",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "umash128",
+      "name": "UMASH-128 fingerprint",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 7.82,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/UMASH-128/M2Pro",
+          "registered_name": "UMASH-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 6.02,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/UMASH-128/Xeon8375C",
+          "registered_name": "UMASH-128",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 41.84,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/UMASH-128/M2Pro",
+          "registered_name": "UMASH-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 40.23,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/UMASH-128/Xeon8375C",
+          "registered_name": "UMASH-128",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "clhash",
+      "name": "CLHASH",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 15.15,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/CLhash/M2Pro",
+          "registered_name": "CLhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 11.56,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/CLhash/Xeon8375C",
+          "registered_name": "CLhash",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 40.53,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/CLhash/M2Pro",
+          "registered_name": "CLhash",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 43.03,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/CLhash/Xeon8375C",
+          "registered_name": "CLhash",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "clnh",
+      "name": "Carryless NH (CLNH)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "chain-v3",
+      "name": "ChainHash v3 (ours)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 26.26,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
+          "registered_name": "chainhash-v3",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 87.49,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
+          "registered_name": "chainhash-v3",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 28.31,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
+          "registered_name": "chainhash-v3",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 155.14,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
+          "registered_name": "chainhash-v3",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "chain256",
+      "name": "ChainHash (paper), 256 B blocks",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 22.8,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/chainhash-256/M2Pro",
+          "registered_name": "chainhash-256",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 14.42,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/speeds.json#/chainhash-256/Xeon8375C",
+          "registered_name": "chainhash-256",
+          "host": "Xeon8375C"
+        },
+        "smh_m2_small_cycles": {
+          "value": 70.49,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/chainhash-256/M2Pro",
+          "registered_name": "chainhash-256",
+          "host": "M2Pro"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 103.9,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/speeds.json#/chainhash-256/Xeon8375C",
+          "registered_name": "chainhash-256",
+          "host": "Xeon8375C"
+        }
+      }
+    },
+    {
+      "id": "tabulation",
+      "name": "Simple tabulation",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "multiply",
+      "name": "Vector multiply-shift",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": null,
+          "source": "No matching registration for this version/API",
+          "record": "records/speeds.json"
+        }
+      }
+    },
+    {
+      "id": "halftime24-fixed",
+      "name": "HalftimeHash24, repaired encoder (not shipped)",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 5.55,
+          "source": "median of three complete runs",
+          "record": "records/halftime/speeds_halftime_fixed.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": 48.63,
+          "source": "median of three complete runs",
+          "record": "records/halftime/speeds_halftime_fixed.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 14.12,
+          "source": "median of three complete runs",
+          "record": "records/halftime/speeds_halftime_fixed.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 79.42,
+          "source": "median of three complete runs",
+          "record": "records/halftime/speeds_halftime_fixed.json"
+        }
+      }
+    },
+    {
+      "id": "chain-v2",
+      "name": "ChainHash v2 (ours), 1 KB blocks",
+      "speeds": {
+        "smh_xeon_bulk_Bpc": {
+          "value": 24.86,
+          "source": "higher bulk / lower small of two complete passes",
+          "record": "records/chainhash/v2/speeds_chainhash_x86.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 104.34,
+          "source": "higher bulk / lower small of two complete passes",
+          "record": "records/chainhash/v2/speeds_chainhash_x86.json"
+        },
+        "smh_m2_bulk_Bpc": {
+          "value": 11.19,
+          "source": "median of three accepted complete runs",
+          "record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": 89.85,
+          "source": "median of three accepted complete runs",
+          "record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
+        }
+      }
+    },
+    {
+      "id": "chain128",
+      "name": "ChainHash-128 (ours), 512 B blocks",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 10.28,
+          "source": "Median of three passes for bulk and small independently; all runs retained, none excluded",
+          "record": "records/chainhash/128/speeds_chainhash128.json"
+        },
+        "smh_m2_small_cycles": {
+          "value": 161.84,
+          "source": "Median of three passes for bulk and small independently; all runs retained, none excluded",
+          "record": "records/chainhash/128/speeds_chainhash128.json"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 8.16,
+          "source": "Highest bulk and lowest small of two passes, selected independently",
+          "record": "records/chainhash/128/speeds_chainhash128.json"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 165.06,
+          "source": "Highest bulk and lowest small of two passes, selected independently",
+          "record": "records/chainhash/128/speeds_chainhash128.json"
+        }
+      }
+    }
+  ]
+}

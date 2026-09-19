@@ -1,0 +1,93 @@
+{
+  "accepted_speed_runs": 20,
+  "excluded_overlap_runs": 0,
+  "hashes": 10,
+  "raw_hashes_verified": true,
+  "parsed_metrics_and_selections_verified": true,
+  "affinity": "32-39",
+  "full_post_merge_changed_only_speed_cells": true,
+  "changed_cells": [
+    [
+      "muse-v2",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "muse-v2",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "komi",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "komi",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "rapid3",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "rapid3",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "foldhash-fast",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "foldhash-fast",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "xxh3-64",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "xxh3-64",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "halftime24",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "halftime24",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "go-maphash",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "go-maphash",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "chain-v3",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "chain-v3",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "chain256",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "chain256",
+      "smh_xeon_small_cycles"
+    ],
+    [
+      "chain128",
+      "smh_xeon_bulk_Bpc"
+    ],
+    [
+      "chain128",
+      "smh_xeon_small_cycles"
+    ]
+  ],
+  "unit_tests": 5,
+  "m2_build_and_43_registrations_checked": true
+}

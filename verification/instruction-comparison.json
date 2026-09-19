@@ -1,0 +1,37 @@
+{
+  "tests/SpeedTest.cpp.o": {
+    "original_text_sha256": "ac4b9c53623c11371b10873a0c94f396b4e5ae06a2a6f72252a96eef21940cdc",
+    "reproduction_text_sha256": "ac4b9c53623c11371b10873a0c94f396b4e5ae06a2a6f72252a96eef21940cdc",
+    "identical_instruction_section": true,
+    "original_bytes": 10920,
+    "reproduction_bytes": 10920
+  },
+  "hashes/rapidhash.cpp.o": {
+    "original_text_sha256": "8b4851b7baa229f342670d20a9f18c58236b3a6e8f801dc78bcc4db9d826535a",
+    "reproduction_text_sha256": "8b4851b7baa229f342670d20a9f18c58236b3a6e8f801dc78bcc4db9d826535a",
+    "identical_instruction_section": true,
+    "original_bytes": 8730,
+    "reproduction_bytes": 8730
+  },
+  "hashes/xxhash.cpp.o": {
+    "original_text_sha256": "1df6b8a5c8e099c20c507fece4e3a9749045577fba751a3ad96263d4bd232da0",
+    "reproduction_text_sha256": "1df6b8a5c8e099c20c507fece4e3a9749045577fba751a3ad96263d4bd232da0",
+    "identical_instruction_section": true,
+    "original_bytes": 27313,
+    "reproduction_bytes": 27313
+  },
+  "hashes/komihash.cpp.o": {
+    "original_text_sha256": "e16b738e3b7268806fff6fd492eb4b97c42b759c9e5b7e721a9955136a54af6c",
+    "reproduction_text_sha256": "e16b738e3b7268806fff6fd492eb4b97c42b759c9e5b7e721a9955136a54af6c",
+    "identical_instruction_section": true,
+    "original_bytes": 2578,
+    "reproduction_bytes": 2578
+  },
+  "hashes/chainhash.cpp.o": {
+    "original_text_sha256": "47ddd84e600da716a22836211aed0660ed1e60688f27fe11f5673ce2a60febc4",
+    "reproduction_text_sha256": "47ddd84e600da716a22836211aed0660ed1e60688f27fe11f5673ce2a60febc4",
+    "identical_instruction_section": true,
+    "original_bytes": 24034,
+    "reproduction_bytes": 24034
+  }
+}

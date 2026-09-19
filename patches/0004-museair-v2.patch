@@ -1,0 +1,215 @@
+diff --git a/hashes/museair2.h b/hashes/museair2.h
+new file mode 100644
+index 00000000..af48ebae
+--- /dev/null
++++ b/hashes/museair2.h
+@@ -0,0 +1,182 @@
++/* museair2.h -- MuseAir v2 (crate museair 0.6.0, tag crate-0.6.0 = f3092ae,
++ * src/lib.rs sha256 123772c6360a31ef29f5d525d87d8f7738c8e8d883b284a6b20dd29fb1d42b1c),
++ * C11 port of the four one-shot functions: hash (64, standard/bfast) and hash128
++ * (standard/bfast).  Little-endian host.  MIT, Thomas Dybdahl Ahle 2026.  MuseAir is CC0. */
++#ifndef MUSEAIR2_H
++#define MUSEAIR2_H
++#include <stdint.h>
++#include <stddef.h>
++#include <string.h>
++typedef unsigned __int128 ma_u128;
++static const uint64_t MA_C[13] = {
++    0x5ae31e589c56e17aull, 0x96d7bb04e64f6da9ull, 0x7ab1006b26f9eb64ull, 0x21233394220b8457ull,
++    0x047cb9557c9f3b43ull, 0xd24f2590c0bcee28ull, 0x33ea8f71bb6016d8ull, 0xb5d2697595d0a01full,
++    0x9bb30a32f00e2b4full, 0x4acea09317a429d1ull, 0xc2b2435dfdd545c6ull, 0xfda811a785572a42ull,
++    0xe5f50676bf67137bull};
++#define MA_MASK_A 0xAAAAAAAAAAAAAAAAull
++#define MA_MASK_B 0x5555555555555555ull
++#define MA_MASK_I 01555555555555555555555ull
++#define MA_MASK_J 01333333333333333333333ull
++#define MA_MASK_K 00666666666666666666666ull
++
++static inline void ma_wmul(uint64_t a, uint64_t b, uint64_t *lo, uint64_t *hi) {
++    ma_u128 p = (ma_u128)a * b; *lo = (uint64_t)p; *hi = (uint64_t)(p >> 64);
++}
++static inline uint64_t ma_rd64(const uint8_t *p) { uint64_t x; memcpy(&x, p, 8); return x; }
++static inline uint64_t ma_rd32(const uint8_t *p) { uint32_t x; memcpy(&x, p, 4); return x; }
++static inline uint64_t ma_rotl(uint64_t x, unsigned r) { r &= 63; return r ? (x << r) | (x >> (64 - r)) : x; }
++static inline uint64_t ma_rotr(uint64_t x, unsigned r) { r &= 63; return r ? (x >> r) | (x << (64 - r)) : x; }
++
++static inline void ma_read_short(const uint8_t *b, size_t len, uint64_t *i, uint64_t *j) {
++    if (len >= 8)      { *i = ma_rd64(b); *j = ma_rd64(b + len - 8); }
++    else if (len >= 4) { *i = ma_rd32(b); *j = ma_rd32(b + len - 4); }
++    else if (len >= 1) { *i = ((uint64_t)b[0] << 48) | b[len - 1]; *j = b[len >> 1]; }
++    else               { *i = 0; *j = 0; }
++}
++
++/* state (i,j) of the 64-bit short path just before the finalizer */
++static inline void ma2_short_state64(const uint8_t *b, size_t len, uint64_t seed, uint64_t *pi, uint64_t *pj) {
++    uint64_t i, j, lo, hi;
++    ma_read_short(b, len < 16 ? len : 16, &i, &j);
++    ma_wmul(MA_C[2] ^ seed ^ (uint64_t)len, MA_C[3] ^ (uint64_t)len, &lo, &hi);
++    i ^= lo; j ^= hi;
++    if (len > 16) {
++        uint64_t u, v, lo0, hi0, lo1, hi1;
++        ma_read_short(b + 16, len - 16, &u, &v);
++        ma_wmul(MA_C[4] ^ seed ^ u, MA_C[5], &lo0, &hi0);
++        ma_wmul(MA_C[6] ^ seed ^ v, MA_C[7], &lo1, &hi1);
++        i ^= lo0 ^ hi1; j ^= lo1 ^ hi0;
++    }
++    *pi = i; *pj = j;
++}
++static inline uint64_t ma2_short64(const uint8_t *b, size_t len, uint64_t seed, int bfast) {
++    uint64_t i, j, lo, hi;
++    ma2_short_state64(b, len, seed, &i, &j);
++    if (!bfast) {
++        ma_wmul(i ^ MA_C[8], j ^ MA_C[9], &lo, &hi); i -= lo; j -= hi;
++        ma_wmul(i ^ MA_C[10], j ^ MA_C[11], &lo, &hi); i -= lo; j -= hi;
++    } else {
++        ma_wmul(i ^ MA_C[8], j ^ MA_C[9], &i, &j);
++        ma_wmul(i ^ MA_C[10], j ^ MA_C[11], &i, &j);
++    }
++    return i ^ j;
++}
++static inline ma_u128 ma2_short128(const uint8_t *b, size_t len, uint64_t sa, uint64_t sb, int bfast) {
++    uint64_t i, j, lo0, hi0, lo1, hi1;
++    ma_read_short(b, len < 16 ? len : 16, &i, &j);
++    ma_wmul((MA_C[0] + sa) ^ (uint64_t)len, MA_C[1] ^ (uint64_t)len, &lo0, &hi0);
++    ma_wmul((MA_C[2] - sb) ^ (uint64_t)len, MA_C[3] ^ (uint64_t)len, &lo1, &hi1);
++    i ^= lo0 ^ hi1; j ^= lo1 ^ hi0;
++    if (len > 16) {
++        uint64_t u, v;
++        ma_read_short(b + 16, len - 16, &u, &v);
++        ma_wmul((MA_C[4] + sa) ^ u, MA_C[5], &lo0, &hi0);
++        ma_wmul((MA_C[6] - sb) ^ v, MA_C[7], &lo1, &hi1);
++        i ^= lo0 ^ hi1; j ^= lo1 ^ hi0;
++    }
++    if (!bfast) {
++        ma_wmul(i ^ MA_C[8], j ^ MA_C[9], &lo0, &hi0);
++        ma_wmul(i ^ MA_C[11], j ^ MA_C[10], &lo1, &hi1);
++        ma_wmul(lo0 ^ MA_C[10], hi0 ^ MA_C[11], &lo0, &hi0);
++        ma_wmul(lo1 ^ MA_C[9], hi1 ^ MA_C[8], &lo1, &hi1);
++    } else {
++        ma_wmul(i ^ MA_C[8], j ^ MA_C[9], &lo0, &hi0);
++        ma_wmul(i, j, &lo1, &hi1);
++        ma_wmul(lo0 ^ MA_C[10], hi0 ^ MA_C[11], &lo0, &hi0);
++        ma_wmul(lo1, hi1, &lo1, &hi1);
++    }
++    return ((ma_u128)(lo1 ^ hi0) << 64) | (lo0 ^ hi1);
++}
++
++static inline void ma2_compress(const uint8_t *c, uint64_t *s, uint64_t *circular, int bfast) {
++    uint64_t lo0, hi0, lo1, hi1, lo2, hi2, lo3, hi3, lo4, hi4, lo5, hi5;
++    if (!bfast) {
++        s[0] ^= ma_rd64(c + 0);  s[1] ^= ma_rd64(c + 8);  ma_wmul(s[0], s[1], &lo0, &hi0); s[0] -= lo0 ^ *circular;
++        s[1] ^= ma_rd64(c + 16); s[2] ^= ma_rd64(c + 24); ma_wmul(s[1], s[2], &lo1, &hi1); s[1] -= lo1 ^ hi0;
++        s[2] ^= ma_rd64(c + 32); s[3] ^= ma_rd64(c + 40); ma_wmul(s[2], s[3], &lo2, &hi2); s[2] -= lo2 ^ hi1;
++        s[3] ^= ma_rd64(c + 48); s[4] ^= ma_rd64(c + 56); ma_wmul(s[3], s[4], &lo3, &hi3); s[3] -= lo3 ^ hi2;
++        s[4] ^= ma_rd64(c + 64); s[5] ^= ma_rd64(c + 72); ma_wmul(s[4], s[5], &lo4, &hi4); s[4] -= lo4 ^ hi3;
++        s[5] ^= ma_rd64(c + 80); s[0] ^= ma_rd64(c + 88); ma_wmul(s[5], s[0], &lo5, &hi5); s[5] -= lo5 ^ hi4;
++        *circular = hi5;
++    } else {
++        s[0] ^= ma_rd64(c + 0);  s[1] ^= ma_rd64(c + 8);  ma_wmul(s[0], s[1], &lo0, &hi0); s[0] = *circular ^ hi0;
++        s[1] ^= ma_rd64(c + 16); s[2] ^= ma_rd64(c + 24); ma_wmul(s[1], s[2], &lo1, &hi1); s[1] = lo0 ^ hi1;
++        s[2] ^= ma_rd64(c + 32); s[3] ^= ma_rd64(c + 40); ma_wmul(s[2], s[3], &lo2, &hi2); s[2] = lo1 ^ hi2;
++        s[3] ^= ma_rd64(c + 48); s[4] ^= ma_rd64(c + 56); ma_wmul(s[3], s[4], &lo3, &hi3); s[3] = lo2 ^ hi3;
++        s[4] ^= ma_rd64(c + 64); s[5] ^= ma_rd64(c + 72); ma_wmul(s[4], s[5], &lo4, &hi4); s[4] = lo3 ^ hi4;
++        s[5] ^= ma_rd64(c + 80); s[0] ^= ma_rd64(c + 88); ma_wmul(s[5], s[0], &lo5, &hi5); s[5] = lo4 ^ hi5;
++        *circular = lo5;
++    }
++}
++/* (i,j,k) after the rotation/subtraction stage, before the three products (used by the scan) */
++static inline void ma2_finalize_pre(uint64_t *s, const uint8_t *rest, size_t restlen, const uint8_t *t, uint64_t totlen,
++                                    uint64_t *pi, uint64_t *pj, uint64_t *pk) {
++    uint64_t lo0 = 0, lo1 = 0, lo2 = 0, lo3 = 0, lo4, lo5;
++    uint64_t hi0 = s[1], hi1 = s[2], hi2 = s[3], hi3 = s[4], hi4, hi5;
++    if (restlen > 32) {
++        s[0] ^= ma_rd64(rest + 0); s[1] ^= ma_rd64(rest + 8); ma_wmul(s[0], s[1], &lo0, &hi0);
++        if (restlen > 48) {
++            s[1] ^= ma_rd64(rest + 16); s[2] ^= ma_rd64(rest + 24); ma_wmul(s[1], s[2], &lo1, &hi1);
++            if (restlen > 64) {
++                s[2] ^= ma_rd64(rest + 32); s[3] ^= ma_rd64(rest + 40); ma_wmul(s[2], s[3], &lo2, &hi2);
++                if (restlen > 80) {
++                    s[3] ^= ma_rd64(rest + 48); s[4] ^= ma_rd64(rest + 56); ma_wmul(s[3], s[4], &lo3, &hi3);
++                }
++            }
++        }
++    }
++    s[4] ^= ma_rd64(t + 0);  s[5] ^= ma_rd64(t + 8);  ma_wmul(s[4], s[5], &lo4, &hi4);
++    s[5] ^= ma_rd64(t + 16); s[0] ^= ma_rd64(t + 24); ma_wmul(s[5], s[0], &lo5, &hi5);
++    uint64_t i = (s[0] - s[1]) ^ MA_C[7];
++    uint64_t j = (s[2] - s[3]) ^ MA_C[8];
++    uint64_t k = (s[4] - s[5]) ^ MA_C[9];
++    unsigned rot = (unsigned)(totlen & 63);
++    i = ma_rotl(i, rot); j = ma_rotr(j, rot); k -= totlen;
++    i -= lo3 ^ hi3; i -= lo4 ^ hi4;
++    j -= lo5 ^ hi5; j -= lo0 ^ hi0;
++    k -= lo1 ^ hi1; k -= lo2 ^ hi2;
++    *pi = i; *pj = j; *pk = k;
++}
++static inline void ma2_loong_common(const uint8_t *b, size_t len, uint64_t *s, int bfast,
++                                    uint64_t *pi, uint64_t *pj, uint64_t *pk) {
++    const uint8_t *rest = b; size_t restlen = len; uint64_t circular = MA_C[6];
++    if (len > 96) {
++        while (restlen > 96) { ma2_compress(rest, s, &circular, bfast); rest += 96; restlen -= 96; }
++        s[0] ^= circular;
++    }
++    uint64_t i, j, k, lo0, hi0, lo1, hi1, lo2, hi2;
++    ma2_finalize_pre(s, rest, restlen, b + len - 32, (uint64_t)len, &i, &j, &k);
++    ma_wmul(i, j, &lo0, &hi0); ma_wmul(j, k, &lo1, &hi1); ma_wmul(k, i, &lo2, &hi2);
++    if (!bfast) { i -= lo0 ^ hi2; j -= lo1 ^ hi0; k -= lo2 ^ hi1; }
++    else        { i = lo2 ^ hi0;  j = lo0 ^ hi1;  k = lo1 ^ hi2; }
++    *pi = i; *pj = j; *pk = k;
++}
++static inline void ma2_state_seed64(uint64_t seed, uint64_t *s) {
++    for (int k = 0; k < 6; k++) s[k] = MA_C[k] ^ (seed & ((k & 1) ? MA_MASK_B : MA_MASK_A));
++}
++static inline void ma2_state_seed128(uint64_t sa, uint64_t sb, uint64_t *s) {
++    s[0] = MA_C[0] ^ (sa & MA_MASK_I); s[1] = MA_C[1] ^ (sb & MA_MASK_J);
++    s[2] = MA_C[2] ^ (sa & MA_MASK_K); s[3] = MA_C[3] ^ (sb & MA_MASK_I);
++    s[4] = MA_C[4] ^ (sa & MA_MASK_J); s[5] = MA_C[5] ^ (sb & MA_MASK_K);
++}
++/* public entry points: variant 0 = hash (standard), 1 = bfast::hash; 128-bit likewise */
++static inline uint64_t museair2_hash(const uint8_t *b, size_t len, uint64_t seed, int bfast) {
++    if (len <= 32) return ma2_short64(b, len, seed, bfast);
++    uint64_t s[6], i, j, k; ma2_state_seed64(seed, s);
++    ma2_loong_common(b, len, s, bfast, &i, &j, &k);
++    return i + j + k;
++}
++static inline ma_u128 museair2_hash128(const uint8_t *b, size_t len, uint64_t sa, uint64_t sb, int bfast) {
++    if (len <= 32) return ma2_short128(b, len, sa, sb, bfast);
++    uint64_t s[6], i, j, k, lo3, hi3, lo4, hi4, lo5, hi5; ma2_state_seed128(sa, sb, s);
++    ma2_loong_common(b, len, s, bfast, &i, &j, &k);
++    ma_wmul(i, MA_C[10], &lo3, &hi3); ma_wmul(j, MA_C[11], &lo4, &hi4); ma_wmul(k, MA_C[12], &lo5, &hi5);
++    return ((ma_u128)(hi3 ^ lo4 ^ hi5) << 64) | (lo3 ^ hi4 ^ lo5);
++}
++/* splitmix64 for seed streams */
++static inline uint64_t ma_splitmix(uint64_t *x) {
++    uint64_t z = (*x += 0x9e3779b97f4a7c15ull);
++    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ull; z = (z ^ (z >> 27)) * 0x94d049bb133111ebull;
++    return z ^ (z >> 31);
++}
++#endif
+diff --git a/hashes/museair_v2.cpp b/hashes/museair_v2.cpp
+new file mode 100644
+index 00000000..5e78066c
+--- /dev/null
++++ b/hashes/museair_v2.cpp
+@@ -0,0 +1,21 @@
++// MuseAir algorithm v2, crate museair 0.6.0, standard 64-bit API.
++// seed_t -> uint64_t is an identity mapping; no seed hook or secret setup.
++// Both callbacks expose the crate's little-endian byte function. LE hosts only.
++#include "Platform.h"
++#include "Hashlib.h"
++#include "museair2.h"
++static void museair_v2(const void *p, size_t n, seed_t seed, void *out) {
++    uint64_t h = museair2_hash((const uint8_t *)p, n, (uint64_t)seed, 0);
++    memcpy(out, &h, sizeof h);
++}
++REGISTER_FAMILY(museair_v2,
++    $.src_url = "https://github.com/eternal-io/museair/tree/crate-0.6.0",
++    $.src_status = HashFamilyInfo::SRC_STABLEISH);
++REGISTER_HASH(MuseAir_v2,
++    $.desc = "MuseAir v2 (crate 0.6.0), standard hash, direct 64-bit seed",
++    $.impl = "scalar-mul128",
++    $.hash_flags = 0,
++    $.impl_flags = FLAG_IMPL_MULTIPLY_64_128 | FLAG_IMPL_ROTATE_VARIABLE,
++    $.bits = 64,
++    $.verification_LE = 0x7140cabc, $.verification_BE = 0x7140cabc,
++    $.hashfn_native = museair_v2, $.hashfn_bswap = museair_v2);

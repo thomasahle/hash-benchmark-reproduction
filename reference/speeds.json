@@ -1,0 +1,604 @@
+{
+  "CityHash-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 6.1,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/CityHash-64/M2Pro",
+      "small_cycles": 42.3,
+      "small_cycles_record": "records/speeds.json#/CityHash-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 5.43,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/CityHash-64/Xeon8375C",
+      "small_cycles": 46.68,
+      "small_cycles_record": "records/speeds.json#/CityHash-64/Xeon8375C"
+    }
+  },
+  "FarmHash-64.NA": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 5.96,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/FarmHash-64.NA/M2Pro",
+      "small_cycles": 43.15,
+      "small_cycles_record": "records/speeds.json#/FarmHash-64.NA/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 5.43,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C",
+      "small_cycles": 45.11,
+      "small_cycles_record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C"
+    }
+  },
+  "MurmurHash3-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.92,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/MurmurHash3-128/M2Pro",
+      "small_cycles": 40.31,
+      "small_cycles_record": "records/speeds.json#/MurmurHash3-128/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 2.73,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/MurmurHash3-128/Xeon8375C",
+      "small_cycles": 41.3,
+      "small_cycles_record": "records/speeds.json#/MurmurHash3-128/Xeon8375C"
+    }
+  },
+  "mx3.v3": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 4.32,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mx3.v3/M2Pro",
+      "small_cycles": 43.23,
+      "small_cycles_record": "records/speeds.json#/mx3.v3/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 4.82,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mx3.v3/Xeon8375C",
+      "small_cycles": 41.59,
+      "small_cycles_record": "records/speeds.json#/mx3.v3/Xeon8375C"
+    }
+  },
+  "fasthash-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.39,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-64/M2Pro",
+      "small_cycles": 34.96,
+      "small_cycles_record": "records/speeds.json#/fasthash-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 2.3,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-64/Xeon8375C",
+      "small_cycles": 34.0,
+      "small_cycles_record": "records/speeds.json#/fasthash-64/Xeon8375C"
+    }
+  },
+  "fasthash-32": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.4,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-32/M2Pro",
+      "small_cycles": 36.81,
+      "small_cycles_record": "records/speeds.json#/fasthash-32/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 2.3,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-32/Xeon8375C",
+      "small_cycles": 36.2,
+      "small_cycles_record": "records/speeds.json#/fasthash-32/Xeon8375C"
+    }
+  },
+  "MuseAir": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 10.21,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/MuseAir/M2Pro",
+      "small_cycles": 24.65,
+      "small_cycles_record": "records/speeds.json#/MuseAir/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 7.82,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/MuseAir/Xeon8375C",
+      "small_cycles": 19.91,
+      "small_cycles_record": "records/speeds.json#/MuseAir/Xeon8375C"
+    }
+  },
+  "MuseAir-v2": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 10.42,
+      "bulk_bytes_per_cycle_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/M2Pro",
+      "small_cycles": 22.32,
+      "small_cycles_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 7.53,
+      "bulk_bytes_per_cycle_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C",
+      "small_cycles": 29.27,
+      "small_cycles_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C"
+    }
+  },
+  "komihash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 7.96,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/komihash/M2Pro",
+      "small_cycles": 25.05,
+      "small_cycles_record": "records/speeds.json#/komihash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 7.35,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/komihash/Xeon8375C",
+      "small_cycles": 27.49,
+      "small_cycles_record": "records/speeds.json#/komihash/Xeon8375C"
+    }
+  },
+  "t1ha2-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 6.19,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/t1ha2-64/M2Pro",
+      "small_cycles": 39.3,
+      "small_cycles_record": "records/speeds.json#/t1ha2-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 5.82,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/t1ha2-64/Xeon8375C",
+      "small_cycles": 39.16,
+      "small_cycles_record": "records/speeds.json#/t1ha2-64/Xeon8375C"
+    }
+  },
+  "a5hash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 3.2,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash/M2Pro",
+      "small_cycles": 22.36,
+      "small_cycles_record": "records/speeds.json#/a5hash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 3.17,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash/Xeon8375C",
+      "small_cycles": 19.32,
+      "small_cycles_record": "records/speeds.json#/a5hash/Xeon8375C"
+    }
+  },
+  "a5hash-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 12.22,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash-128/M2Pro",
+      "small_cycles": 21.47,
+      "small_cycles_record": "records/speeds.json#/a5hash-128/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 7.93,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash-128/Xeon8375C",
+      "small_cycles": 22.23,
+      "small_cycles_record": "records/speeds.json#/a5hash-128/Xeon8375C"
+    }
+  },
+  "rapidhash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 15.03,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/rapidhash/M2Pro",
+      "small_cycles": 21.08,
+      "small_cycles_record": "records/speeds.json#/rapidhash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 10.67,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/rapidhash/Xeon8375C",
+      "small_cycles": 27.58,
+      "small_cycles_record": "records/speeds.json#/rapidhash/Xeon8375C"
+    }
+  },
+  "foldhash-fast": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 14.24,
+      "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/M2Pro",
+      "small_cycles": 14.94,
+      "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 9.07,
+      "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C",
+      "small_cycles": 20.09,
+      "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C"
+    }
+  },
+  "foldhash-quality": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 14.42,
+      "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/M2Pro",
+      "small_cycles": 18.92,
+      "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 9.07,
+      "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C",
+      "small_cycles": 25.28,
+      "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C"
+    }
+  },
+  "mum3.exact.unroll3": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 7.54,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mum3.exact.unroll3/M2Pro",
+      "small_cycles": 23.42,
+      "small_cycles_record": "records/speeds.json#/mum3.exact.unroll3/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 6.57,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C",
+      "small_cycles": 23.92,
+      "small_cycles_record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C"
+    }
+  },
+  "mir.exact": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.86,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mir.exact/M2Pro",
+      "small_cycles": 34.63,
+      "small_cycles_record": "records/speeds.json#/mir.exact/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 2.59,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/mir.exact/Xeon8375C",
+      "small_cycles": 32.18,
+      "small_cycles_record": "records/speeds.json#/mir.exact/Xeon8375C"
+    }
+  },
+  "XXH3-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 13.16,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-64/M2Pro",
+      "small_cycles": 24.51,
+      "small_cycles_record": "records/speeds.json#/XXH3-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 19.69,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-64/Xeon8375C",
+      "small_cycles": 30.16,
+      "small_cycles_record": "records/speeds.json#/XXH3-64/Xeon8375C"
+    }
+  },
+  "XXH3-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 13.37,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-128/M2Pro",
+      "small_cycles": 29.76,
+      "small_cycles_record": "records/speeds.json#/XXH3-128/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 19.82,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-128/Xeon8375C",
+      "small_cycles": 34.92,
+      "small_cycles_record": "records/speeds.json#/XXH3-128/Xeon8375C"
+    }
+  },
+  "HighwayHash-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.48,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/HighwayHash-64/M2Pro",
+      "small_cycles": 90.16,
+      "small_cycles_record": "records/speeds.json#/HighwayHash-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 3.24,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/HighwayHash-64/Xeon8375C",
+      "small_cycles": 61.88,
+      "small_cycles_record": "records/speeds.json#/HighwayHash-64/Xeon8375C"
+    }
+  },
+  "SpookyHash2-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 5.81,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SpookyHash2-64/M2Pro",
+      "small_cycles": 37.74,
+      "small_cycles_record": "records/speeds.json#/SpookyHash2-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 5.08,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SpookyHash2-64/Xeon8375C",
+      "small_cycles": 45.59,
+      "small_cycles_record": "records/speeds.json#/SpookyHash2-64/Xeon8375C"
+    }
+  },
+  "pengyhash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 3.68,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/pengyhash/M2Pro",
+      "small_cycles": 74.39,
+      "small_cycles_record": "records/speeds.json#/pengyhash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 4.41,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/pengyhash/Xeon8375C",
+      "small_cycles": 72.62,
+      "small_cycles_record": "records/speeds.json#/pengyhash/Xeon8375C"
+    }
+  },
+  "NMHASH": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.99,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASH/M2Pro",
+      "small_cycles": 59.96,
+      "small_cycles_record": "records/speeds.json#/NMHASH/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 6.88,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASH/Xeon8375C",
+      "small_cycles": 49.21,
+      "small_cycles_record": "records/speeds.json#/NMHASH/Xeon8375C"
+    }
+  },
+  "NMHASHX": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.94,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASHX/M2Pro",
+      "small_cycles": 37.18,
+      "small_cycles_record": "records/speeds.json#/NMHASHX/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 6.88,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASHX/Xeon8375C",
+      "small_cycles": 30.62,
+      "small_cycles_record": "records/speeds.json#/NMHASHX/Xeon8375C"
+    }
+  },
+  "gxhash-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 31.81,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/gxhash-64/M2Pro",
+      "small_cycles": 40.02,
+      "small_cycles_record": "records/speeds.json#/gxhash-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 18.28,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/gxhash-64/Xeon8375C",
+      "small_cycles": 31.35,
+      "small_cycles_record": "records/speeds.json#/gxhash-64/Xeon8375C"
+    }
+  },
+  "rust-ahash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.12,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/rust-ahash/M2Pro",
+      "small_cycles": 39.3,
+      "small_cycles_record": "records/speeds.json#/rust-ahash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 0.81,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/rust-ahash/Xeon8375C",
+      "small_cycles": 79.77,
+      "small_cycles_record": "records/speeds.json#/rust-ahash/Xeon8375C"
+    }
+  },
+  "SipHash-1-3": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.13,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-1-3/M2Pro",
+      "small_cycles": 50.39,
+      "small_cycles_record": "records/speeds.json#/SipHash-1-3/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 1.01,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-1-3/Xeon8375C",
+      "small_cycles": 70.58,
+      "small_cycles_record": "records/speeds.json#/SipHash-1-3/Xeon8375C"
+    }
+  },
+  "SipHash-2-4": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 0.59,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-2-4/M2Pro",
+      "small_cycles": 73.41,
+      "small_cycles_record": "records/speeds.json#/SipHash-2-4/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 0.53,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-2-4/Xeon8375C",
+      "small_cycles": 95.55,
+      "small_cycles_record": "records/speeds.json#/SipHash-2-4/Xeon8375C"
+    }
+  },
+  "HalftimeHash24-shipped": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 1.37,
+      "bulk_bytes_per_cycle_record": "records/halftime24-shipped/speeds_halftime24_shipped.json",
+      "small_cycles": 60.69,
+      "small_cycles_record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 12.81,
+      "bulk_bytes_per_cycle_record": "records/halftime24-shipped/speeds_halftime24_shipped.json",
+      "small_cycles": 64.91,
+      "small_cycles_record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+    }
+  },
+  "GoMapHash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 15.69,
+      "bulk_bytes_per_cycle_record": "records/new-hashes-timing/speeds_new_hashes.json",
+      "small_cycles": 26.94,
+      "small_cycles_record": "records/new-hashes-timing/speeds_new_hashes.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 17.66,
+      "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C",
+      "small_cycles": 64.32,
+      "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C"
+    }
+  },
+  "AbseilHash-default": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 14.31,
+      "bulk_bytes_per_cycle_record": "records/new-hashes-timing/speeds_new_hashes.json",
+      "small_cycles": 16.15,
+      "small_cycles_record": "records/new-hashes-timing/speeds_new_hashes.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 8.22,
+      "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C",
+      "small_cycles": 20.67,
+      "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C"
+    }
+  },
+  "Marvin32": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 0.64,
+      "bulk_bytes_per_cycle_record": "records/new-hashes-timing/speeds_new_hashes.json",
+      "small_cycles": 46.72,
+      "small_cycles_record": "records/new-hashes-timing/speeds_new_hashes.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 0.95,
+      "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C",
+      "small_cycles": 31.07,
+      "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C"
+    }
+  },
+  "polymurhash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 5.59,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/polymurhash/M2Pro",
+      "small_cycles": 32.86,
+      "small_cycles_record": "records/speeds.json#/polymurhash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 4.97,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/polymurhash/Xeon8375C",
+      "small_cycles": 39.16,
+      "small_cycles_record": "records/speeds.json#/polymurhash/Xeon8375C"
+    }
+  },
+  "poly1305-hash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 2.2,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/poly1305-hash/M2Pro",
+      "small_cycles": 156.96,
+      "small_cycles_record": "records/speeds.json#/poly1305-hash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 4.48,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/poly1305-hash/Xeon8375C",
+      "small_cycles": 250.51,
+      "small_cycles_record": "records/speeds.json#/poly1305-hash/Xeon8375C"
+    }
+  },
+  "ghash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 2.48,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/ghash/M2Pro",
+      "small_cycles": 1382.75,
+      "small_cycles_record": "records/speeds.json#/ghash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 7.02,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/ghash/Xeon8375C",
+      "small_cycles": 1912.96,
+      "small_cycles_record": "records/speeds.json#/ghash/Xeon8375C"
+    }
+  },
+  "UMASH-64": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 14.21,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-64/M2Pro",
+      "small_cycles": 34.19,
+      "small_cycles_record": "records/speeds.json#/UMASH-64/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 11.33,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-64/Xeon8375C",
+      "small_cycles": 38.76,
+      "small_cycles_record": "records/speeds.json#/UMASH-64/Xeon8375C"
+    }
+  },
+  "UMASH-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 7.82,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-128/M2Pro",
+      "small_cycles": 41.84,
+      "small_cycles_record": "records/speeds.json#/UMASH-128/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 6.02,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-128/Xeon8375C",
+      "small_cycles": 40.23,
+      "small_cycles_record": "records/speeds.json#/UMASH-128/Xeon8375C"
+    }
+  },
+  "CLhash": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 15.15,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/CLhash/M2Pro",
+      "small_cycles": 40.53,
+      "small_cycles_record": "records/speeds.json#/CLhash/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 11.56,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/CLhash/Xeon8375C",
+      "small_cycles": 43.03,
+      "small_cycles_record": "records/speeds.json#/CLhash/Xeon8375C"
+    }
+  },
+  "chainhash-v3": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 26.26,
+      "bulk_bytes_per_cycle_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
+      "small_cycles": 87.49,
+      "small_cycles_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 28.31,
+      "bulk_bytes_per_cycle_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
+      "small_cycles": 155.14,
+      "small_cycles_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C"
+    }
+  },
+  "chainhash-256": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 22.8,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/chainhash-256/M2Pro",
+      "small_cycles": 70.49,
+      "small_cycles_record": "records/speeds.json#/chainhash-256/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 14.42,
+      "bulk_bytes_per_cycle_record": "records/speeds.json#/chainhash-256/Xeon8375C",
+      "small_cycles": 103.9,
+      "small_cycles_record": "records/speeds.json#/chainhash-256/Xeon8375C"
+    }
+  },
+  "HalftimeHash24-fixed": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 5.55,
+      "bulk_bytes_per_cycle_record": "records/halftime/speeds_halftime_fixed.json",
+      "small_cycles": 48.63,
+      "small_cycles_record": "records/halftime/speeds_halftime_fixed.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 14.12,
+      "bulk_bytes_per_cycle_record": "records/halftime/speeds_halftime_fixed.json",
+      "small_cycles": 79.42,
+      "small_cycles_record": "records/halftime/speeds_halftime_fixed.json"
+    }
+  },
+  "chainhash-x86": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 11.19,
+      "bulk_bytes_per_cycle_record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json",
+      "small_cycles": 89.85,
+      "small_cycles_record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 24.86,
+      "bulk_bytes_per_cycle_record": "records/chainhash/v2/speeds_chainhash_x86.json",
+      "small_cycles": 104.34,
+      "small_cycles_record": "records/chainhash/v2/speeds_chainhash_x86.json"
+    }
+  },
+  "chainhash-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 10.28,
+      "bulk_bytes_per_cycle_record": "records/chainhash/128/speeds_chainhash128.json",
+      "small_cycles": 161.84,
+      "small_cycles_record": "records/chainhash/128/speeds_chainhash128.json"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 8.16,
+      "bulk_bytes_per_cycle_record": "records/chainhash/128/speeds_chainhash128.json",
+      "small_cycles": 165.06,
+      "small_cycles_record": "records/chainhash/128/speeds_chainhash128.json"
+    }
+  }
+}

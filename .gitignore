@@ -1,0 +1,8 @@
+/.work/
+/out/
+/speeds.json
+/data.json
+__pycache__/
+*.pyc
+
+/.benchmark.lock

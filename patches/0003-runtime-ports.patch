@@ -1,0 +1,820 @@
+diff --git a/hashes/absl_hardware.h b/hashes/absl_hardware.h
+new file mode 100644
+index 00000000..f3794146
+--- /dev/null
++++ b/hashes/absl_hardware.h
+@@ -0,0 +1,240 @@
++// Faithful portable C port of absl::Hash<std::string_view> (abseil-cpp HEAD
++// 73d2688300440c8af028eec865ee0dcd85e93025, 2026-09-17; identical in LTS
++// 20260817.0 for the hash files) on 64-bit platforms.
++//
++//   hash = CombineContiguousImpl(seed, bytes, len, integral_constant<int,8>)
++//
++// Variants (all selected at compile time upstream):
++//   crc : ABSL_HASH_INTERNAL_HAS_CRC32 path for len <= 32 (only when
++//         ABSL_OPTION_INLINE_HW_ACCEL_STRATEGY != 0 in absl/base/options.h AND
++//         (__SSE4_2__ && __x86_64__) or __ARM_FEATURE_CRC32).  Open-source
++//         options.h ships STRATEGY 0, so crc=0 is the default everywhere.
++//   aes : LowLevelHash (len > 32) implementation in hash.cc:
++//         0 = portable 128-bit-multiply Mix (x86-64 with default -march),
++//         1 = x86 AES-NI (compiled with __SSE4_2__ && __AES__),
++//         2 = ARM crypto (aarch64 with __ARM_NEON && __ARM_FEATURE_CRYPTO,
++//             which Apple clang on arm64 enables by default).
++// Requires unsigned __int128 (gcc/clang).  MSVC (no intrinsic int128) uses
++// CityHash64WithSeed for len > 32; that branch is not ported.
++#include <stdint.h>
++#include <stddef.h>
++#include <string.h>
++#include "absl_hash_port.h"
++#if defined(__aarch64__)
++#include <arm_neon.h>
++#endif
++
++static const uint64_t kMul = 0x79d5f9e0de1e8cf5ull;
++static const uint64_t kStaticRandomData[5] = {
++    0x243f6a8885a308d3ull, 0x13198a2e03707344ull, 0xa4093822299f31d0ull,
++    0x082efa98ec4e6c89ull, 0x452821e638d01377ull,
++};
++
++static inline uint64_t ld64(const uint8_t* p) { uint64_t v; memcpy(&v, p, 8); return v; }
++static inline uint32_t ld32(const uint8_t* p) { uint32_t v; memcpy(&v, p, 4); return v; }
++static inline uint64_t rotr64(uint64_t x, int r) { r &= 63; return r ? (x >> r) | (x << (64 - r)) : x; }
++static inline uint64_t bswap64(uint64_t x) { return __builtin_bswap64(x); }
++
++static inline uint64_t Mix(uint64_t lhs, uint64_t rhs) {
++  unsigned __int128 m = (unsigned __int128)lhs * rhs;
++  return (uint64_t)(m >> 64) ^ (uint64_t)m;
++}
++
++// ---------------------------------------------------------------- CRC32C ----
++static uint32_t crc_tab[256];
++static void crc_init(void) {
++  if (crc_tab[1]) return;
++  for (uint32_t i = 0; i < 256; i++) {
++    uint32_t c = i;
++    for (int k = 0; k < 8; k++) c = (c & 1) ? (c >> 1) ^ 0x82F63B78u : c >> 1;
++    crc_tab[i] = c;
++  }
++}
++static inline uint32_t crc32c_u8(uint32_t crc, uint8_t b) { return crc_tab[(crc ^ b) & 0xff] ^ (crc >> 8); }
++static inline uint32_t crc32c_u32(uint32_t crc, uint32_t v) { for (int i = 0; i < 4; i++) crc = crc32c_u8(crc, (uint8_t)(v >> (8 * i))); return crc; }
++static inline uint64_t crc32c_u64(uint64_t crc, uint64_t v) { uint32_t c = (uint32_t)crc; for (int i = 0; i < 8; i++) c = crc32c_u8(c, (uint8_t)(v >> (8 * i))); return c; }
++
++// -------------------------------------------------------------- AES round ---
++static uint8_t sbox[256], inv_sbox[256];
++static inline uint8_t xtime(uint8_t x) { return (uint8_t)((x << 1) ^ ((x & 0x80) ? 0x1b : 0)); }
++static uint8_t gmul(uint8_t a, uint8_t b) { uint8_t r = 0; while (b) { if (b & 1) r ^= a; a = xtime(a); b >>= 1; } return r; }
++static void aes_init(void) {
++  if (sbox[0]) return;
++  // S-box: multiplicative inverse in GF(2^8) then affine transform.
++  uint8_t p = 1, q = 1;
++  do {
++    p = p ^ (uint8_t)(p << 1) ^ ((p & 0x80) ? 0x1b : 0);  // p *= 3
++    q ^= q << 1; q ^= q << 2; q ^= q << 4; if (q & 0x80) q ^= 0x09;  // q /= 3
++    uint8_t x = q ^ (uint8_t)((q << 1) | (q >> 7)) ^ (uint8_t)((q << 2) | (q >> 6)) ^
++                (uint8_t)((q << 3) | (q >> 5)) ^ (uint8_t)((q << 4) | (q >> 4));
++    sbox[p] = x ^ 0x63;
++  } while (p != 1);
++  sbox[0] = 0x63;
++  for (int i = 0; i < 256; i++) inv_sbox[sbox[i]] = (uint8_t)i;
++}
++typedef struct { uint8_t b[16]; } V128;  // byte i of the vector = memory byte i
++static V128 v_load(const uint8_t* p) { V128 v; memcpy(v.b, p, 16); return v; }
++static V128 v_set(uint64_t hi, uint64_t lo) { V128 v; memcpy(v.b, &lo, 8); memcpy(v.b + 8, &hi, 8); return v; }
++static uint64_t v_lo(V128 v) { return ld64(v.b); }
++static uint64_t v_hi(V128 v) { return ld64(v.b + 8); }
++static V128 v_add(V128 a, V128 b) { return v_set(v_hi(a) + v_hi(b), v_lo(a) + v_lo(b)); }
++static V128 v_sub(V128 a, V128 b) { return v_set(v_hi(a) - v_hi(b), v_lo(a) - v_lo(b)); }
++static V128 v_xor(V128 a, V128 b) { V128 r; for (int i = 0; i < 16; i++) r.b[i] = a.b[i] ^ b.b[i]; return r; }
++// AES state is column-major: byte 4*c + r is row r, column c.
++static V128 sub_shift(V128 s, int inv) {
++  V128 r;
++  for (int c = 0; c < 4; c++)
++    for (int row = 0; row < 4; row++) {
++      int src = inv ? ((c - row) & 3) : ((c + row) & 3);
++      uint8_t x = s.b[4 * src + row];
++      r.b[4 * c + row] = inv ? inv_sbox[x] : sbox[x];
++    }
++  return r;
++}
++static V128 mix_columns(V128 s, int inv) {
++  V128 r;
++  static const uint8_t M[4] = {2, 3, 1, 1}, IM[4] = {14, 11, 13, 9};
++  const uint8_t* m = inv ? IM : M;
++  for (int c = 0; c < 4; c++)
++    for (int row = 0; row < 4; row++) {
++      uint8_t acc = 0;
++      for (int k = 0; k < 4; k++) acc ^= gmul(s.b[4 * c + ((row + k) & 3)], m[k]);
++      r.b[4 * c + row] = acc;
++    }
++  return r;
++}
++// x86: AESENC/AESDEC.  ARM: AESE+AESMC / AESD+AESIMC.
++static V128 x86_aesenc(V128 d, V128 k) { return v_xor(mix_columns(sub_shift(d, 0), 0), k); }
++static V128 x86_aesdec(V128 d, V128 k) { return v_xor(mix_columns(sub_shift(d, 1), 1), k); }
++#if defined(__aarch64__)
++static V128 arm_enc(V128 d,V128 k) { V128 r; vst1q_u8(r.b,vaesmcq_u8(vaeseq_u8(vld1q_u8(d.b),vld1q_u8(k.b)))); return r; }
++static V128 arm_dec(V128 d,V128 k) { V128 r; vst1q_u8(r.b,vaesimcq_u8(vaesdq_u8(vld1q_u8(d.b),vld1q_u8(k.b)))); return r; }
++#else
++static V128 arm_enc(V128 d, V128 k) { return mix_columns(sub_shift(v_xor(d, k), 0), 0); }
++static V128 arm_dec(V128 d, V128 k) { return mix_columns(sub_shift(v_xor(d, k), 1), 1); }
++#endif
++
++static V128 MixA(int aes, V128 a, V128 st) { return aes == 1 ? x86_aesdec(v_add(st, a), st) : arm_dec(a, st); }
++static V128 MixB(int aes, V128 b, V128 st) { return aes == 1 ? x86_aesdec(v_sub(st, b), st) : arm_dec(b, st); }
++static V128 MixC(int aes, V128 c, V128 st) { return aes == 1 ? x86_aesenc(v_add(st, c), st) : arm_enc(c, st); }
++static V128 MixD(int aes, V128 d, V128 st) { return aes == 1 ? x86_aesenc(v_sub(st, d), st) : arm_enc(d, st); }
++static uint64_t Mix4x16(int aes, V128 a, V128 b, V128 c, V128 d) {
++  V128 r = aes == 1 ? v_add(x86_aesenc(v_add(a, c), d), x86_aesdec(v_sub(b, d), a))
++                    : v_add(arm_enc(a, c), arm_dec(b, d));
++  return v_lo(r) ^ v_hi(r);
++}
++
++// --------------------------------------------------- LowLevelHash, len > 32 --
++static uint64_t llh_aes(int aes, uint64_t seed, const uint8_t* p, size_t len) {
++  V128 st = v_set(seed, (uint64_t)len);  // Set128(seed, len): high = seed, low = len
++  if (len <= 64) {
++    const uint8_t* q = p + len - 32;
++    return Mix4x16(aes, MixA(aes, v_load(p), st), MixB(aes, v_load(p + 16), st),
++                   MixC(aes, v_load(q), st), MixD(aes, v_load(q + 16), st));
++  }
++  const uint8_t* last32 = p + len - 32;
++  V128 s0 = st, s1 = st, s2 = st, s3 = st;
++  do {
++    s0 = MixA(aes, v_load(p), s0);
++    s1 = MixB(aes, v_load(p + 16), s1);
++    s2 = MixC(aes, v_load(p + 32), s2);
++    s3 = MixD(aes, v_load(p + 48), s3);
++    p += 64; len -= 64;
++  } while (len > 64);
++  if (len > 32) {
++    s0 = MixA(aes, v_load(p), s0);
++    s1 = MixB(aes, v_load(p + 16), s1);
++  }
++  s2 = MixC(aes, v_load(last32), s2);
++  s3 = MixD(aes, v_load(last32 + 16), s3);
++  return Mix4x16(aes, s0, s1, s2, s3);
++}
++static uint64_t Mix32Bytes(const uint8_t* p, uint64_t cs) {
++  uint64_t a = ld64(p), b = ld64(p + 8), c = ld64(p + 16), d = ld64(p + 24);
++  return Mix(a ^ kStaticRandomData[1], b ^ cs) ^ Mix(c ^ kStaticRandomData[2], d ^ cs);
++}
++static uint64_t llh_scalar(uint64_t seed, const uint8_t* p, size_t len) {
++  uint64_t cs = seed ^ kStaticRandomData[0] ^ (uint64_t)len;
++  const uint8_t* last32 = p + len - 32;
++  if (len <= 64) return Mix32Bytes(last32, Mix32Bytes(p, cs));
++  uint64_t d0 = cs, d1 = cs, d2 = cs;
++  do {
++    cs = Mix(ld64(p) ^ kStaticRandomData[1], ld64(p + 8) ^ cs);
++    d0 = Mix(ld64(p + 16) ^ kStaticRandomData[2], ld64(p + 24) ^ d0);
++    d1 = Mix(ld64(p + 32) ^ kStaticRandomData[3], ld64(p + 40) ^ d1);
++    d2 = Mix(ld64(p + 48) ^ kStaticRandomData[4], ld64(p + 56) ^ d2);
++    p += 64; len -= 64;
++  } while (len > 64);
++  cs = (cs ^ d0) ^ (d1 + d2);
++  if (len > 32) cs = Mix32Bytes(p, cs);
++  return Mix32Bytes(last32, cs);
++}
++static uint64_t llh_gt32(int aes, uint64_t seed, const uint8_t* p, size_t len) {
++  return aes ? llh_aes(aes, seed, p, len) : llh_scalar(seed, p, len);
++}
++
++// ------------------------------------------------------------- len <= 32 ----
++static inline uint64_t PrecombineLengthMix(uint64_t state, size_t len) {
++  return state ^ ld64((const uint8_t*)kStaticRandomData + len);
++}
++uint64_t absl_port_combine_raw(uint64_t state, uint64_t value, int crc) {
++  if (!crc) return Mix(state ^ value, kMul);
++  crc_init();
++  uint32_t lo = (uint32_t)state, hi = (uint32_t)(state >> 32);
++  hi = (uint32_t)crc32c_u64(hi, value);
++  lo = (uint32_t)crc32c_u64(lo, 3 * value);
++  return ((uint64_t)hi << 32) | lo;
++}
++static uint64_t small_nocrc(uint64_t state, const uint8_t* p, size_t len) {
++  if (len <= 8) {
++    uint64_t v;
++    if (len >= 4) v = ((uint64_t)ld32(p) << 32) | ld32(p + len - 4);
++    else if (len > 0) v = (((uint32_t)p[0] << 16) | p[len - 1]) | ((uint32_t)p[len / 2] << 8);
++    else v = 0x57;
++    return Mix(PrecombineLengthMix(state, len) ^ v, kMul);
++  }
++  if (len <= 16) {
++    uint64_t s = PrecombineLengthMix(state, len);
++    return Mix(s ^ ld64(p), kMul ^ ld64(p + len - 8));
++  }
++  uint64_t s = PrecombineLengthMix(state, len);
++  const uint8_t* t = p + len - 16;
++  return Mix(ld64(p) ^ kStaticRandomData[1], ld64(p + 8) ^ s) ^
++         Mix(ld64(t) ^ kStaticRandomData[3], ld64(t + 8) ^ s);
++}
++static uint64_t small_crc(uint64_t state, const uint8_t* p, size_t len) {
++  crc_init();
++  uint64_t mul = rotr64(kMul, (int)len);
++  uint64_t c1 = state + 8 * (uint64_t)len, c2 = bswap64(state);
++  if (len > 8) {
++    uint64_t n1 = crc32c_u64(c1, ld64(p)), n2 = crc32c_u64(c2, ld64(p + len - 8));
++    c1 = n1; c2 = n2;
++    if (len > 16) {
++      n1 = crc32c_u64(c1, ld64(p + len - 16)); n2 = crc32c_u64(c2, ld64(p + 8));
++      c1 = n1; c2 = n2;
++    }
++  } else if (len >= 4) {
++    c1 = crc32c_u32((uint32_t)c1, ld32(p));
++    c2 = crc32c_u32((uint32_t)c2, ld32(p + len - 4));
++  } else if (len >= 1) {
++    c1 = crc32c_u8((uint32_t)c1, p[0]);
++    c2 = crc32c_u8((uint32_t)c2, p[len - 1]);
++    mul += p[len / 2];
++  }
++  return Mix(mul - c1, c2 - mul);
++}
++
++// --------------------------------------------------------- top-level API ----
++uint64_t absl_port_hash(uint64_t seed, const uint8_t* p, size_t len, absl_variant v) {
++  #if !defined(__aarch64__)
++  if (v.aes) aes_init();
++#endif
++  uint64_t state = seed;
++  if (len > 32) {
++    if (len <= 1024) return llh_gt32(v.aes, state, p, len);
++    while (len >= 1024) { state = llh_gt32(v.aes, state, p, 1024); p += 1024; len -= 1024; }
++    if (len == 0) return state;
++    if (len > 32) return llh_gt32(v.aes, state, p, len);
++  }
++  return v.crc ? small_crc(state, p, len) : small_nocrc(state, p, len);
++}
+diff --git a/hashes/absl_hash_port.h b/hashes/absl_hash_port.h
+new file mode 100644
+index 00000000..dbb30507
+--- /dev/null
++++ b/hashes/absl_hash_port.h
+@@ -0,0 +1,16 @@
++#ifndef ABSL_HASH_PORT_H
++#define ABSL_HASH_PORT_H
++#include <stdint.h>
++#include <stddef.h>
++#ifdef __cplusplus
++extern "C" {
++#endif
++typedef struct { int aes; int crc; } absl_variant;  // aes: 0 scalar, 1 x86 AES-NI, 2 ARM crypto; crc: 0/1
++// absl::Hash<std::string_view>{}(s) == absl_port_hash(Seed(), s.data(), s.size(), variant)
++uint64_t absl_port_hash(uint64_t seed, const uint8_t* p, size_t len, absl_variant v);
++// absl::Hash<uint64_t>{}(x) == absl_port_combine_raw(Seed(), x, crc)   (IntegralFastPath)
++uint64_t absl_port_combine_raw(uint64_t state, uint64_t value, int crc);
++#ifdef __cplusplus
++}
++#endif
++#endif
+diff --git a/hashes/absl_native_arm.h b/hashes/absl_native_arm.h
+new file mode 100644
+index 00000000..3499b872
+--- /dev/null
++++ b/hashes/absl_native_arm.h
+@@ -0,0 +1,36 @@
++// Native-vector adaptation of abseil-cpp 73d2688 hash.cc ARM default.
++// Copyright 2018 The Abseil Authors. Apache-2.0, as in supplied upstream.
++// Retains NEON state vectors across the loop, upstream's prefetch and chunking.
++#if defined(__aarch64__)
++#include <arm_neon.h>
++static inline uint8x16_t aa_enc(uint8x16_t a,uint8x16_t b){return vaesmcq_u8(vaeseq_u8(a,b));}
++static inline uint8x16_t aa_dec(uint8x16_t a,uint8x16_t b){return vaesimcq_u8(vaesdq_u8(a,b));}
++static inline uint64_t aa_finish(uint8x16_t a,uint8x16_t b,uint8x16_t c,uint8x16_t d){
++ uint64x2_t r=vaddq_u64(vreinterpretq_u64_u8(aa_enc(a,c)),vreinterpretq_u64_u8(aa_dec(b,d)));
++ return vgetq_lane_u64(r,0)^vgetq_lane_u64(r,1);
++}
++static uint64_t aa_llh(uint64_t seed,const uint8_t*p,size_t len){
++ uint8x16_t st=vreinterpretq_u8_u64(vcombine_u64(vcreate_u64(len),vcreate_u64(seed)));
++ const uint8_t*last=p+len-32;
++ if(len<=64)return aa_finish(aa_dec(vld1q_u8(p),st),aa_dec(vld1q_u8(p+16),st),aa_enc(vld1q_u8(last),st),aa_enc(vld1q_u8(last+16),st));
++ uint8x16_t a=st,b=st,c=st,d=st;
++ do {
++  __builtin_prefetch(p+320,0,3);
++  a=aa_dec(vld1q_u8(p),a);b=aa_dec(vld1q_u8(p+16),b);
++  c=aa_enc(vld1q_u8(p+32),c);d=aa_enc(vld1q_u8(p+48),d);
++  p+=64;len-=64;
++ }while(len>64);
++ if(len>32){a=aa_dec(vld1q_u8(p),a);b=aa_dec(vld1q_u8(p+16),b);}
++ c=aa_enc(vld1q_u8(last),c);d=aa_enc(vld1q_u8(last+16),d);
++ return aa_finish(a,b,c,d);
++}
++static uint64_t aa_hash(uint64_t seed,const uint8_t*p,size_t len){
++ if(len>32){
++  if(len<=1024)return aa_llh(seed,p,len);
++  while(len>=1024){seed=aa_llh(seed,p,1024);p+=1024;len-=1024;}
++  if(!len)return seed;
++  if(len>32)return aa_llh(seed,p,len);
++ }
++ return absl_audit::absl_port_hash(seed,p,len,{0,0});
++}
++#endif
+diff --git a/hashes/go_hardware.h b/hashes/go_hardware.h
+new file mode 100644
+index 00000000..bdb6ac6b
+--- /dev/null
++++ b/hashes/go_hardware.h
+@@ -0,0 +1,334 @@
++/* go_maphash.h -- faithful, portable C port of the Go runtime map hash
++ *
++ * Source: Go go1.27.1 (commit 862c888e612ac346c7c4d99c9392bdfd265f33b0)
++ *   src/internal/runtime/maps/memhash_amd64.s        memHashAES        (amd64, AES-NI)
++ *   src/internal/runtime/maps/memhash_nosimd_amd64.s memHash32AES/64AES (amd64, default build)
++ *   src/internal/runtime/maps/memhash_arm64.s        memHashAES/32AES/64AES (arm64, ARMv8 crypto)
++ *   src/internal/runtime/maps/runtime_hash64.go      memHashFallback (wyhash-style, no AES)
++ *   src/internal/runtime/maps/runtime_alg.go         AlgInit: aeskeysched[128], hashkey[4]
++ *   src/hash/maphash/maphash.go                      Bytes/String: 128-byte chaining through memhash
++ *
++ * All AES primitives are implemented in software so the amd64 and arm64
++ * variants can be evaluated on any host.  Conventions:
++ *   x86  AESENC(state, key) = MixColumns(ShiftRows(SubBytes(state))) ^ key
++ *   arm  AESE(state, key)   = SubBytes(ShiftRows(state ^ key));  AESMC = MixColumns
++ * Blocks are 16 bytes in memory order (XMM/Vn byte i == memory byte i;
++ * lane D[0] == little-endian uint64 of bytes 0..7).
++ */
++#ifndef GO_MAPHASH_H
++#define GO_MAPHASH_H
++#include <stdint.h>
++#include <string.h>
++
++typedef struct { uint8_t b[16]; } blk;
++
++/* ---------- software AES round pieces ---------- */
++static uint8_t go_sbox[256];
++static int go_sbox_ready = 0;
++static void go_sbox_init(void) {
++    /* standard generation: multiplicative inverse in GF(2^8) then affine map */
++    uint8_t p = 1, q = 1;
++    do {
++        p = p ^ (uint8_t)(p << 1) ^ ((p & 0x80) ? 0x1b : 0);
++        q ^= q << 1; q ^= q << 2; q ^= q << 4; if (q & 0x80) q ^= 0x09;
++        uint8_t x = q ^ (uint8_t)((q << 1) | (q >> 7)) ^ (uint8_t)((q << 2) | (q >> 6))
++                    ^ (uint8_t)((q << 3) | (q >> 5)) ^ (uint8_t)((q << 4) | (q >> 4));
++        go_sbox[p] = x ^ 0x63;
++    } while (p != 1);
++    go_sbox[0] = 0x63;
++    go_sbox_ready = 1;
++}
++static inline uint8_t xt(uint8_t a) { return (uint8_t)((a << 1) ^ ((a & 0x80) ? 0x1b : 0)); }
++static inline void aes_sub_bytes(blk *s) { for (int i = 0; i < 16; i++) s->b[i] = go_sbox[s->b[i]]; }
++static inline void aes_shift_rows(blk *s) {
++    blk t = *s;
++    for (int c = 0; c < 4; c++) for (int r = 0; r < 4; r++) s->b[4*c + r] = t.b[4*((c + r) & 3) + r];
++}
++static inline void aes_mix_columns(blk *s) {
++    for (int c = 0; c < 4; c++) {
++        uint8_t *col = s->b + 4*c;
++        uint8_t a0 = col[0], a1 = col[1], a2 = col[2], a3 = col[3];
++        uint8_t all = a0 ^ a1 ^ a2 ^ a3;
++        col[0] = a0 ^ all ^ xt(a0 ^ a1);
++        col[1] = a1 ^ all ^ xt(a1 ^ a2);
++        col[2] = a2 ^ all ^ xt(a2 ^ a3);
++        col[3] = a3 ^ all ^ xt(a3 ^ a0);
++    }
++}
++static inline blk bxor(blk a, blk b) { for (int i = 0; i < 16; i++) a.b[i] ^= b.b[i]; return a; }
++#if defined(GO_USE_AESNI) && defined(__AES__)
++/* optional hardware path (search harness only; vectors.c validates it against the software path) */
++#include <wmmintrin.h>
++static inline blk aesenc(blk st, blk key) {
++    __m128i a = _mm_loadu_si128((const __m128i *)st.b), k = _mm_loadu_si128((const __m128i *)key.b);
++    blk o; _mm_storeu_si128((__m128i *)o.b, _mm_aesenc_si128(a, k)); return o;
++}
++static inline blk aese_mc(blk st, blk key) {   /* MC(SB(SR(st^key))) == AESENC(st^key, 0) */
++    __m128i a = _mm_loadu_si128((const __m128i *)st.b), k = _mm_loadu_si128((const __m128i *)key.b);
++    blk o; _mm_storeu_si128((__m128i *)o.b, _mm_aesenc_si128(_mm_xor_si128(a, k), _mm_setzero_si128())); return o;
++}
++static inline blk aese(blk st, blk key) {      /* SB(SR(st^key)) == AESENCLAST(st^key, 0) */
++    __m128i a = _mm_loadu_si128((const __m128i *)st.b), k = _mm_loadu_si128((const __m128i *)key.b);
++    blk o; _mm_storeu_si128((__m128i *)o.b, _mm_aesenclast_si128(_mm_xor_si128(a, k), _mm_setzero_si128())); return o;
++}
++#elif defined(__aarch64__)
++#include <arm_neon.h>
++static inline blk aese(blk st, blk key) { blk o; vst1q_u8(o.b,vaeseq_u8(vld1q_u8(st.b),vld1q_u8(key.b))); return o; }
++static inline blk aese_mc(blk st, blk key) { blk o; vst1q_u8(o.b,vaesmcq_u8(vaeseq_u8(vld1q_u8(st.b),vld1q_u8(key.b)))); return o; }
++static inline blk aesenc(blk st, blk key) { blk o; vst1q_u8(o.b,veorq_u8(vaesmcq_u8(vaeseq_u8(vld1q_u8(st.b),vdupq_n_u8(0))),vld1q_u8(key.b))); return o; }
++#else
++/* x86 AESENC */
++static inline blk aesenc(blk st, blk key) {
++    if (!go_sbox_ready) go_sbox_init();
++    aes_sub_bytes(&st); aes_shift_rows(&st); aes_mix_columns(&st);
++    return bxor(st, key);
++}
++/* arm AESE followed by AESMC */
++static inline blk aese_mc(blk st, blk key) {
++    if (!go_sbox_ready) go_sbox_init();
++    st = bxor(st, key); aes_shift_rows(&st); aes_sub_bytes(&st); aes_mix_columns(&st);
++    return st;
++}
++/* arm AESE alone (no MixColumns) */
++static inline blk aese(blk st, blk key) {
++    if (!go_sbox_ready) go_sbox_init();
++    st = bxor(st, key); aes_shift_rows(&st); aes_sub_bytes(&st);
++    return st;
++}
++#endif
++static inline blk ld(const uint8_t *p) { blk r; memcpy(r.b, p, 16); return r; }
++static inline uint64_t lo64(blk x) { uint64_t v; memcpy(&v, x.b, 8); return v; }
++static inline void put64(blk *x, int lane, uint64_t v) { memcpy(x->b + 8*lane, &v, 8); }
++static inline blk zero(void) { blk z; memset(z.b, 0, 16); return z; }
++
++/* ---------- per-process key ---------- */
++typedef struct {
++    uint8_t  aeskeysched[128];  /* internal/runtime/maps.aeskeysched: 16 x uint64 from bootstrapRand() */
++    uint64_t hashkey[4];        /* internal/runtime/maps.hashkey:     4 x uint64 from bootstrapRand() */
++} go_key;
++
++/* ================= amd64: memHashAES (memhash_amd64.s) ================= */
++static uint64_t go_memhash_aes_amd64(const uint8_t *p, uint64_t seed, uint64_t len, const go_key *k) {
++    const uint8_t *ks = k->aeskeysched;
++    blk x0 = zero();
++    put64(&x0, 0, seed);                       /* MOVQ BX, X0 */
++    uint16_t l16 = (uint16_t)len;              /* PINSRW $4, CX, X0; PSHUFHW $0 -> words 4..7 = len16 */
++    for (int w = 4; w < 8; w++) memcpy(x0.b + 2*w, &l16, 2);
++    blk x1 = x0;                               /* unscrambled seed */
++    x0 = aesenc(bxor(x0, ld(ks)), bxor(x0, ld(ks)));   /* PXOR ks0; AESENC X0,X0 */
++    if (len < 16) {
++        if (len == 0) { x0 = aesenc(x0, x0); return lo64(x0); }
++        blk d = zero(); memcpy(d.b, p, len);   /* masked load: low len bytes, zero padded */
++        d = bxor(d, x0);
++        d = aesenc(d, d); d = aesenc(d, d); d = aesenc(d, d);
++        return lo64(d);
++    }
++    if (len == 16) {
++        blk d = bxor(ld(p), x0);
++        d = aesenc(d, d); d = aesenc(d, d); d = aesenc(d, d);
++        return lo64(d);
++    }
++    if (len <= 32) {
++        blk s1 = bxor(x1, ld(ks + 16)); s1 = aesenc(s1, s1);
++        blk a = bxor(ld(p), x0), b = bxor(ld(p + len - 16), s1);
++        for (int r = 0; r < 3; r++) { a = aesenc(a, a); b = aesenc(b, b); }
++        return lo64(bxor(a, b));
++    }
++    if (len <= 64) {
++        blk s[4]; s[0] = x0;
++        for (int i = 1; i < 4; i++) { s[i] = bxor(x1, ld(ks + 16*i)); s[i] = aesenc(s[i], s[i]); }
++        blk d[4] = { bxor(ld(p), s[0]), bxor(ld(p + 16), s[1]),
++                     bxor(ld(p + len - 32), s[2]), bxor(ld(p + len - 16), s[3]) };
++        for (int r = 0; r < 3; r++) for (int i = 0; i < 4; i++) d[i] = aesenc(d[i], d[i]);
++        d[0] = bxor(d[0], d[2]); d[1] = bxor(d[1], d[3]); d[0] = bxor(d[0], d[1]);
++        return lo64(d[0]);
++    }
++    blk s[8]; s[0] = x0;
++    for (int i = 1; i < 8; i++) { s[i] = bxor(x1, ld(ks + 16*i)); s[i] = aesenc(s[i], s[i]); }
++    blk d[8];
++    if (len <= 128) {
++        for (int i = 0; i < 4; i++) d[i] = bxor(ld(p + 16*i), s[i]);
++        for (int i = 0; i < 4; i++) d[4+i] = bxor(ld(p + len - 64 + 16*i), s[4+i]);
++        for (int r = 0; r < 3; r++) for (int i = 0; i < 8; i++) d[i] = aesenc(d[i], d[i]);
++    } else {
++        /* start with last (possibly overlapping) 128-byte block */
++        for (int i = 0; i < 8; i++) d[i] = bxor(ld(p + len - 128 + 16*i), s[i]);
++        uint64_t nblk = (len - 1) >> 7;
++        const uint8_t *q = p;
++        for (uint64_t n = 0; n < nblk; n++) {
++            for (int i = 0; i < 8; i++) d[i] = aesenc(d[i], d[i]);          /* scramble state */
++            for (int i = 0; i < 8; i++) d[i] = aesenc(d[i], ld(q + 16*i));  /* scramble, xor in block */
++            q += 128;
++        }
++        for (int r = 0; r < 3; r++) for (int i = 0; i < 8; i++) d[i] = aesenc(d[i], d[i]);
++    }
++    for (int i = 0; i < 4; i++) d[i] = bxor(d[i], d[4+i]);
++    d[0] = bxor(d[0], d[2]); d[1] = bxor(d[1], d[3]); d[0] = bxor(d[0], d[1]);
++    return lo64(d[0]);
++}
++/* memhash_nosimd_amd64.s (the default, non-GOEXPERIMENT=simd build) */
++static uint64_t go_memhash64_aes_amd64(uint64_t kv, uint64_t seed, const go_key *k) {
++    blk x = zero(); put64(&x, 0, seed); put64(&x, 1, kv);        /* PINSRQ $1 */
++    x = aesenc(x, ld(k->aeskeysched)); x = aesenc(x, ld(k->aeskeysched + 16)); x = aesenc(x, ld(k->aeskeysched + 32));
++    return lo64(x);
++}
++static uint64_t go_memhash32_aes_amd64(uint32_t kv, uint64_t seed, const go_key *k) {
++    blk x = zero(); put64(&x, 0, seed); memcpy(x.b + 8, &kv, 4);  /* PINSRD $2 */
++    x = aesenc(x, ld(k->aeskeysched)); x = aesenc(x, ld(k->aeskeysched + 16)); x = aesenc(x, ld(k->aeskeysched + 32));
++    return lo64(x);
++}
++
++/* ================= arm64: memHashAES (memhash_arm64.s) ================= */
++static uint64_t go_memhash_aes_arm64(const uint8_t *p, uint64_t seed, uint64_t len, const go_key *k) {
++    const uint8_t *ks = k->aeskeysched;
++    blk v30 = zero(); put64(&v30, 0, seed); put64(&v30, 1, len);   /* full 64-bit length in D[1] */
++    blk v0 = aese_mc(ld(ks), v30);
++    if (len < 16) {
++        if (len == 0) return lo64(v0);
++        blk v2 = zero(); const uint8_t *q = p;
++        if (len & 8) { memcpy(v2.b + 0, q, 8); q += 8; }   /* VLD1.P 8(R0), V2.D[0] */
++        if (len & 4) { memcpy(v2.b + 8, q, 4); q += 4; }   /* V2.S[2] */
++        if (len & 2) { memcpy(v2.b + 12, q, 2); q += 2; }  /* V2.H[6] */
++        if (len & 1) { v2.b[14] = *q; }                    /* V2.B[14] */
++        for (int r = 0; r < 3; r++) v2 = aese_mc(v2, v0);
++        return lo64(v2);
++    }
++    if (len == 16) {
++        blk v2 = ld(p);
++        for (int r = 0; r < 3; r++) v2 = aese_mc(v2, v0);
++        return lo64(v2);
++    }
++    if (len <= 32) {
++        blk v1 = aese_mc(ld(ks + 16), v30);
++        blk a = ld(p), b = ld(p + len - 16);
++        a = aese_mc(a, v0); b = aese_mc(b, v1);
++        a = aese_mc(a, v0); b = aese_mc(b, v1);
++        a = aese(a, v0);    b = aese(b, v1);
++        return lo64(bxor(a, b));
++    }
++    if (len <= 64) {
++        blk s[4]; s[0] = v0;
++        for (int i = 1; i < 4; i++) s[i] = aese_mc(ld(ks + 16*i), v30);
++        blk d[4] = { ld(p), ld(p + 16), ld(p + len - 32), ld(p + len - 16) };
++        for (int r = 0; r < 2; r++) for (int i = 0; i < 4; i++) d[i] = aese_mc(d[i], s[i]);
++        for (int i = 0; i < 4; i++) d[i] = aese(d[i], s[i]);
++        d[0] = bxor(d[0], d[2]); d[1] = bxor(d[1], d[3]); d[0] = bxor(d[0], d[1]);
++        return lo64(d[0]);
++    }
++    blk s[8]; s[0] = v0;
++    for (int i = 1; i < 8; i++) s[i] = aese_mc(ld(ks + 16*i), v30);
++    if (len <= 128) {
++        blk d[8];
++        for (int i = 0; i < 4; i++) d[i] = ld(p + 16*i);
++        for (int i = 0; i < 4; i++) d[4+i] = ld(p + len - 64 + 16*i);
++        for (int r = 0; r < 2; r++) for (int i = 0; i < 8; i++) d[i] = aese_mc(d[i], s[i]);
++        for (int i = 0; i < 8; i++) d[i] = aese(d[i], s[i]);
++        for (int i = 0; i < 4; i++) d[i] = bxor(d[i], d[4+i]);
++        d[0] = bxor(d[0], d[2]); d[1] = bxor(d[1], d[3]); d[0] = bxor(d[0], d[1]);
++        return lo64(d[0]);
++    }
++    /* 129+: state = 8 seeds, data blocks act as round keys */
++    blk m[8];
++    for (int i = 0; i < 8; i++) m[i] = ld(p + len - 128 + 16*i);   /* tail block first */
++    uint64_t nblk = (len - 1) >> 7;
++    const uint8_t *q = p;
++    for (uint64_t n = 0; n < nblk; n++) {
++        for (int i = 0; i < 8; i++) s[i] = aese_mc(s[i], m[i]);
++        for (int i = 0; i < 8; i++) m[i] = ld(q + 16*i);
++        for (int i = 0; i < 8; i++) s[i] = aese_mc(s[i], m[i]);
++        q += 128;
++    }
++    /* 3 finishing rounds keyed by the last-loaded block (2 with MC, 1 without) */
++    for (int r = 0; r < 2; r++) for (int i = 0; i < 8; i++) s[i] = aese_mc(s[i], m[i]);
++    for (int i = 0; i < 8; i++) s[i] = aese(s[i], m[i]);
++    s[0] = bxor(s[0], s[1]); s[2] = bxor(s[2], s[3]); s[4] = bxor(s[4], s[5]); s[6] = bxor(s[6], s[7]);
++    s[0] = bxor(s[0], s[2]); s[4] = bxor(s[4], s[6]); s[0] = bxor(s[0], s[4]);
++    return lo64(s[0]);
++}
++static uint64_t go_memhash64_aes_arm64(uint64_t kv, uint64_t seed, const go_key *k) {
++    blk x = zero(); put64(&x, 0, seed); put64(&x, 1, kv);
++    blk k0 = ld(k->aeskeysched);                       /* same key block for all three rounds */
++    x = aese_mc(x, k0); x = aese_mc(x, k0); x = aese(x, k0);
++    return lo64(x);
++}
++static uint64_t go_memhash32_aes_arm64(uint32_t kv, uint64_t seed, const go_key *k) {
++    blk x = zero(); put64(&x, 0, seed); memcpy(x.b + 8, &kv, 4);
++    blk k0 = ld(k->aeskeysched);
++    x = aese_mc(x, k0); x = aese_mc(x, k0); x = aese(x, k0);
++    return lo64(x);
++}
++
++/* ================= fallback (runtime_hash64.go, wyhash-style) ================= */
++static inline uint64_t go_mix(uint64_t a, uint64_t b) {
++    unsigned __int128 m = (unsigned __int128)a * b;
++    return (uint64_t)(m >> 64) ^ (uint64_t)m;
++}
++static inline uint64_t r8(const uint8_t *p) { uint64_t v; memcpy(&v, p, 8); return v; }
++static inline uint64_t r4(const uint8_t *p) { uint32_t v; memcpy(&v, p, 4); return v; }
++#define GO_M5 0x1d8e4e27c47d124fULL
++static uint64_t go_memhash_fallback(const uint8_t *p, uint64_t seed, uint64_t s, const go_key *k) {
++    const uint64_t *hk = k->hashkey;
++    uint64_t a = 0, b = 0;
++    seed ^= hk[0];
++    if (s == 0) return seed;
++    else if (s < 4) { a = p[0]; a |= (uint64_t)p[s >> 1] << 8; a |= (uint64_t)p[s - 1] << 16; }
++    else if (s == 4) { a = r4(p); b = a; }
++    else if (s < 8) { a = r4(p); b = r4(p + s - 4); }
++    else if (s == 8) { a = r8(p); b = a; }
++    else if (s <= 16) { a = r8(p); b = r8(p + s - 8); }
++    else {
++        uint64_t l = s;
++        if (l > 48) {
++            uint64_t seed1 = seed, seed2 = seed;
++            for (; l > 48; l -= 48) {
++                seed  = go_mix(r8(p) ^ hk[1], r8(p + 8) ^ seed);
++                seed1 = go_mix(r8(p + 16) ^ hk[2], r8(p + 24) ^ seed1);
++                seed2 = go_mix(r8(p + 32) ^ hk[3], r8(p + 40) ^ seed2);
++                p += 48;
++            }
++            seed ^= seed1 ^ seed2;
++        }
++        for (; l > 16; l -= 16) { seed = go_mix(r8(p) ^ hk[1], r8(p + 8) ^ seed); p += 16; }
++        a = r8(p + l - 16); b = r8(p + l - 8);
++    }
++    return go_mix(GO_M5 ^ s, go_mix(a ^ hk[1], b ^ seed));
++}
++static uint64_t go_memhash64_fallback(uint64_t kv, uint64_t seed, const go_key *k) {
++    return go_mix(GO_M5 ^ 8, go_mix(kv ^ k->hashkey[1], kv ^ seed ^ k->hashkey[0]));
++}
++static uint64_t go_memhash32_fallback(uint32_t kv, uint64_t seed, const go_key *k) {
++    uint64_t a = kv;
++    return go_mix(GO_M5 ^ 4, go_mix(a ^ k->hashkey[1], a ^ seed ^ k->hashkey[0]));
++}
++
++/* ================= dispatch + hash/maphash chaining ================= */
++enum go_arch { GO_AMD64_AES = 0, GO_ARM64_AES = 1, GO_FALLBACK = 2 };
++static uint64_t go_memhash(enum go_arch arch, const uint8_t *p, uint64_t seed, uint64_t len, const go_key *k) {
++    switch (arch) {
++    case GO_AMD64_AES: return go_memhash_aes_amd64(p, seed, len, k);
++    case GO_ARM64_AES: return go_memhash_aes_arm64(p, seed, len, k);
++    default:           return go_memhash_fallback(p, seed, len, k);
++    }
++}
++static uint64_t go_memhash64(enum go_arch arch, uint64_t kv, uint64_t seed, const go_key *k) {
++    switch (arch) {
++    case GO_AMD64_AES: return go_memhash64_aes_amd64(kv, seed, k);
++    case GO_ARM64_AES: return go_memhash64_aes_arm64(kv, seed, k);
++    default:           return go_memhash64_fallback(kv, seed, k);
++    }
++}
++static uint64_t go_memhash32(enum go_arch arch, uint32_t kv, uint64_t seed, const go_key *k) {
++    switch (arch) {
++    case GO_AMD64_AES: return go_memhash32_aes_amd64(kv, seed, k);
++    case GO_ARM64_AES: return go_memhash32_aes_arm64(kv, seed, k);
++    default:           return go_memhash32_fallback(kv, seed, k);
++    }
++}
++/* hash/maphash.Bytes(seed, b) / String / Hash.Sum64: chain 128-byte chunks through memhash. seed != 0 required by Go. */
++static uint64_t go_maphash_bytes(enum go_arch arch, uint64_t seed, const uint8_t *b, uint64_t n, const go_key *k) {
++    uint64_t state = seed;
++    while (n > 128) { state = go_memhash(arch, b, state, 128, k); b += 128; n -= 128; }
++    if (n == 0) return state;                 /* rthash: len(buf)==0 -> seed */
++    return go_memhash(arch, b, state, n, k);
++}
++#endif
+diff --git a/hashes/go_key.inc b/hashes/go_key.inc
+new file mode 100644
+index 00000000..aafbf471
+--- /dev/null
++++ b/hashes/go_key.inc
+@@ -0,0 +1 @@
++0x8b,0xd1,0x37,0x7a,0xb7,0xdc,0x5d,0xf0,0xbc,0x47,0x71,0x9e,0x81,0x9c,0x36,0x72,0x0b,0x42,0x3a,0xe2,0x10,0xf7,0x0e,0x30,0xd4,0x7d,0x0d,0x68,0x2b,0x0d,0x92,0x78,0x47,0x25,0x69,0x38,0x2a,0x7f,0x53,0x09,0xc0,0x66,0x50,0x3c,0x44,0x0a,0x57,0xcb,0x05,0x7b,0xbb,0xc7,0x29,0x30,0x9a,0xae,0x97,0xeb,0x76,0xcc,0x6a,0xd5,0x2e,0xab,0x40,0x3d,0x33,0xe1,0xf4,0xfc,0x38,0x9c,0x8b,0x38,0xff,0x6f,0xcb,0x38,0x37,0x2e,0x23,0x0b,0x11,0xb8,0xee,0x8c,0x0d,0x31,0xa9,0x2a,0xff,0x55,0xa4,0x6f,0x67,0x40,0xa5,0xb9,0xf0,0x65,0x33,0x69,0xb5,0xff,0xfc,0x59,0x51,0xbe,0xc4,0xab,0x2c,0xa7,0xaf,0xc8,0xbf,0xaf,0xec,0x77,0x88,0xf4,0x79,0x20,0x96,0x6a,0xa7,0xbf,0xfe,0x62
+diff --git a/hashes/marvin.h b/hashes/marvin.h
+new file mode 100644
+index 00000000..4cdbcbec
+--- /dev/null
++++ b/hashes/marvin.h
+@@ -0,0 +1,104 @@
++/* Faithful C port of .NET's System.Marvin (dotnet/runtime main,
++ * src/libraries/System.Private.CoreLib/src/System/Marvin.cs, last change
++ * commit 2dada4c5 2025-08-18; verified against main @ aec1470a 2026-09-18).
++ *
++ * Little-endian path only (x86-64 and arm64 are both little-endian; the C#
++ * code is pure scalar and identical on both ISAs).
++ *
++ * string.GetHashCode() == (int)marvin32(utf16le_bytes, 2*len, DefaultSeed)
++ * where DefaultSeed is a 64-bit value read once per process from the OS CSPRNG.
++ */
++#ifndef MARVIN_PORT_H
++#define MARVIN_PORT_H
++#include <stdint.h>
++#include <stddef.h>
++#include <string.h>
++
++static inline uint32_t marvin_rotl32(uint32_t v, int s) { return (v << s) | (v >> (32 - s)); }
++static inline uint32_t marvin_ld32(const uint8_t *p) { uint32_t v; memcpy(&v, p, 4); return v; } /* LE host */
++static inline uint32_t marvin_ld16(const uint8_t *p) { uint16_t v; memcpy(&v, p, 2); return v; }
++
++/* Block(ref p0, ref p1) verbatim. */
++static inline void marvin_block(uint32_t *rp0, uint32_t *rp1) {
++    uint32_t p0 = *rp0, p1 = *rp1;
++    p1 ^= p0; p0 = marvin_rotl32(p0, 20);
++    p0 += p1; p1 = marvin_rotl32(p1, 9);
++    p1 ^= p0; p0 = marvin_rotl32(p0, 27);
++    p0 += p1; p1 = marvin_rotl32(p1, 19);
++    *rp0 = p0; *rp1 = p1;
++}
++
++/* ComputeHash32(ref byte data, uint count, uint p0, uint p1), returning the
++ * final (p0,p1) state so that both the 32-bit collapse (p1^p0, current .NET)
++ * and the legacy 64-bit output (p1<<32|p0, corefx Marvin.ComputeHash) can be
++ * formed.  Control flow mirrors the C# gotos exactly. */
++static inline void marvin_state(const uint8_t *data, uint32_t count, uint32_t p0, uint32_t p1,
++                                uint32_t *out_p0, uint32_t *out_p1) {
++    uint32_t partialResult;
++    if (count < 8) {
++        if (count >= 4) goto Between4And7BytesRemain;
++        goto InputTooSmallToEnterMainLoop;
++    }
++    {
++        uint32_t loopCount = count / 8;
++        do {
++            p0 += marvin_ld32(data);
++            uint32_t nextUInt32 = marvin_ld32(data + 4);
++            marvin_block(&p0, &p1);
++            p0 += nextUInt32;
++            marvin_block(&p0, &p1);
++            data += 8;
++        } while (--loopCount > 0);
++    }
++    if ((count & 4u) == 0) goto DoFinalPartialRead;
++
++Between4And7BytesRemain:
++    p0 += marvin_ld32(data);
++    marvin_block(&p0, &p1);
++
++DoFinalPartialRead:
++    /* read the last 4 bytes of the buffer (overlapping already-consumed bytes) */
++    partialResult = marvin_ld32(data + (count & 7) - 4);
++    count = ~count << 3;
++    partialResult >>= 8;
++    partialResult |= 0x80000000u;
++    partialResult >>= (int)(count & 0x1F);
++    goto DoFinalRoundsAndReturn;
++
++InputTooSmallToEnterMainLoop:
++    partialResult = 0x80u;
++    if (count & 1u) {
++        partialResult = data[count & 2];
++        partialResult |= 0x8000u;
++    }
++    if (count & 2u) {
++        partialResult <<= 16;
++        partialResult |= marvin_ld16(data);
++    }
++
++DoFinalRoundsAndReturn:
++    p0 += partialResult;
++    marvin_block(&p0, &p1);
++    marvin_block(&p0, &p1);
++    *out_p0 = p0; *out_p1 = p1;
++}
++
++/* Current .NET: Marvin.ComputeHash32(ReadOnlySpan<byte>, ulong seed) -> int */
++static inline uint32_t marvin32(const uint8_t *data, size_t count, uint64_t seed) {
++    uint32_t p0, p1;
++    marvin_state(data, (uint32_t)count, (uint32_t)seed, (uint32_t)(seed >> 32), &p0, &p1);
++    return p1 ^ p0;
++}
++
++/* Legacy corefx Marvin.ComputeHash(ReadOnlySpan<byte>, ulong) -> long (64-bit) */
++static inline uint64_t marvin64_legacy(const uint8_t *data, size_t count, uint64_t seed) {
++    uint32_t p0, p1;
++    marvin_state(data, (uint32_t)count, (uint32_t)seed, (uint32_t)(seed >> 32), &p0, &p1);
++    return ((uint64_t)p1 << 32) | p0;
++}
++
++/* string.GetHashCode() for a UTF-16 code-unit array of n chars */
++static inline int32_t marvin_string_hash(const uint16_t *chars, size_t nchars, uint64_t seed) {
++    return (int32_t)marvin32((const uint8_t *)chars, 2 * nchars, seed);
++}
++#endif
+diff --git a/hashes/newhashes.cpp b/hashes/newhashes.cpp
+new file mode 100644
+index 00000000..41f12106
+--- /dev/null
++++ b/hashes/newhashes.cpp
+@@ -0,0 +1,47 @@
++// Audited runtime ports: native little-endian byte API on amd64 / arm64.
++#include "Platform.h"
++#include "Hashlib.h"
++#include <stdint.h>
++#include <string.h>
++#define GO_USE_AESNI 1
++#include "go_hardware.h"
++namespace absl_audit {
++#include "absl_hardware.h"
++}
++#include "marvin.h"
++#include "absl_native_arm.h"
++static go_key process_key;
++static bool init_go() {
++ static const uint8_t captured_random[128]={
++#include "go_key.inc"
++ };
++ memcpy(process_key.aeskeysched,captured_random,128);return true;
++}
++#if defined(__aarch64__)
++#define GO_PATH GO_ARM64_AES
++#define GO_BACKEND "GO_ARM64_AES"
++#define GO_VERIFY 0x00977685
++#define ABSL_VERIFY 0x01aacf17
++#define ABSL_AES 2
++#define ABSL_BACKEND "arm-crypto"
++#else
++#define GO_PATH GO_AMD64_AES
++#define GO_BACKEND "GO_AMD64_AES"
++#define GO_VERIFY 0x710289ab
++#define ABSL_VERIFY 0x07203cdb
++#define ABSL_AES 0
++#define ABSL_BACKEND "scalar-mul128"
++#endif
++static void go_hash(const void*p,size_t n,seed_t seed,void*out){uint64_t h=go_memhash(GO_PATH,(const uint8_t*)p,seed,n,&process_key);memcpy(out,&h,8);}
++static void absl_hash(const void*p,size_t n,seed_t seed,void*out){uint64_t h;
++#if defined(__aarch64__)
++ h=aa_hash(seed,(const uint8_t*)p,n);
++#else
++ h=absl_audit::absl_port_hash(seed,(const uint8_t*)p,n,{ABSL_AES,0});
++#endif
++ memcpy(out,&h,8);}
++static void marvin_hash(const void*p,size_t n,seed_t seed,void*out){uint32_t h=marvin32((const uint8_t*)p,n,seed);memcpy(out,&h,4);}
++REGISTER_FAMILY(newhashes,$.src_url="Audited Go 1.27.1 / Abseil 73d2688 / .NET 10.0.12",$.src_status=HashFamilyInfo::SRC_STABLEISH);
++REGISTER_HASH(GoMapHash,$.desc="Go 1.27.1 runtime memhash; captured random process AES key; direct map seed",$.impl=GO_BACKEND,$.hash_flags=0,$.impl_flags=0,$.bits=64,$.verification_LE=GO_VERIFY,$.verification_BE=GO_VERIFY,$.hashfn_native=go_hash,$.hashfn_bswap=go_hash,$.initfn=init_go);
++REGISTER_HASH(AbseilHash_default,$.desc="Abseil 73d2688 byte string hash; host default; direct seed",$.impl=ABSL_BACKEND,$.hash_flags=0,$.impl_flags=FLAG_IMPL_MULTIPLY_64_128,$.bits=64,$.verification_LE=ABSL_VERIFY,$.verification_BE=ABSL_VERIFY,$.hashfn_native=absl_hash,$.hashfn_bswap=absl_hash);
++REGISTER_HASH(Marvin32,$.desc=".NET 10.0.12 Marvin32; raw bytes; p0=lo32(seed), p1=hi32(seed)",$.impl="scalar",$.hash_flags=0,$.impl_flags=FLAG_IMPL_ROTATE,$.bits=32,$.verification_LE=0x306a5169,$.verification_BE=0x306a5169,$.hashfn_native=marvin_hash,$.hashfn_bswap=marvin_hash);

@@ -1,0 +1,22 @@
+{
+  "description": "Frozen speed-cell extract from the post; no source claims or verifier payloads copied.",
+  "extracted_utc": "2026-09-19T07:54:55.614272+00:00",
+  "post_data_sha256": "d07a4f81c24a89b4d47fd587e6f80e00b729af6c9ffececcbada8c3e1635ee04",
+  "reference_files": {
+    "data.json": "a7437a94bf145a52d8a730faac34178988942d1f2af990a91c66fca18b4552e3",
+    "speeds.json": "a3921d1f2e1b2374a31578a0ee8037e36fb31e1429450314203b7c3ca96bd47d"
+  },
+  "source_records": {
+    "records/chainhash/128/speeds_chainhash128.json": "66573552cfb990af5c36d3a68dd9861342260428fea43d43b4cf2bac3ab07d4b",
+    "records/chainhash/m2-adjacent/speeds_m2_adjacent.json": "99e2517348e222b8d34d6168ffb48ad0a77432e3f0b13f8ee08cc972f5798d28",
+    "records/chainhash/v2/speeds_chainhash_x86.json": "30e17605aa10de039bbba5b0c2737bf963a45616e4c150cef9f46cf9c3747023",
+    "records/chainhash/v3/speeds_chainhash_v3.json": "4d63835875df6a4e69527cb198ce137714850d832eb09cc5cebf9355a5fea45c",
+    "records/foldhash/speeds_foldhash.json": "02e704347c96fd6c12d23a88740ae418d8c0b997b99ff2d49ab20e240b93deb2",
+    "records/halftime/speeds_halftime_fixed.json": "786d72fcab9fcd1458fa716635a895130e59f2f832264cfa7b1652df0bc2df80",
+    "records/halftime24-shipped/speeds_halftime24_shipped.json": "3b9dea0315b564d7c3cd7b6b77589750cd0b1cdf8987f108e65a6fb78d9ea1d8",
+    "records/new-hashes-timing/speeds_new_hashes.json": "12e674d76eeb0653e219de68043af3db96623169d04f892fb2e8d7a8887d0cc2",
+    "records/new-hashes/speeds_new_hashes.json": "3683378cb4e62bd69a5f7c27611a6b922982334afda87b0670f20ce8dc0b261a",
+    "records/speeds.json": "024756d8ac991bd69faa28532390a81d34726b7b5ccdaca4531aa3ca1dd75409",
+    "records/witness-searches/muse-v2-timing/speeds_museair_v2.json": "1161f0a4a14fa3e8049dfdeca007de92ee348b5011634633451478484916b4c3"
+  }
+}

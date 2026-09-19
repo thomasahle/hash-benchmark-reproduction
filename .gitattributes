@@ -1,0 +1,5 @@
+# Preserve archived patches, notices and tool output byte-for-byte.
+patches/*.patch -text -whitespace
+licenses/** -text -whitespace
+tests/fixtures/** -text -whitespace
+verification/out/** -text -whitespace
