@@ -10,8 +10,7 @@ import struct
 OBJECTS = [('SMHasher3Tests', 'tests/SpeedTest.cpp.o'),
            ('SMHasher3Hashlib', 'hashes/rapidhash.cpp.o'),
            ('SMHasher3Hashlib', 'hashes/xxhash.cpp.o'),
-           ('SMHasher3Hashlib', 'hashes/komihash.cpp.o'),
-           ('SMHasher3Hashlib', 'hashes/chainhash.cpp.o')]
+           ('SMHasher3Hashlib', 'hashes/komihash.cpp.o')]
 
 
 def section(path, name):

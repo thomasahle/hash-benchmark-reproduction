@@ -17,8 +17,8 @@ from build import ROOT, build, sha, verify_build
 
 MONITORED_CPUS = None
 HOSTS = ('M2Pro', 'Xeon8375C')
-SUBSET = ['rapidhash', 'XXH3-64', 'komihash', 'chainhash-256', 'chainhash-v3',
-          'chainhash-128', 'HalftimeHash24-shipped', 'MuseAir-v2', 'foldhash-fast', 'GoMapHash']
+SUBSET = ['rapidhash', 'XXH3-64', 'komihash', 'chainhash', 'chainhash-128',
+          'HalftimeHash24-shipped', 'MuseAir-v2', 'foldhash-fast', 'GoMapHash']
 
 
 def now():
@@ -114,8 +114,8 @@ def main():
     global MONITORED_CPUS
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--host', choices=HOSTS)
-    ap.add_argument('--names', nargs='+', help='Manifest names or chart row IDs; default: all 43 timed rows')
-    ap.add_argument('--subset', action='store_true', help='The preselected ten-hash verification panel')
+    ap.add_argument('--names', nargs='+', help='Manifest names or chart row IDs; default: all 41 timed rows')
+    ap.add_argument('--subset', action='store_true', help='The preselected nine-hash verification panel')
     ap.add_argument('--cpus', default='32-39', help='Xeon taskset CPU set (default: 32-39)')
     ap.add_argument('--jobs', type=int, default=min(os.cpu_count() or 2, 8))
     ap.add_argument('--skip-build', action='store_true', help='Use the existing verified build')

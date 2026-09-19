@@ -51,7 +51,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-256",
+      "name": "control-256",
       "metric": "bulk_bytes_per_cycle",
       "recorded": 14.42,
       "measured": 14.35,
@@ -59,7 +59,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-256",
+      "name": "control-256",
       "metric": "small_cycles",
       "recorded": 103.9,
       "measured": 103.25,
@@ -67,7 +67,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-v3",
+      "name": "chainhash",
       "metric": "bulk_bytes_per_cycle",
       "recorded": 28.31,
       "measured": 28.27,
@@ -75,7 +75,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-v3",
+      "name": "chainhash",
       "metric": "small_cycles",
       "recorded": 155.14,
       "measured": 155.14,
@@ -83,7 +83,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-128",
+      "name": "control-128",
       "metric": "bulk_bytes_per_cycle",
       "recorded": 8.16,
       "measured": 8.13,
@@ -91,7 +91,7 @@
       "within_tolerance": true
     },
     {
-      "name": "chainhash-128",
+      "name": "control-128",
       "metric": "small_cycles",
       "recorded": 165.06,
       "measured": 164.11,

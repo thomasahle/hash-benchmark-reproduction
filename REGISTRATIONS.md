@@ -1,6 +1,6 @@
 # Chart registration map
 
-`manifest.json` is the machine-readable version. "Upstream" below means present at the pinned fork base; scratch additions and ARM adapter changes are supplied in patches. All rows use their original output variant.
+`manifest.json` is the machine-readable version. "Upstream" below means present at the pinned fork base; scratch additions, the ChainHash registration and ARM adapter changes are supplied in patches. All rows use their original output variant.
 
 | Chart row | Xeon registration | M2 registration | Source | Origin |
 |---|---|---|---|---|
@@ -42,10 +42,8 @@
 | umash | `UMASH-64` | `UMASH-64` | `hashes/umash.cpp` | Upstream x86; scratch native ARM adapter |
 | umash128 | `UMASH-128` | `UMASH-128` | `hashes/umash.cpp` | Upstream x86; scratch native ARM adapter |
 | clhash | `CLhash` | `CLhash` | `hashes/clhash.cpp` | Upstream x86; scratch native ARM adapter |
-| chain-v3 | `chainhash-v3` | `chainhash-v3` | `hashes/chainhash_v3.cpp` | Scratch |
-| chain256 | `chainhash-256` | `chainhash-256` | `hashes/chainhash.cpp` | Scratch |
+| chainhash | `chainhash` | `chainhash` | `hashes/chainhash.cpp` | ChainHash repository |
 | halftime24-fixed | `HalftimeHash24-fixed` | `HalftimeHash24-fixed` | `hashes/halftimefixed.cpp` | Scratch |
-| chain-v2 | `chainhash-x86` | `chainhash-adjacent-1k` | `hashes/chainhash_x86.cpp` | Scratch |
-| chain128 | `chainhash-128` | `chainhash-128` | `hashes/chainhash_128.cpp` | Scratch |
+| chainhash128 | `chainhash-128` | `chainhash-128` | `hashes/chainhash.cpp` | ChainHash repository |
 
-The v2 M2 source is `hashes/chainhash_smhasher3_adjacent1024.cpp` with `chainhash_arm.h`; the Xeon source is `chainhash_x86.cpp`. The untimed/null rows in the reference extract have no mapping and stay unavailable. No wyhash/rapidhash version is substituted for a differently versioned row.
+The ChainHash adapter and its two headers under `hashes/chainhash/` are copied unchanged from <https://github.com/thomasahle/chainhash>. The untimed/null rows in the reference extract have no mapping and stay unavailable. No wyhash/rapidhash version is substituted for a differently versioned row.

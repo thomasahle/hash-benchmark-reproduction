@@ -40,10 +40,10 @@ index 55816967..1320078c 100644
 +    APPEND_STRING PROPERTY COMPILE_FLAGS " -flax-vector-conversions")
 +endif()
 diff --git a/hashes/Hashsrc.cmake b/hashes/Hashsrc.cmake
-index aa8166d7..463d763d 100644
+index aa8166d7..d4132ccc 100644
 --- a/hashes/Hashsrc.cmake
 +++ b/hashes/Hashsrc.cmake
-@@ -1,4 +1,15 @@
+@@ -1,4 +1,12 @@
  set(HASH_SRC_FILES
 +  hashes/chainhash.cpp
 +  hashes/foldhash.cpp
@@ -52,23 +52,10 @@ index aa8166d7..463d763d 100644
 +  hashes/museair_v2.cpp
 +  hashes/halftimefixed.cpp
 +  hashes/halftimeshipped.cpp
-+  hashes/chainhash_v3.cpp
-+  hashes/chainhash_128.cpp
-+  hashes/chainhash_128__schoolbook.cpp
 +
    hashes/donothing.cpp
    hashes/badhash.cpp
    hashes/aesrng.cpp
-@@ -92,3 +103,9 @@ set(HASH_SRC_FILES
-   hashes/gxhash.cpp
-   hashes/rust-rapidhash.cpp
- )
-+
-+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm64|aarch64|ARM64)$")
-+  list(APPEND HASH_SRC_FILES hashes/chainhash_smhasher3_adjacent1024.cpp)
-+else()
-+  list(APPEND HASH_SRC_FILES hashes/chainhash_x86.cpp)
-+endif()
 diff --git a/main.cpp b/main.cpp
 index b6b1e6b4..ffd7ae6e 100644
 --- a/main.cpp

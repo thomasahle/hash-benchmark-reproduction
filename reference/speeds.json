@@ -531,32 +531,18 @@
       "small_cycles_record": "records/speeds.json#/CLhash/Xeon8375C"
     }
   },
-  "chainhash-v3": {
+  "chainhash": {
     "M2Pro": {
       "bulk_bytes_per_cycle": 26.26,
-      "bulk_bytes_per_cycle_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
+      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
       "small_cycles": 87.49,
-      "small_cycles_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro"
+      "small_cycles_record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro"
     },
     "Xeon8375C": {
       "bulk_bytes_per_cycle": 28.31,
-      "bulk_bytes_per_cycle_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
+      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
       "small_cycles": 155.14,
-      "small_cycles_record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C"
-    }
-  },
-  "chainhash-256": {
-    "M2Pro": {
-      "bulk_bytes_per_cycle": 22.8,
-      "bulk_bytes_per_cycle_record": "records/speeds.json#/chainhash-256/M2Pro",
-      "small_cycles": 70.49,
-      "small_cycles_record": "records/speeds.json#/chainhash-256/M2Pro"
-    },
-    "Xeon8375C": {
-      "bulk_bytes_per_cycle": 14.42,
-      "bulk_bytes_per_cycle_record": "records/speeds.json#/chainhash-256/Xeon8375C",
-      "small_cycles": 103.9,
-      "small_cycles_record": "records/speeds.json#/chainhash-256/Xeon8375C"
+      "small_cycles_record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C"
     }
   },
   "HalftimeHash24-fixed": {
@@ -573,32 +559,18 @@
       "small_cycles_record": "records/halftime/speeds_halftime_fixed.json"
     }
   },
-  "chainhash-x86": {
-    "M2Pro": {
-      "bulk_bytes_per_cycle": 11.19,
-      "bulk_bytes_per_cycle_record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json",
-      "small_cycles": 89.85,
-      "small_cycles_record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
-    },
-    "Xeon8375C": {
-      "bulk_bytes_per_cycle": 24.86,
-      "bulk_bytes_per_cycle_record": "records/chainhash/v2/speeds_chainhash_x86.json",
-      "small_cycles": 104.34,
-      "small_cycles_record": "records/chainhash/v2/speeds_chainhash_x86.json"
-    }
-  },
   "chainhash-128": {
     "M2Pro": {
-      "bulk_bytes_per_cycle": 10.28,
-      "bulk_bytes_per_cycle_record": "records/chainhash/128/speeds_chainhash128.json",
-      "small_cycles": 161.84,
-      "small_cycles_record": "records/chainhash/128/speeds_chainhash128.json"
+      "bulk_bytes_per_cycle": 10.26,
+      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
+      "small_cycles": 167.89,
+      "small_cycles_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro"
     },
     "Xeon8375C": {
-      "bulk_bytes_per_cycle": 8.16,
-      "bulk_bytes_per_cycle_record": "records/chainhash/128/speeds_chainhash128.json",
-      "small_cycles": 165.06,
-      "small_cycles_record": "records/chainhash/128/speeds_chainhash128.json"
+      "bulk_bytes_per_cycle": 14.43,
+      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
+      "small_cycles": 175.93,
+      "small_cycles_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C"
     }
   }
 }

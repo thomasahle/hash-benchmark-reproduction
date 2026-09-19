@@ -64,27 +64,27 @@
       "smh_xeon_small_cycles"
     ],
     [
-      "chain-v3",
+      "chainhash",
       "smh_xeon_bulk_Bpc"
     ],
     [
-      "chain-v3",
+      "chainhash",
       "smh_xeon_small_cycles"
     ],
     [
-      "chain256",
+      "control-256",
       "smh_xeon_bulk_Bpc"
     ],
     [
-      "chain256",
+      "control-256",
       "smh_xeon_small_cycles"
     ],
     [
-      "chain128",
+      "chainhash128",
       "smh_xeon_bulk_Bpc"
     ],
     [
-      "chain128",
+      "chainhash128",
       "smh_xeon_small_cycles"
     ]
   ],

@@ -17,12 +17,12 @@ Tolerance: ±5.0%. All differences are relative to the frozen published chart ce
 | XXH3-64 | small_cycles | 30.16 | 29.38 | -2.59% | yes |
 | komihash | bulk_bytes_per_cycle | 7.35 | 7.37 | +0.27% | yes |
 | komihash | small_cycles | 27.49 | 26.18 | -4.77% | yes |
-| chainhash-256 | bulk_bytes_per_cycle | 14.42 | 14.35 | -0.49% | yes |
-| chainhash-256 | small_cycles | 103.90 | 103.25 | -0.63% | yes |
-| chainhash-v3 | bulk_bytes_per_cycle | 28.31 | 28.27 | -0.14% | yes |
-| chainhash-v3 | small_cycles | 155.14 | 155.14 | +0.00% | yes |
-| chainhash-128 | bulk_bytes_per_cycle | 8.16 | 8.13 | -0.37% | yes |
-| chainhash-128 | small_cycles | 165.06 | 164.11 | -0.58% | yes |
+| control-256 | bulk_bytes_per_cycle | 14.42 | 14.35 | -0.49% | yes |
+| control-256 | small_cycles | 103.90 | 103.25 | -0.63% | yes |
+| chainhash | bulk_bytes_per_cycle | 28.31 | 28.27 | -0.14% | yes |
+| chainhash | small_cycles | 155.14 | 155.14 | +0.00% | yes |
+| control-128 | bulk_bytes_per_cycle | 8.16 | 8.13 | -0.37% | yes |
+| control-128 | small_cycles | 165.06 | 164.11 | -0.58% | yes |
 | HalftimeHash24-shipped | bulk_bytes_per_cycle | 12.81 | 13.22 | +3.20% | yes |
 | HalftimeHash24-shipped | small_cycles | 64.91 | 66.05 | +1.76% | yes |
 | MuseAir-v2 | bulk_bytes_per_cycle | 7.53 | 7.51 | -0.27% | yes |
@@ -33,6 +33,10 @@ Tolerance: ±5.0%. All differences are relative to the frozen published chart ce
 | GoMapHash | small_cycles | 64.32 | 63.37 | -1.48% | yes |
 
 Result: FAIL.
+
+Registration names in the raw logs under `out/` and in `speeds.json` are those
+printed at run time; this table, `diff.json` and `validation.json` use the
+current names.
 
 ## Execution and evidence
 
@@ -53,12 +57,7 @@ python3 scripts/sanity.py --host Xeon8375C --cpus 32-39
 python3 scripts/benchmark.py --host Xeon8375C --subset --cpus 32-39 --skip-build
 ```
 
-`make verify-xeon` runs this pipeline and the strict comparison. Regenerate the
-comparison alone using:
-
-```sh
-python3 scripts/compare.py --subset --speeds verification/speeds.json
-```
+`make verify-xeon` runs this pipeline and the strict comparison.
 
 [Collected timings](speeds.json), [machine-readable diff](diff.json),
 [execution log](out/Xeon8375C/execution.json),
@@ -73,7 +72,7 @@ HalftimeHash24-shipped (append zeroes), and Marvin32 (prepend zeroes). The logs
 and [Sanity summary](out/Xeon8375C/sanity.json) preserve them. Timing these
 implementations does not assert that they pass correctness/quality checks.
 
-The archived and rebuilt SpeedTest, rapidhash, XXH3, komihash and ChainHash v1
+The archived and rebuilt SpeedTest, rapidhash, XXH3, komihash and control-256
 object `.text` sections are byte-identical; see
 [instruction comparison](instruction-comparison.json). This rules out changed
 pre-link instruction bytes in those sections, but does not establish the cause
@@ -81,9 +80,11 @@ of the rapidhash small-key difference. Final link layout, runtime environment
 and overhead calibration can affect small-key measurements. We did not alter
 the two-pass rule or run extra trials to select a closer number.
 
-The same patched repository also built on M2 with its ARM-only ninth patch;
-all 43 manifest registrations are present. See its
-[build identity](out/M2Pro/build.json) and [check](out/M2Pro/check.json).
+The same patched repository also built on M2 with all 43 manifest
+registrations present; see its [build identity](out/M2Pro/build.json) and
+[check](out/M2Pro/check.json). That build carried one further arm64
+build-system patch, since dropped because the registration list does not
+depend on it.
 No full M2 timing rerun was performed for this delivery.
 
 `make chart-data SPEEDS=verification/speeds.json` updated exactly 20 speed cells.

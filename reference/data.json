@@ -1509,69 +1509,35 @@
       }
     },
     {
-      "id": "chain-v3",
-      "name": "ChainHash v3 (ours)",
+      "id": "chainhash",
+      "name": "ChainHash (ours)",
       "speeds": {
         "smh_m2_bulk_Bpc": {
           "value": 26.26,
           "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
-          "registered_name": "chainhash-v3",
+          "record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
+          "registered_name": "chainhash",
           "host": "M2Pro"
         },
         "smh_m2_small_cycles": {
           "value": 87.49,
           "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/M2Pro",
-          "registered_name": "chainhash-v3",
+          "record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
+          "registered_name": "chainhash",
           "host": "M2Pro"
         },
         "smh_xeon_bulk_Bpc": {
           "value": 28.31,
           "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
-          "registered_name": "chainhash-v3",
+          "record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
+          "registered_name": "chainhash",
           "host": "Xeon8375C"
         },
         "smh_xeon_small_cycles": {
           "value": 155.14,
           "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/v3/speeds_chainhash_v3.json#/chainhash-v3/Xeon8375C",
-          "registered_name": "chainhash-v3",
-          "host": "Xeon8375C"
-        }
-      }
-    },
-    {
-      "id": "chain256",
-      "name": "ChainHash (paper), 256 B blocks",
-      "speeds": {
-        "smh_m2_bulk_Bpc": {
-          "value": 22.8,
-          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
-          "record": "records/speeds.json#/chainhash-256/M2Pro",
-          "registered_name": "chainhash-256",
-          "host": "M2Pro"
-        },
-        "smh_xeon_bulk_Bpc": {
-          "value": 14.42,
-          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
-          "record": "records/speeds.json#/chainhash-256/Xeon8375C",
-          "registered_name": "chainhash-256",
-          "host": "Xeon8375C"
-        },
-        "smh_m2_small_cycles": {
-          "value": 70.49,
-          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
-          "record": "records/speeds.json#/chainhash-256/M2Pro",
-          "registered_name": "chainhash-256",
-          "host": "M2Pro"
-        },
-        "smh_xeon_small_cycles": {
-          "value": 103.9,
-          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
-          "record": "records/speeds.json#/chainhash-256/Xeon8375C",
-          "registered_name": "chainhash-256",
+          "record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
+          "registered_name": "chainhash",
           "host": "Xeon8375C"
         }
       }
@@ -1655,54 +1621,36 @@
       }
     },
     {
-      "id": "chain-v2",
-      "name": "ChainHash v2 (ours), 1 KB blocks",
-      "speeds": {
-        "smh_xeon_bulk_Bpc": {
-          "value": 24.86,
-          "source": "higher bulk / lower small of two complete passes",
-          "record": "records/chainhash/v2/speeds_chainhash_x86.json"
-        },
-        "smh_xeon_small_cycles": {
-          "value": 104.34,
-          "source": "higher bulk / lower small of two complete passes",
-          "record": "records/chainhash/v2/speeds_chainhash_x86.json"
-        },
-        "smh_m2_bulk_Bpc": {
-          "value": 11.19,
-          "source": "median of three accepted complete runs",
-          "record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
-        },
-        "smh_m2_small_cycles": {
-          "value": 89.85,
-          "source": "median of three accepted complete runs",
-          "record": "records/chainhash/m2-adjacent/speeds_m2_adjacent.json"
-        }
-      }
-    },
-    {
-      "id": "chain128",
-      "name": "ChainHash-128 (ours), 512 B blocks",
+      "id": "chainhash128",
+      "name": "ChainHash-128 (ours)",
       "speeds": {
         "smh_m2_bulk_Bpc": {
-          "value": 10.28,
-          "source": "Median of three passes for bulk and small independently; all runs retained, none excluded",
-          "record": "records/chainhash/128/speeds_chainhash128.json"
+          "value": 10.26,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
+          "registered_name": "chainhash-128",
+          "host": "M2Pro"
         },
         "smh_m2_small_cycles": {
-          "value": 161.84,
-          "source": "Median of three passes for bulk and small independently; all runs retained, none excluded",
-          "record": "records/chainhash/128/speeds_chainhash128.json"
+          "value": 167.89,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
+          "registered_name": "chainhash-128",
+          "host": "M2Pro"
         },
         "smh_xeon_bulk_Bpc": {
-          "value": 8.16,
-          "source": "Highest bulk and lowest small of two passes, selected independently",
-          "record": "records/chainhash/128/speeds_chainhash128.json"
+          "value": 14.43,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
+          "registered_name": "chainhash-128",
+          "host": "Xeon8375C"
         },
         "smh_xeon_small_cycles": {
-          "value": 165.06,
-          "source": "Highest bulk and lowest small of two passes, selected independently",
-          "record": "records/chainhash/128/speeds_chainhash128.json"
+          "value": 175.93,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
+          "registered_name": "chainhash-128",
+          "host": "Xeon8375C"
         }
       }
     }

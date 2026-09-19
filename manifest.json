@@ -342,21 +342,12 @@
     }
   },
   {
-    "row_id": "chain-v3",
+    "row_id": "chainhash",
     "group": "proven",
-    "name": "chainhash-v3",
+    "name": "chainhash",
     "registered_names": {
-      "Xeon8375C": "chainhash-v3",
-      "M2Pro": "chainhash-v3"
-    }
-  },
-  {
-    "row_id": "chain256",
-    "group": "proven",
-    "name": "chainhash-256",
-    "registered_names": {
-      "Xeon8375C": "chainhash-256",
-      "M2Pro": "chainhash-256"
+      "Xeon8375C": "chainhash",
+      "M2Pro": "chainhash"
     }
   },
   {
@@ -369,16 +360,7 @@
     }
   },
   {
-    "row_id": "chain-v2",
-    "group": "proven",
-    "name": "chainhash-x86",
-    "registered_names": {
-      "Xeon8375C": "chainhash-x86",
-      "M2Pro": "chainhash-adjacent-1k"
-    }
-  },
-  {
-    "row_id": "chain128",
+    "row_id": "chainhash128",
     "group": "proven",
     "name": "chainhash-128",
     "registered_names": {

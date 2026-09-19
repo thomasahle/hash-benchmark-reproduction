@@ -21,8 +21,6 @@ def sha(path):
 
 def patch_identity():
     series = (ROOT / 'patches/series').read_text()
-    if platform.machine().lower() in ('arm64', 'aarch64'):
-        series += (ROOT / 'patches/series.arm64').read_text()
     patches = [ROOT / 'patches' / n for n in series.splitlines() if n]
     return patches, {'commit': COMMIT, 'patches': {p.name: sha(p) for p in patches}}
 
