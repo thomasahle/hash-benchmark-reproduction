@@ -367,5 +367,14 @@
       "Xeon8375C": "chainhash-128",
       "M2Pro": "chainhash-128"
     }
+  },
+  {
+    "row_id": "polyxor",
+    "group": "proven",
+    "name": "polyxor-128",
+    "registered_names": {
+      "Xeon8375C": "polyxor-128",
+      "M2Pro": "polyxor-128"
+    }
   }
 ]

@@ -6,3 +6,4 @@
 0006-chainhash.patch
 0007-build-and-192-bit-speed.patch
 0008-arm64-rng-counter-type.patch
+0009-polyxor.patch

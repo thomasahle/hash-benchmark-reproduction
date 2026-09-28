@@ -14,6 +14,9 @@ patches. This repository distributes source, not OpenSSL or any compiled binary.
   own notice identifies it as a port and describes the changed seed adapter.
 * ChainHash headers and original benchmark wrappers: MIT
   (`Wrappers-MIT.txt` and source notices).
+* PolyXOR128 registration and C ABI shim: MIT (`Wrappers-MIT.txt`). The
+  polyxor crate (zlib, copyright Orson Peters) is fetched from crates.io with
+  its own license; no crate source is copied here.
 * MuseAir's original algorithm is CC0; its supplied C port carries an MIT
   notice. HalftimeHash carries its original MIT notice inside each header.
 * Native ARM UMASH is MIT; native ARM CLHASH is Apache 2.0. Their complete

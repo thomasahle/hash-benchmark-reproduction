@@ -1653,6 +1653,40 @@
           "host": "Xeon8375C"
         }
       }
+    },
+    {
+      "id": "polyxor",
+      "name": "PolyXOR128 0.1.0",
+      "speeds": {
+        "smh_m2_bulk_Bpc": {
+          "value": 17.93,
+          "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
+          "record": "records/polyxor/speeds_polyxor.json#/polyxor-128/M2Pro",
+          "registered_name": "polyxor-128",
+          "host": "M2Pro"
+        },
+        "smh_m2_small_cycles": {
+          "value": 132.86,
+          "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
+          "record": "records/polyxor/speeds_polyxor.json#/polyxor-128/M2Pro",
+          "registered_name": "polyxor-128",
+          "host": "M2Pro"
+        },
+        "smh_xeon_bulk_Bpc": {
+          "value": 15.82,
+          "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
+          "record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C",
+          "registered_name": "polyxor-128",
+          "host": "Xeon8375C"
+        },
+        "smh_xeon_small_cycles": {
+          "value": 173.01,
+          "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
+          "record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C",
+          "registered_name": "polyxor-128",
+          "host": "Xeon8375C"
+        }
+      }
     }
   ]
 }

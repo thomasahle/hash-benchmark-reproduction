@@ -128,5 +128,29 @@
   "hashes/chainhash/LICENSE": {
     "origin": "thomasahle/chainhash: LICENSE",
     "sha256": "6bdeeaa0909267a1ca2abcb35448081429a18bad06a7a505890a5416c4edb1ca"
+  },
+  "hashes/polyxor.cpp": {
+    "origin": "records/polyxor/bench/polyxor.cpp (verification values fixed in source)",
+    "sha256": "de1e007cb3e9a5d5a7033a14efaab31cef065458e91911c47c9f7076ac55f2f2"
+  },
+  "hashes/polyxor_ffi/src/lib.rs": {
+    "origin": "records/polyxor/bench/polyxor_ffi/src/lib.rs",
+    "sha256": "af5d46bad728393bb6c54f87ee67cb60664777103b1c4845862e60e61a6a15db"
+  },
+  "hashes/polyxor_ffi/Cargo.toml": {
+    "origin": "records/polyxor/bench/polyxor_ffi/Cargo.toml (path dependency replaced by crates.io =0.1.0)",
+    "sha256": "65c84bb7da6943a0badb31c09b61395c3476991c1e8022f01e47685a7a0ba75b"
+  },
+  "hashes/polyxor_ffi/Cargo.lock": {
+    "origin": "records/polyxor/bench/polyxor_ffi/Cargo.lock (crates.io source and checksum added for polyxor)",
+    "sha256": "a9426b047e52d760377654ecc992a2f1bffb9cbadd240ae509593bd6d7fddc0c"
+  },
+  "hashes/polyxor_ffi/rust-toolchain.toml": {
+    "origin": "records/polyxor/evidence/*/provenance.json (rustc 1.98.1)",
+    "sha256": "72da9f9e503464ba7393560f6f51a69fb06be72633d52ae7725fa0ba59dfda22"
+  },
+  "hashes/polyxor_ffi/probe.c": {
+    "origin": "records/polyxor/bench/probe.c (labelled output)",
+    "sha256": "cf99794b22afe9d53c066074aa278d4958e270b620466436737cf5e2209e5acb"
   }
 }

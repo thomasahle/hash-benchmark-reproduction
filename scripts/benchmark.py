@@ -114,7 +114,7 @@ def main():
     global MONITORED_CPUS
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--host', choices=HOSTS)
-    ap.add_argument('--names', nargs='+', help='Manifest names or chart row IDs; default: all 41 timed rows')
+    ap.add_argument('--names', nargs='+', help='Manifest names or chart row IDs; default: all 42 timed rows')
     ap.add_argument('--subset', action='store_true', help='The preselected nine-hash verification panel')
     ap.add_argument('--cpus', default='32-39', help='Xeon taskset CPU set (default: 32-39)')
     ap.add_argument('--jobs', type=int, default=min(os.cpu_count() or 2, 8))

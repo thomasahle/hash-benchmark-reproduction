@@ -572,5 +572,19 @@
       "small_cycles": 175.93,
       "small_cycles_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C"
     }
+  },
+  "polyxor-128": {
+    "M2Pro": {
+      "bulk_bytes_per_cycle": 17.93,
+      "bulk_bytes_per_cycle_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/M2Pro",
+      "small_cycles": 132.86,
+      "small_cycles_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/M2Pro"
+    },
+    "Xeon8375C": {
+      "bulk_bytes_per_cycle": 15.82,
+      "bulk_bytes_per_cycle_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C",
+      "small_cycles": 173.01,
+      "small_cycles_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C"
+    }
   }
 }

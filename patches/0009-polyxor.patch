@@ -1,0 +1,400 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1320078c..434ef416 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -372,3 +372,34 @@ if(APPLE)
+   set_property(SOURCE hashes/halftimefixed.cpp hashes/halftimeshipped.cpp
+     APPEND_STRING PROPERTY COMPILE_FLAGS " -flax-vector-conversions")
+ endif()
++
++# PolyXOR128: the polyxor crate (pinned in hashes/polyxor_ffi/Cargo.lock, Rust
++# toolchain pinned in rust-toolchain.toml) behind a C ABI shim, built as a
++# release/LTO staticlib with -C target-cpu=native and linked into the hash
++# library. The probe prints the crate's selected backend into the build log.
++set(CARGO_HINTS $ENV{HOME}/.cargo/bin)
++if(DEFINED ENV{CARGO_HOME})
++  list(PREPEND CARGO_HINTS $ENV{CARGO_HOME}/bin)
++endif()
++find_program(CARGO cargo HINTS ${CARGO_HINTS})
++if(NOT CARGO)
++  message(FATAL_ERROR "PolyXOR128 needs cargo (install Rust with rustup)")
++endif()
++find_package(Threads REQUIRED)
++set(POLYXOR_DIR ${CMAKE_SOURCE_DIR}/hashes/polyxor_ffi)
++set(POLYXOR_TARGET_DIR ${CMAKE_BINARY_DIR}/polyxor-cargo)
++set(POLYXOR_LIB ${POLYXOR_TARGET_DIR}/release/${CMAKE_STATIC_LIBRARY_PREFIX}polyxor_ffi${CMAKE_STATIC_LIBRARY_SUFFIX})
++add_custom_command(OUTPUT ${POLYXOR_LIB}
++  COMMAND ${CMAKE_COMMAND} -E env "RUSTFLAGS=-C target-cpu=native" CARGO_TARGET_DIR=${POLYXOR_TARGET_DIR}
++    ${CARGO} build --release --locked --manifest-path ${POLYXOR_DIR}/Cargo.toml
++  DEPENDS ${POLYXOR_DIR}/src/lib.rs ${POLYXOR_DIR}/Cargo.toml ${POLYXOR_DIR}/Cargo.lock ${POLYXOR_DIR}/rust-toolchain.toml
++  WORKING_DIRECTORY ${POLYXOR_DIR}
++  VERBATIM)
++add_custom_target(polyxor_ffi DEPENDS ${POLYXOR_LIB})
++add_dependencies(SMHasher3Hashlib polyxor_ffi)
++target_link_libraries(SMHasher3Hashlib PUBLIC ${POLYXOR_LIB} Threads::Threads ${CMAKE_DL_LIBS})
++add_executable(polyxor_probe hashes/polyxor_ffi/probe.c)
++add_dependencies(polyxor_probe polyxor_ffi)
++target_link_libraries(polyxor_probe ${POLYXOR_LIB} Threads::Threads ${CMAKE_DL_LIBS})
++add_dependencies(SMHasher3 polyxor_probe)
++add_custom_command(TARGET SMHasher3 POST_BUILD COMMAND polyxor_probe VERBATIM)
+diff --git a/hashes/Hashsrc.cmake b/hashes/Hashsrc.cmake
+index d4132ccc..70f64026 100644
+--- a/hashes/Hashsrc.cmake
++++ b/hashes/Hashsrc.cmake
+@@ -1,5 +1,6 @@
+ set(HASH_SRC_FILES
+   hashes/chainhash.cpp
++  hashes/polyxor.cpp
+   hashes/foldhash.cpp
+   hashes/classic_openssl.cpp
+   hashes/newhashes.cpp
+diff --git a/hashes/polyxor.cpp b/hashes/polyxor.cpp
+new file mode 100644
+index 00000000..7b35ae5c
+--- /dev/null
++++ b/hashes/polyxor.cpp
+@@ -0,0 +1,106 @@
++// SMHasher3 registration of PolyXOR128 (crate polyxor 0.1.0, commit 3123eb6c,
++// Orson Peters, https://github.com/orlp/polyxor, zlib license) through the C
++// ABI shim in polyxor_ffi/ (Rust staticlib built by CMake with cargo: default
++// features, -C target-cpu=native, release, LTO).
++//
++// Seeding: the 64-bit SMHasher3 seed is expanded with SplitMix64 into the
++// 4160 bytes PolyXor128::from_entropy consumes. The expansion happens in
++// seedfn, outside the timed hash calls (as for ChainHash-128's SplitMix64 key
++// expansion); the theorem's key model is uniformly random entropy.
++#include "Platform.h"
++#include "Hashlib.h"
++
++extern "C" {
++struct PolyXor128;
++PolyXor128 * polyxor_new_from_entropy(const uint8_t * entropy);
++void polyxor_free(PolyXor128 * p);
++size_t polyxor_entropy_needed(void);
++void polyxor_hash(const PolyXor128 * p, const void * data, size_t len, uint8_t out[16]);
++void polyxor_hash_raw(const PolyXor128 * p, const void * data, size_t len, uint8_t out[16]);
++const char * polyxor_backend_probe(void);
++}
++
++static const size_t POLYXOR_ENTROPY = 4160;
++
++static uint64_t splitmix64( uint64_t & state ) {
++    uint64_t z = (state += UINT64_C(0x9E3779B97F4A7C15));
++    z = (z ^ (z >> 30)) * UINT64_C(0xBF58476D1CE4E5B9);
++    z = (z ^ (z >> 27)) * UINT64_C(0x94D049BB133111EB);
++    return z ^ (z >> 31);
++}
++
++struct PolyXorHolder {
++    PolyXor128 * p = nullptr;
++    ~PolyXorHolder() { polyxor_free(p); }
++};
++
++static uintptr_t polyxor_seed( const seed_t seed ) {
++    static thread_local PolyXorHolder holder;
++    uint8_t  entropy[POLYXOR_ENTROPY];
++    uint64_t state = (uint64_t)seed;
++    for (size_t i = 0; i < POLYXOR_ENTROPY; i += 8) {
++        uint64_t w = splitmix64(state);
++        for (int b = 0; b < 8; b++) { entropy[i + b] = (uint8_t)(w >> (8 * b)); }
++    }
++    PolyXor128 * fresh = polyxor_new_from_entropy(entropy);
++    polyxor_free(holder.p);
++    holder.p = fresh;
++    return (uintptr_t)fresh;
++}
++
++static void polyxor_avalanche( const void * in, const size_t len, const seed_t seed, void * out ) {
++    polyxor_hash((const PolyXor128 *)(uintptr_t)seed, in, len, (uint8_t *)out);
++}
++
++static void polyxor_raw( const void * in, const size_t len, const seed_t seed, void * out ) {
++    polyxor_hash_raw((const PolyXor128 *)(uintptr_t)seed, in, len, (uint8_t *)out);
++}
++
++static bool polyxor_init( void ) {
++    return polyxor_entropy_needed() == POLYXOR_ENTROPY;
++}
++
++// Verification values of the measured build (identical on x86-64 and arm64).
++#define POLYXOR_VERIFY     0xA9574CA8
++#define POLYXOR_RAW_VERIFY 0x23A6E8BB
++
++REGISTER_FAMILY(polyxor,
++   $.src_url    = "https://github.com/orlp/polyxor",
++   $.src_status = HashFamilyInfo::SRC_ACTIVE
++ );
++
++REGISTER_HASH(polyxor_128,
++   $.desc       = "PolyXOR128 (polyxor 0.1.0 crate, finalize_avalanche)",
++   $.impl       = "rust-ffi",
++   $.hash_flags =
++         FLAG_HASH_CLMUL_BASED         |
++         FLAG_HASH_ENDIAN_INDEPENDENT,
++   $.impl_flags =
++         FLAG_IMPL_CANONICAL_LE        |
++         FLAG_IMPL_LICENSE_ZLIB,
++   $.bits = 128,
++   $.verification_LE = POLYXOR_VERIFY,
++   $.verification_BE = POLYXOR_VERIFY,
++   $.initfn          = polyxor_init,
++   $.seedfn          = polyxor_seed,
++   $.hashfn_native   = polyxor_avalanche,
++   $.hashfn_bswap    = polyxor_avalanche
++ );
++
++REGISTER_HASH(polyxor_128__raw,
++   $.desc       = "PolyXOR128 (polyxor 0.1.0 crate, finalize_raw)",
++   $.impl       = "rust-ffi",
++   $.hash_flags =
++         FLAG_HASH_CLMUL_BASED         |
++         FLAG_HASH_ENDIAN_INDEPENDENT,
++   $.impl_flags =
++         FLAG_IMPL_CANONICAL_LE        |
++         FLAG_IMPL_LICENSE_ZLIB,
++   $.bits = 128,
++   $.verification_LE = POLYXOR_RAW_VERIFY,
++   $.verification_BE = POLYXOR_RAW_VERIFY,
++   $.initfn          = polyxor_init,
++   $.seedfn          = polyxor_seed,
++   $.hashfn_native   = polyxor_raw,
++   $.hashfn_bswap    = polyxor_raw
++ );
+diff --git a/hashes/polyxor_ffi/Cargo.lock b/hashes/polyxor_ffi/Cargo.lock
+new file mode 100644
+index 00000000..adc63eac
+--- /dev/null
++++ b/hashes/polyxor_ffi/Cargo.lock
+@@ -0,0 +1,94 @@
++# This file is automatically @generated by Cargo.
++# It is not intended for manual editing.
++version = 4
++
++[[package]]
++name = "aes"
++version = "0.9.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "35f0f96ce78e38c3dc6d8948aa8163d06385be74000f3c7a95bf1eef35d3ea32"
++dependencies = [
++ "cipher",
++ "cpubits",
++ "cpufeatures",
++]
++
++[[package]]
++name = "cipher"
++version = "0.5.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e8cf2a2c93cd704877c0858356ed03480ff301ee950b43f1cbe4573b088bfa6c"
++dependencies = [
++ "crypto-common",
++ "inout",
++]
++
++[[package]]
++name = "cpubits"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "15b85f9c39137c3a891689859392b1bd49812121d0d61c9caf00d46ed5ce06ae"
++
++[[package]]
++name = "cpufeatures"
++version = "0.3.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5ca28b0ae3115b884660db4118d803791fd6756b6e88f39c0f3f7859060d7566"
++dependencies = [
++ "libc",
++]
++
++[[package]]
++name = "crypto-common"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453"
++dependencies = [
++ "hybrid-array",
++]
++
++[[package]]
++name = "hybrid-array"
++version = "0.4.15"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "27f864f10dfb56725ce5ce5472bc52252c8f93a4ab86327122cebf62c5f59a17"
++dependencies = [
++ "typenum",
++]
++
++[[package]]
++name = "inout"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "4250ce6452e92010fdf7268ccc5d14faa80bb12fc741938534c58f16804e03c7"
++dependencies = [
++ "hybrid-array",
++]
++
++[[package]]
++name = "libc"
++version = "0.2.189"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
++
++[[package]]
++name = "polyxor"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7093bf371245372b8c6d956dde27016d7d92a5ce71be11139086f1afe982ea53"
++dependencies = [
++ "aes",
++]
++
++[[package]]
++name = "polyxor_ffi"
++version = "0.1.0"
++dependencies = [
++ "polyxor",
++]
++
++[[package]]
++name = "typenum"
++version = "1.20.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+diff --git a/hashes/polyxor_ffi/Cargo.toml b/hashes/polyxor_ffi/Cargo.toml
+new file mode 100644
+index 00000000..f7d5e6c3
+--- /dev/null
++++ b/hashes/polyxor_ffi/Cargo.toml
+@@ -0,0 +1,18 @@
++[package]
++name = "polyxor_ffi"
++version = "0.1.0"
++edition = "2024"
++publish = false
++
++[lib]
++crate-type = ["staticlib"]
++
++[dependencies]
++# crates.io polyxor 0.1.0, published from commit 3123eb6c (Cargo.lock pins its
++# checksum); default features: aes, std, runtime_detection.
++polyxor = "=0.1.0"
++
++[profile.release]
++lto = true
++codegen-units = 1
++panic = "abort"
+diff --git a/hashes/polyxor_ffi/probe.c b/hashes/polyxor_ffi/probe.c
+new file mode 100644
+index 00000000..2ed2ee34
+--- /dev/null
++++ b/hashes/polyxor_ffi/probe.c
+@@ -0,0 +1,4 @@
++/* Prints which polyxor hash_blocks backend the linked staticlib dispatches to. */
++#include <stdio.h>
++const char *polyxor_backend_probe(void);
++int main(void) { printf("PolyXOR backend probe: %s\n", polyxor_backend_probe()); return 0; }
+diff --git a/hashes/polyxor_ffi/rust-toolchain.toml b/hashes/polyxor_ffi/rust-toolchain.toml
+new file mode 100644
+index 00000000..f71b0da0
+--- /dev/null
++++ b/hashes/polyxor_ffi/rust-toolchain.toml
+@@ -0,0 +1,3 @@
++[toolchain]
++channel = "1.98.1"
++profile = "minimal"
+diff --git a/hashes/polyxor_ffi/src/lib.rs b/hashes/polyxor_ffi/src/lib.rs
+new file mode 100644
+index 00000000..8f7f95f2
+--- /dev/null
++++ b/hashes/polyxor_ffi/src/lib.rs
+@@ -0,0 +1,89 @@
++//! C ABI shim over the `polyxor` crate (0.1.0, default features) for SMHasher3.
++use polyxor::PolyXor128;
++
++/// Build an instance from `PolyXor128::entropy_needed()` (4160) uniformly random bytes.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn polyxor_new_from_entropy(entropy: *const u8) -> *mut PolyXor128 {
++    let e = unsafe { core::slice::from_raw_parts(entropy, PolyXor128::entropy_needed()) };
++    Box::into_raw(Box::new(PolyXor128::from_entropy(e)))
++}
++
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn polyxor_free(p: *mut PolyXor128) {
++    if !p.is_null() { drop(unsafe { Box::from_raw(p) }); }
++}
++
++#[unsafe(no_mangle)]
++pub extern "C" fn polyxor_entropy_needed() -> usize { PolyXor128::entropy_needed() }
++
++#[inline(always)]
++unsafe fn input<'a>(data: *const u8, len: usize) -> &'a [u8] {
++    if len == 0 { &[] } else { unsafe { core::slice::from_raw_parts(data, len) } }
++}
++
++/// Default output: finalize_avalanche (a bijection of finalize_raw), little-endian bytes.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn polyxor_hash(p: *const PolyXor128, data: *const u8, len: usize, out: *mut u8) {
++    let p = unsafe { &*p };
++    let mut h = p.hasher();
++    h.update(unsafe { input(data, len) });
++    let r = h.finalize_avalanche().to_le_bytes();
++    unsafe { core::ptr::copy_nonoverlapping(r.as_ptr(), out, 16) };
++}
++
++/// Raw polynomial output: finalize_raw, little-endian bytes.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn polyxor_hash_raw(p: *const PolyXor128, data: *const u8, len: usize, out: *mut u8) {
++    let p = unsafe { &*p };
++    let mut h = p.hasher();
++    h.update(unsafe { input(data, len) });
++    let r = h.finalize_raw().to_le_bytes();
++    unsafe { core::ptr::copy_nonoverlapping(r.as_ptr(), out, 16) };
++}
++
++/// Probe: compile-time target features (which fix the backend polyxor's dispatch
++/// selects when they are all present) and runtime-detected features. Returns a
++/// NUL-terminated static string.
++#[unsafe(no_mangle)]
++pub extern "C" fn polyxor_backend_probe() -> *const core::ffi::c_char {
++    use std::sync::OnceLock;
++    static S: OnceLock<std::ffi::CString> = OnceLock::new();
++    S.get_or_init(|| {
++        let mut s = String::new();
++        #[cfg(target_arch = "x86_64")]
++        {
++            let ct = [
++                ("avx512f", cfg!(target_feature = "avx512f")),
++                ("avx512vl", cfg!(target_feature = "avx512vl")),
++                ("vpclmulqdq", cfg!(target_feature = "vpclmulqdq")),
++                ("avx2", cfg!(target_feature = "avx2")),
++                ("pclmulqdq", cfg!(target_feature = "pclmulqdq")),
++            ];
++            let rt = [
++                ("avx512f", std::arch::is_x86_feature_detected!("avx512f")),
++                ("avx512vl", std::arch::is_x86_feature_detected!("avx512vl")),
++                ("vpclmulqdq", std::arch::is_x86_feature_detected!("vpclmulqdq")),
++                ("avx2", std::arch::is_x86_feature_detected!("avx2")),
++                ("pclmulqdq", std::arch::is_x86_feature_detected!("pclmulqdq")),
++            ];
++            let backend = if cfg!(all(target_feature = "avx512f", target_feature = "avx512vl", target_feature = "vpclmulqdq")) {
++                "hash_blocks_avx512 (compile-time)"
++            } else if rt[0].1 && rt[1].1 && rt[2].1 { "hash_blocks_avx512 (runtime)" }
++            else if rt[3].1 && rt[2].1 { "hash_blocks_avx2 (runtime)" }
++            else if rt[4].1 { "hash_blocks_avx (runtime)" } else { "reference" };
++            s += &format!("arch=x86_64 backend={backend} compile_time={ct:?} runtime={rt:?}");
++        }
++        #[cfg(target_arch = "aarch64")]
++        {
++            let ct = [("neon", cfg!(target_feature = "neon")), ("aes", cfg!(target_feature = "aes"))];
++            let rt = [
++                ("neon", std::arch::is_aarch64_feature_detected!("neon")),
++                ("aes", std::arch::is_aarch64_feature_detected!("aes")),
++            ];
++            let backend = if ct[0].1 && ct[1].1 { "neon::hash_blocks (compile-time)" }
++                else if rt[0].1 && rt[1].1 { "neon::hash_blocks (runtime)" } else { "reference" };
++            s += &format!("arch=aarch64 backend={backend} compile_time={ct:?} runtime={rt:?}");
++        }
++        std::ffi::CString::new(s).unwrap()
++    }).as_ptr()
++}

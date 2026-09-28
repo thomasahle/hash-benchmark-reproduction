@@ -92,6 +92,14 @@ def build(jobs):
     run(cmd, 'configure.log')
     run(['cmake', '--build', str(output), '--target', 'SMHasher3', '-j', str(jobs)], 'build.log')
     binary = output / 'SMHasher3'
+    # PolyXOR128's Rust staticlib: record which backend the crate dispatches to.
+    probe = run([str(output / 'polyxor_probe')]).strip()
+    print(probe, flush=True)
+    cache = (output / 'CMakeCache.txt').read_text()
+    cargo = next(l.split('=', 1)[1] for l in cache.splitlines() if l.startswith('CARGO:'))
+    rustc = str(pathlib.Path(cargo).with_name('rustc'))
+    identity.update(polyxor_backend_probe=probe, rustc=subprocess.check_output(
+        [rustc, '--version'], cwd=source / 'hashes/polyxor_ffi', text=True).strip())
     identity.update(binary_sha256=sha(binary), source_manifest_sha256=sha(source_stamp),
                     machine=platform.machine(), system=platform.system(),
                     compiler=run([os.environ.get('CXX', 'c++'), '--version']).splitlines()[0],

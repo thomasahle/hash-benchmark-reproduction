@@ -3,8 +3,8 @@
   "extracted_utc": "2026-09-19T16:02:55.212810+00:00",
   "post_data_sha256": "f70630ac16f3d52a035e4e8987c97e08623daa9a5a2df5e596d54441e37e186d",
   "reference_files": {
-    "data.json": "9fc7686de782c6d4ff4568227078719fe8a5d2455393d6ea2bf3e99cc7dcc7cd",
-    "speeds.json": "11053714dec2d0e7e1c325c25fef140a05256a28c073633bd8af83a633b22b87"
+    "data.json": "48728344f40db2a13c3f74a21242a56169a8ce4cff40a5697afea6c4088f737b",
+    "speeds.json": "f99c6a8acbd950d54f41b8c4e1e9195e8d1466f3e7f82520bc202efe201185c1"
   },
   "source_records": {
     "records/chainhash/speeds_chainhash.json": "104f1df0719caa35248647db77a556ddf43b4a2f577228eade8f60b4b6130256",
@@ -14,7 +14,17 @@
     "records/halftime24-shipped/speeds_halftime24_shipped.json": "b0583097d886cdf294384de9f83fee87daf0b003d7e9136a8f5cdb824419612c",
     "records/new-hashes-timing/speeds_new_hashes.json": "e251a14a45d03f7c081e6ee980437967cbfaee19d57b4db899c0bb895738ac9f",
     "records/new-hashes/speeds_new_hashes.json": "883360ea8d319796bd211e11621ce157d98b095e3f3800505adc8e91d1c439c2",
+    "records/polyxor/speeds_polyxor.json": "0d6b0716753415d5f18d69de8d34ff1e2ac1598b4f66877cfa6304c7fe698fd3",
     "records/speeds.json": "4527144cad003acef668c35faf0aac131d8c079efe9f8d2c310f7c4789c1602a",
     "records/witness-searches/muse-v2-timing/speeds_museair_v2.json": "e6ae52c0a0689cb68885951cbd706bb99dab3ee9d1e89dd1c7022e510c352786"
-  }
+  },
+  "amendments": [
+    {
+      "date": "2026-09-28",
+      "rows": [
+        "polyxor"
+      ],
+      "note": "PolyXOR128 speed cells appended from the post; earlier cells unchanged."
+    }
+  ]
 }

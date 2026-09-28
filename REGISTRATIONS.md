@@ -45,5 +45,6 @@
 | chainhash | `chainhash` | `chainhash` | `hashes/chainhash.cpp` | ChainHash repository |
 | halftime24-fixed | `HalftimeHash24-fixed` | `HalftimeHash24-fixed` | `hashes/halftimefixed.cpp` | Scratch |
 | chainhash128 | `chainhash-128` | `chainhash-128` | `hashes/chainhash.cpp` | ChainHash repository |
+| polyxor | `polyxor-128` | `polyxor-128` | `hashes/polyxor.cpp` | Rust crate polyxor 0.1.0 via C ABI shim |
 
-The ChainHash adapter and its two headers under `hashes/chainhash/` are copied unchanged from <https://github.com/thomasahle/chainhash>. The untimed/null rows in the reference extract have no mapping and stay unavailable. No wyhash/rapidhash version is substituted for a differently versioned row.
+The ChainHash adapter and its two headers under `hashes/chainhash/` are copied unchanged from <https://github.com/thomasahle/chainhash>. The PolyXOR128 registration and shim under `hashes/polyxor_ffi/` link the unmodified crate at commit `3123eb6c`. The untimed/null rows in the reference extract have no mapping and stay unavailable. No wyhash/rapidhash version is substituted for a differently versioned row.

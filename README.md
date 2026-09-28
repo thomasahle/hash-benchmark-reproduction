@@ -1,6 +1,6 @@
 # Reproduce the hash benchmark chart
 
-Build the recorded SMHasher3 implementations and measure the 41 timed rows in
+Build the recorded SMHasher3 implementations and measure the 42 timed rows in
 *Adversarial examples for fast hash functions*. This repository contains source
 patches, a serial timing runner, the published speed cells for comparison, and a
 chart-data merger. It needs no original scratch directories or cached binaries.
@@ -13,8 +13,9 @@ and OpenSSL 3 development headers and libraries. Linux also needs `taskset`
 (util-linux). The supported profiles are little-endian Linux x86-64 and macOS
 arm64. Use the original Intel Xeon Platinum 8375C and Apple M2 Pro for numerical
 comparison. Other CPUs can execute the profiles but are not equivalent hardware.
-The runtime ports require AES/CLMUL or ARM crypto support. Rust and Go toolchains
-are unnecessary: these measurements use C/C++ ports.
+The runtime ports require AES/CLMUL or ARM crypto support. PolyXOR128 needs Rust
+via [rustup](https://rustup.rs) (the build fetches the pinned toolchain, 1.98.1,
+and crate); every other row uses a C/C++ port, and Go is unnecessary.
 
 On macOS, install the command-line developer tools and, with Homebrew:
 
@@ -112,8 +113,10 @@ The ordered patch set supplies:
    headers, copied unchanged from the ChainHash repository.
 7. Build integration and a 192-bit Speed/Sanity dispatch for fixed HalftimeHash24.
 8. The Darwin RNG counter type correction (`size_t` to `uint64_t`).
+9. PolyXOR128: the registration, a C ABI shim over the pinned Rust crate, and
+   its CMake build (see [PolyXOR128](#polyxor128)).
 
-The same eight patches build on x86-64 and on arm64; the registration list is
+The same nine patches build on x86-64 and on arm64; the registration list is
 identical on both.
 
 See [REGISTRATIONS.md](REGISTRATIONS.md) for every chart mapping and
@@ -249,6 +252,34 @@ registrations fail sanity check 2 and shipped HalftimeHash24 fails append-zeroes
 HalftimeHash24 wrappers have unspecified (zero) verification constants. These facts are not repaired or hidden by timing.
 Consult the separate collision verifiers and source-specific validation records
 for mathematical and native equivalence checks.
+
+## PolyXOR128
+
+`polyxor-128` runs the Rust crate itself, not a port: polyxor 0.1.0 from
+crates.io (Orson Peters, zlib), published from commit
+`3123eb6c0ac95b879a46b490ecda1de0184b14bd` and pinned by checksum in
+`hashes/polyxor_ffi/Cargo.lock`, with Rust 1.98.1. CMake builds a
+C ABI shim over the crate (`hashes/polyxor_ffi/src/lib.rs`) as a release
+staticlib (LTO, one codegen unit, default features,
+`RUSTFLAGS=-C target-cpu=native`) and links it into SMHasher3.
+
+The hash instance is built once per seed. SMHasher3's `seedfn` expands the
+64-bit seed with SplitMix64 into the crate's 4160 entropy bytes and calls
+`PolyXor128::from_entropy`, outside the timed region. Each timed call is only
+`hasher()`, `update(input)` and `finalize_avalanche()`, the crate's documented
+streaming API, plus a 16-byte store. `polyxor-128.raw` uses `finalize_raw()`.
+
+The build prints the backend the crate selects (`PolyXOR backend probe: ...`)
+and saves it in `.work/build.json`. The post measured `hash_blocks_avx512` on
+the Xeon and `neon::hash_blocks` on the M2. The verification values are
+`0xA9574CA8` (`polyxor-128`) and `0x23A6E8BB` (`polyxor-128.raw`) on both
+hosts. The post linked this registration against its own build objects; here
+it is part of the combined build.
+
+```sh
+.work/build/SMHasher3 --test=VerifyAll | grep polyxor
+python3 scripts/benchmark.py --names polyxor-128 --out out/polyxor --output polyxor-speeds.json
+```
 
 ## Checks and evidence
 
