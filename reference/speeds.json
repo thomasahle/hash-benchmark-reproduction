@@ -11,6 +11,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/CityHash-64/Xeon8375C",
       "small_cycles": 46.68,
       "small_cycles_record": "records/speeds.json#/CityHash-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.82,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/CityHash-64/EPYC9R14",
+      "small_cycles": 34.57,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/CityHash-64/EPYC9R14"
     }
   },
   "FarmHash-64.NA": {
@@ -25,6 +31,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C",
       "small_cycles": 45.11,
       "small_cycles_record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.74,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/FarmHash-64.NA/EPYC9R14",
+      "small_cycles": 34.48,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/FarmHash-64.NA/EPYC9R14"
     }
   },
   "MurmurHash3-128": {
@@ -39,6 +51,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/MurmurHash3-128/Xeon8375C",
       "small_cycles": 41.3,
       "small_cycles_record": "records/speeds.json#/MurmurHash3-128/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 2.95,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/MurmurHash3-128/EPYC9R14",
+      "small_cycles": 36.88,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/MurmurHash3-128/EPYC9R14"
     }
   },
   "mx3.v3": {
@@ -53,6 +71,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/mx3.v3/Xeon8375C",
       "small_cycles": 41.59,
       "small_cycles_record": "records/speeds.json#/mx3.v3/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 4.34,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/mx3.v3/EPYC9R14",
+      "small_cycles": 32.52,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/mx3.v3/EPYC9R14"
     }
   },
   "fasthash-64": {
@@ -67,6 +91,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-64/Xeon8375C",
       "small_cycles": 34.0,
       "small_cycles_record": "records/speeds.json#/fasthash-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 2.85,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/fasthash-64/EPYC9R14",
+      "small_cycles": 26.14,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/fasthash-64/EPYC9R14"
     }
   },
   "fasthash-32": {
@@ -81,6 +111,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/fasthash-32/Xeon8375C",
       "small_cycles": 36.2,
       "small_cycles_record": "records/speeds.json#/fasthash-32/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 2.85,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/fasthash-32/EPYC9R14",
+      "small_cycles": 27.6,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/fasthash-32/EPYC9R14"
     }
   },
   "MuseAir": {
@@ -95,6 +131,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/MuseAir/Xeon8375C",
       "small_cycles": 19.91,
       "small_cycles_record": "records/speeds.json#/MuseAir/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 9.95,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/MuseAir/EPYC9R14",
+      "small_cycles": 13.27,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/MuseAir/EPYC9R14"
     }
   },
   "MuseAir-v2": {
@@ -109,6 +151,12 @@
       "bulk_bytes_per_cycle_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C",
       "small_cycles": 29.27,
       "small_cycles_record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 7.33,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/MuseAir-v2/EPYC9R14",
+      "small_cycles": 19.92,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/MuseAir-v2/EPYC9R14"
     }
   },
   "komihash": {
@@ -123,6 +171,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/komihash/Xeon8375C",
       "small_cycles": 27.49,
       "small_cycles_record": "records/speeds.json#/komihash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 7.71,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/komihash/EPYC9R14",
+      "small_cycles": 21.65,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/komihash/EPYC9R14"
     }
   },
   "t1ha2-64": {
@@ -137,6 +191,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/t1ha2-64/Xeon8375C",
       "small_cycles": 39.16,
       "small_cycles_record": "records/speeds.json#/t1ha2-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 7.0,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/t1ha2-64/EPYC9R14",
+      "small_cycles": 28.59,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/t1ha2-64/EPYC9R14"
     }
   },
   "a5hash": {
@@ -151,6 +211,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash/Xeon8375C",
       "small_cycles": 19.32,
       "small_cycles_record": "records/speeds.json#/a5hash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 3.8,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/a5hash/EPYC9R14",
+      "small_cycles": 11.04,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/a5hash/EPYC9R14"
     }
   },
   "a5hash-128": {
@@ -165,6 +231,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/a5hash-128/Xeon8375C",
       "small_cycles": 22.23,
       "small_cycles_record": "records/speeds.json#/a5hash-128/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 10.0,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/a5hash-128/EPYC9R14",
+      "small_cycles": 19.36,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/a5hash-128/EPYC9R14"
     }
   },
   "rapidhash": {
@@ -179,6 +251,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/rapidhash/Xeon8375C",
       "small_cycles": 27.58,
       "small_cycles_record": "records/speeds.json#/rapidhash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 11.61,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/rapidhash/EPYC9R14",
+      "small_cycles": 19.84,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/rapidhash/EPYC9R14"
     }
   },
   "foldhash-fast": {
@@ -193,6 +271,12 @@
       "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C",
       "small_cycles": 20.09,
       "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 11.41,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/foldhash-fast/EPYC9R14",
+      "small_cycles": 14.03,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/foldhash-fast/EPYC9R14"
     }
   },
   "foldhash-quality": {
@@ -207,6 +291,12 @@
       "bulk_bytes_per_cycle_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C",
       "small_cycles": 25.28,
       "small_cycles_record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 11.25,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/foldhash-quality/EPYC9R14",
+      "small_cycles": 17.47,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/foldhash-quality/EPYC9R14"
     }
   },
   "mum3.exact.unroll3": {
@@ -221,6 +311,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C",
       "small_cycles": 23.92,
       "small_cycles_record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 8.8,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/mum3.exact.unroll3/EPYC9R14",
+      "small_cycles": 17.3,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/mum3.exact.unroll3/EPYC9R14"
     }
   },
   "mir.exact": {
@@ -235,6 +331,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/mir.exact/Xeon8375C",
       "small_cycles": 32.18,
       "small_cycles_record": "records/speeds.json#/mir.exact/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 3.25,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/mir.exact/EPYC9R14",
+      "small_cycles": 24.5,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/mir.exact/EPYC9R14"
     }
   },
   "XXH3-64": {
@@ -249,6 +351,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-64/Xeon8375C",
       "small_cycles": 30.16,
       "small_cycles_record": "records/speeds.json#/XXH3-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 18.81,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/XXH3-64/EPYC9R14",
+      "small_cycles": 20.38,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/XXH3-64/EPYC9R14"
     }
   },
   "XXH3-128": {
@@ -263,6 +371,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/XXH3-128/Xeon8375C",
       "small_cycles": 34.92,
       "small_cycles_record": "records/speeds.json#/XXH3-128/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 18.79,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/XXH3-128/EPYC9R14",
+      "small_cycles": 23.66,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/XXH3-128/EPYC9R14"
     }
   },
   "HighwayHash-64": {
@@ -277,6 +391,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/HighwayHash-64/Xeon8375C",
       "small_cycles": 61.88,
       "small_cycles_record": "records/speeds.json#/HighwayHash-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 3.88,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/HighwayHash-64/EPYC9R14",
+      "small_cycles": 59.71,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/HighwayHash-64/EPYC9R14"
     }
   },
   "SpookyHash2-64": {
@@ -291,6 +411,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/SpookyHash2-64/Xeon8375C",
       "small_cycles": 45.59,
       "small_cycles_record": "records/speeds.json#/SpookyHash2-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.65,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/SpookyHash2-64/EPYC9R14",
+      "small_cycles": 34.76,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/SpookyHash2-64/EPYC9R14"
     }
   },
   "pengyhash": {
@@ -305,6 +431,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/pengyhash/Xeon8375C",
       "small_cycles": 72.62,
       "small_cycles_record": "records/speeds.json#/pengyhash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.15,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/pengyhash/EPYC9R14",
+      "small_cycles": 52.48,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/pengyhash/EPYC9R14"
     }
   },
   "NMHASH": {
@@ -319,6 +451,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASH/Xeon8375C",
       "small_cycles": 49.21,
       "small_cycles_record": "records/speeds.json#/NMHASH/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 11.43,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/NMHASH/EPYC9R14",
+      "small_cycles": 32.07,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/NMHASH/EPYC9R14"
     }
   },
   "NMHASHX": {
@@ -333,6 +471,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/NMHASHX/Xeon8375C",
       "small_cycles": 30.62,
       "small_cycles_record": "records/speeds.json#/NMHASHX/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 11.45,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/NMHASHX/EPYC9R14",
+      "small_cycles": 20.73,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/NMHASHX/EPYC9R14"
     }
   },
   "gxhash-64": {
@@ -347,6 +491,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/gxhash-64/Xeon8375C",
       "small_cycles": 31.35,
       "small_cycles_record": "records/speeds.json#/gxhash-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 30.79,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/gxhash-64/EPYC9R14",
+      "small_cycles": 31.28,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/gxhash-64/EPYC9R14"
     }
   },
   "rust-ahash": {
@@ -361,6 +511,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/rust-ahash/Xeon8375C",
       "small_cycles": 79.77,
       "small_cycles_record": "records/speeds.json#/rust-ahash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 0.78,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/rust-ahash/EPYC9R14",
+      "small_cycles": 72.07,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/rust-ahash/EPYC9R14"
     }
   },
   "SipHash-1-3": {
@@ -375,6 +531,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-1-3/Xeon8375C",
       "small_cycles": 70.58,
       "small_cycles_record": "records/speeds.json#/SipHash-1-3/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 1.03,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/SipHash-1-3/EPYC9R14",
+      "small_cycles": 62.06,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/SipHash-1-3/EPYC9R14"
     }
   },
   "SipHash-2-4": {
@@ -389,6 +551,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/SipHash-2-4/Xeon8375C",
       "small_cycles": 95.55,
       "small_cycles_record": "records/speeds.json#/SipHash-2-4/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 0.55,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/SipHash-2-4/EPYC9R14",
+      "small_cycles": 86.3,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/SipHash-2-4/EPYC9R14"
     }
   },
   "HalftimeHash24-shipped": {
@@ -403,6 +571,12 @@
       "bulk_bytes_per_cycle_record": "records/halftime24-shipped/speeds_halftime24_shipped.json",
       "small_cycles": 64.91,
       "small_cycles_record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 15.96,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/HalftimeHash24-shipped/EPYC9R14",
+      "small_cycles": 54.51,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/HalftimeHash24-shipped/EPYC9R14"
     }
   },
   "GoMapHash": {
@@ -417,6 +591,12 @@
       "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C",
       "small_cycles": 64.32,
       "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 22.38,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/GoMapHash/EPYC9R14",
+      "small_cycles": 74.12,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/GoMapHash/EPYC9R14"
     }
   },
   "AbseilHash-default": {
@@ -431,6 +611,12 @@
       "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C",
       "small_cycles": 20.67,
       "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 9.77,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/AbseilHash-default/EPYC9R14",
+      "small_cycles": 14.06,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/AbseilHash-default/EPYC9R14"
     }
   },
   "Marvin32": {
@@ -445,6 +631,12 @@
       "bulk_bytes_per_cycle_record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C",
       "small_cycles": 31.07,
       "small_cycles_record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 1.14,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/Marvin32/EPYC9R14",
+      "small_cycles": 22.0,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/Marvin32/EPYC9R14"
     }
   },
   "polymurhash": {
@@ -459,6 +651,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/polymurhash/Xeon8375C",
       "small_cycles": 39.16,
       "small_cycles_record": "records/speeds.json#/polymurhash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.13,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/polymurhash/EPYC9R14",
+      "small_cycles": 28.32,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/polymurhash/EPYC9R14"
     }
   },
   "poly1305-hash": {
@@ -473,6 +671,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/poly1305-hash/Xeon8375C",
       "small_cycles": 250.51,
       "small_cycles_record": "records/speeds.json#/poly1305-hash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 5.05,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/poly1305-hash/EPYC9R14",
+      "small_cycles": 195.97,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/poly1305-hash/EPYC9R14"
     }
   },
   "ghash": {
@@ -487,6 +691,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/ghash/Xeon8375C",
       "small_cycles": 1912.96,
       "small_cycles_record": "records/speeds.json#/ghash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 8.91,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/ghash/EPYC9R14",
+      "small_cycles": 1418.97,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/ghash/EPYC9R14"
     }
   },
   "UMASH-64": {
@@ -501,6 +711,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-64/Xeon8375C",
       "small_cycles": 38.76,
       "small_cycles_record": "records/speeds.json#/UMASH-64/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 9.1,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/UMASH-64/EPYC9R14",
+      "small_cycles": 26.91,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/UMASH-64/EPYC9R14"
     }
   },
   "UMASH-128": {
@@ -515,6 +731,12 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/UMASH-128/Xeon8375C",
       "small_cycles": 40.23,
       "small_cycles_record": "records/speeds.json#/UMASH-128/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 6.39,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/UMASH-128/EPYC9R14",
+      "small_cycles": 31.13,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/UMASH-128/EPYC9R14"
     }
   },
   "CLhash": {
@@ -529,20 +751,32 @@
       "bulk_bytes_per_cycle_record": "records/speeds.json#/CLhash/Xeon8375C",
       "small_cycles": 43.03,
       "small_cycles_record": "records/speeds.json#/CLhash/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 10.55,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/CLhash/EPYC9R14",
+      "small_cycles": 31.23,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/CLhash/EPYC9R14"
     }
   },
   "chainhash": {
     "M2Pro": {
-      "bulk_bytes_per_cycle": 26.26,
-      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
-      "small_cycles": 87.49,
-      "small_cycles_record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro"
+      "bulk_bytes_per_cycle": 30.15,
+      "bulk_bytes_per_cycle_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/M2Pro",
+      "small_cycles": 89.2,
+      "small_cycles_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/M2Pro"
     },
     "Xeon8375C": {
-      "bulk_bytes_per_cycle": 28.31,
-      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
-      "small_cycles": 155.14,
-      "small_cycles_record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C"
+      "bulk_bytes_per_cycle": 28.25,
+      "bulk_bytes_per_cycle_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/Xeon8375C",
+      "small_cycles": 80.38,
+      "small_cycles_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 35.09,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/chainhash/EPYC9R14",
+      "small_cycles": 62.46,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/chainhash/EPYC9R14"
     }
   },
   "HalftimeHash24-fixed": {
@@ -557,20 +791,32 @@
       "bulk_bytes_per_cycle_record": "records/halftime/speeds_halftime_fixed.json",
       "small_cycles": 79.42,
       "small_cycles_record": "records/halftime/speeds_halftime_fixed.json"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 12.44,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/HalftimeHash24-fixed/EPYC9R14",
+      "small_cycles": 71.63,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/HalftimeHash24-fixed/EPYC9R14"
     }
   },
   "chainhash-128": {
     "M2Pro": {
-      "bulk_bytes_per_cycle": 10.26,
-      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
-      "small_cycles": 167.89,
-      "small_cycles_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro"
+      "bulk_bytes_per_cycle": 16.85,
+      "bulk_bytes_per_cycle_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/M2Pro",
+      "small_cycles": 158.25,
+      "small_cycles_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/M2Pro"
     },
     "Xeon8375C": {
-      "bulk_bytes_per_cycle": 14.43,
-      "bulk_bytes_per_cycle_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
-      "small_cycles": 175.93,
-      "small_cycles_record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C"
+      "bulk_bytes_per_cycle": 14.9,
+      "bulk_bytes_per_cycle_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/Xeon8375C",
+      "small_cycles": 129.3,
+      "small_cycles_record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 19.32,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/chainhash-128/EPYC9R14",
+      "small_cycles": 116.78,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/chainhash-128/EPYC9R14"
     }
   },
   "polyxor-128": {
@@ -585,6 +831,12 @@
       "bulk_bytes_per_cycle_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C",
       "small_cycles": 173.01,
       "small_cycles_record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C"
+    },
+    "EPYC9R14": {
+      "bulk_bytes_per_cycle": 19.79,
+      "bulk_bytes_per_cycle_record": "records/zen4/speeds_zen4.json#/polyxor-128/EPYC9R14",
+      "small_cycles": 129.96,
+      "small_cycles_record": "records/zen4/speeds_zen4.json#/polyxor-128/EPYC9R14"
     }
   }
 }

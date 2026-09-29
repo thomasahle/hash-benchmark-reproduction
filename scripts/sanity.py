@@ -6,21 +6,21 @@ import json
 import pathlib
 import re
 import subprocess
-from benchmark import HOSTS, ROOT, write_json
+from benchmark import DEFAULT_CPUS, HOSTS, ROOT, X86_HOSTS, write_json
 from build import verify_build, sha
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--host', choices=HOSTS, required=True)
-    ap.add_argument('--cpus', default='32-39')
+    ap.add_argument('--cpus', help='default: 32-39 on Xeon8375C, 8-15 on EPYC9R14')
     ap.add_argument('--out', type=pathlib.Path, default=ROOT / 'out')
     args = ap.parse_args()
     info = verify_build()
     binary = ROOT / '.work/build/SMHasher3'
     out = args.out / args.host
     out.mkdir(parents=True, exist_ok=True)
-    prefix = ['taskset', '-c', args.cpus] if args.host == 'Xeon8375C' else []
+    prefix = ['taskset', '-c', args.cpus or DEFAULT_CPUS[args.host]] if args.host in X86_HOSTS else []
     summary = dict(binary_sha256=info['binary_sha256'], host=args.host, hashes={})
     for row in json.loads((ROOT / 'manifest.json').read_text()):
         name = row['registered_names'][args.host]

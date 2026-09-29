@@ -1,0 +1,1892 @@
+{
+ "XXH3-128": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 18.78,
+     "bulk_gib_s": 61.22,
+     "small_cycles": 23.05,
+     "raw_file": "evidence/backends/XXH3-128.run1.txt",
+     "raw_sha256": "edcd88d7f867c914647533f0cfe1d040ee45ed94279d190d68628ce6d045d363",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "XXH3-128",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:31:22.291040+00:00",
+     "load1_before": 0.86,
+     "load1_after": 0.93,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 14.37,
+      "2": 14.37,
+      "3": 14.37,
+      "4": 7.98,
+      "5": 22.56,
+      "6": 22.56,
+      "7": 22.56,
+      "8": 7.91,
+      "9": 26.07,
+      "10": 26.07,
+      "11": 26.07,
+      "12": 25.37,
+      "13": 25.37,
+      "14": 25.37,
+      "15": 25.37,
+      "16": 25.37,
+      "17": 26.07,
+      "18": 26.07,
+      "19": 26.07,
+      "20": 25.37,
+      "21": 25.37,
+      "22": 25.37,
+      "23": 25.37,
+      "24": 25.37,
+      "25": 25.37,
+      "26": 25.37,
+      "27": 25.37,
+      "28": 25.37,
+      "29": 25.37,
+      "30": 25.37,
+      "31": 25.37
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 18.78,
+     "bulk_gib_s": 61.22,
+     "small_cycles": 22.97,
+     "raw_file": "evidence/backends/XXH3-128.run2.txt",
+     "raw_sha256": "b4456d4cbd127d307317d9e85b1b61fbf32003378c19965b2cf2216059f0346d",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "XXH3-128",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:42:41.041145+00:00",
+     "load1_before": 1.0,
+     "load1_after": 0.96,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 14.29,
+      "2": 14.29,
+      "3": 14.29,
+      "4": 7.91,
+      "5": 22.49,
+      "6": 22.49,
+      "7": 22.49,
+      "8": 7.7,
+      "9": 26.0,
+      "10": 26.0,
+      "11": 26.0,
+      "12": 25.3,
+      "13": 25.3,
+      "14": 25.3,
+      "15": 25.3,
+      "16": 25.3,
+      "17": 26.0,
+      "18": 26.0,
+      "19": 26.0,
+      "20": 25.3,
+      "21": 25.3,
+      "22": 25.3,
+      "23": 25.3,
+      "24": 25.3,
+      "25": 25.3,
+      "26": 25.3,
+      "27": 25.3,
+      "28": 25.3,
+      "29": 25.3,
+      "30": 25.3,
+      "31": 25.3
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 18.78,
+   "bulk_gib_s": 61.22,
+   "small_cycles": 22.97,
+   "bulk_selected_run": 1,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 18.78,
+     "values": [
+      18.78,
+      18.78
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 23.009999999999998,
+     "values": [
+      23.05,
+      22.97
+     ],
+     "deviations_from_median_percent": [
+      0.17383746197305872,
+      -0.1738374619730476
+     ],
+     "range_over_min_percent": 0.3482803656943867,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.3482803656943867,
+   "registered_name": "XXH3-128",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash-128.0a03c63": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 19.34,
+     "bulk_gib_s": 63.03,
+     "small_cycles": 133.72,
+     "raw_file": "evidence/backends/chainhash-128.0a03c63.run1.txt",
+     "raw_sha256": "71cf081006b6b0fc9e9231ef7383e7a4226c1faa6ed9694423208e0505d818e5",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.0a03c63",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:25:47.849166+00:00",
+     "load1_before": 0.92,
+     "load1_after": 0.97,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 129.68,
+      "2": 126.25,
+      "3": 126.51,
+      "4": 128.6,
+      "5": 135.09,
+      "6": 132.36,
+      "7": 132.64,
+      "8": 141.83,
+      "9": 140.94,
+      "10": 141.17,
+      "11": 143.53,
+      "12": 136.5,
+      "13": 137.4,
+      "14": 136.27,
+      "15": 136.91,
+      "16": 115.32,
+      "17": 133.35,
+      "18": 133.35,
+      "19": 133.35,
+      "20": 133.75,
+      "21": 133.62,
+      "22": 133.75,
+      "23": 133.62,
+      "24": 133.62,
+      "25": 133.62,
+      "26": 133.75,
+      "27": 133.66,
+      "28": 133.62,
+      "29": 133.75,
+      "30": 133.75,
+      "31": 133.62
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 19.38,
+     "bulk_gib_s": 63.18,
+     "small_cycles": 134.15,
+     "raw_file": "evidence/backends/chainhash-128.0a03c63.run2.txt",
+     "raw_sha256": "2a4c7c51cd8d7e90b008dba050d1baa93f1249ad2b523f62656c7ed86f299f73",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.0a03c63",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:37:05.595574+00:00",
+     "load1_before": 0.96,
+     "load1_after": 0.95,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 129.76,
+      "2": 127.55,
+      "3": 127.25,
+      "4": 127.54,
+      "5": 137.94,
+      "6": 133.85,
+      "7": 134.4,
+      "8": 140.82,
+      "9": 141.77,
+      "10": 142.19,
+      "11": 142.18,
+      "12": 136.22,
+      "13": 137.5,
+      "14": 139.96,
+      "15": 140.47,
+      "16": 115.31,
+      "17": 133.29,
+      "18": 133.29,
+      "19": 133.29,
+      "20": 133.65,
+      "21": 133.69,
+      "22": 133.68,
+      "23": 133.6,
+      "24": 133.69,
+      "25": 133.7,
+      "26": 133.68,
+      "27": 133.69,
+      "28": 133.69,
+      "29": 133.68,
+      "30": 133.7,
+      "31": 133.59
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 19.38,
+   "bulk_gib_s": 63.18,
+   "small_cycles": 133.72,
+   "bulk_selected_run": 2,
+   "small_selected_run": 1,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 19.36,
+     "values": [
+      19.34,
+      19.38
+     ],
+     "deviations_from_median_percent": [
+      -0.10330578512396382,
+      0.10330578512396382
+     ],
+     "range_over_min_percent": 0.20682523267838704,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 133.935,
+     "values": [
+      133.72,
+      134.15
+     ],
+     "deviations_from_median_percent": [
+      -0.16052562810319193,
+      0.16052562810318083
+     ],
+     "range_over_min_percent": 0.32156745438229883,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.20682523267838704,
+   "small_run_spread_percent": 0.32156745438229883,
+   "registered_name": "chainhash-128.0a03c63",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash-128.a0116ea": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 19.34,
+     "bulk_gib_s": 63.05,
+     "small_cycles": 116.6,
+     "raw_file": "evidence/backends/chainhash-128.a0116ea.run1.txt",
+     "raw_sha256": "03d128afeb623d3ef3bb6e5921423d571d4d818eb6c0e73cf97bab97846ca1e9",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.a0116ea",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:24:53.623194+00:00",
+     "load1_before": 1.01,
+     "load1_after": 1.0,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 110.97,
+      "2": 111.88,
+      "3": 111.88,
+      "4": 109.73,
+      "5": 117.45,
+      "6": 117.46,
+      "7": 117.46,
+      "8": 115.8,
+      "9": 116.68,
+      "10": 116.73,
+      "11": 116.68,
+      "12": 115.98,
+      "13": 115.98,
+      "14": 115.98,
+      "15": 115.98,
+      "16": 114.12,
+      "17": 120.2,
+      "18": 120.26,
+      "19": 120.2,
+      "20": 117.77,
+      "21": 117.74,
+      "22": 117.74,
+      "23": 117.74,
+      "24": 117.74,
+      "25": 117.77,
+      "26": 117.77,
+      "27": 117.78,
+      "28": 117.74,
+      "29": 117.74,
+      "30": 117.74,
+      "31": 117.78
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 19.35,
+     "bulk_gib_s": 63.08,
+     "small_cycles": 116.58,
+     "raw_file": "evidence/backends/chainhash-128.a0116ea.run2.txt",
+     "raw_sha256": "2e387b6fc9f5d8e0464ad358b9059dc937ffdf8236aa87a2421c7a1d94d9a497",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.a0116ea",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:36:11.373386+00:00",
+     "load1_before": 0.91,
+     "load1_after": 0.96,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 110.99,
+      "2": 111.87,
+      "3": 111.87,
+      "4": 109.7,
+      "5": 117.43,
+      "6": 117.46,
+      "7": 117.43,
+      "8": 115.79,
+      "9": 116.68,
+      "10": 116.72,
+      "11": 116.68,
+      "12": 115.98,
+      "13": 115.98,
+      "14": 115.81,
+      "15": 115.98,
+      "16": 114.11,
+      "17": 120.26,
+      "18": 120.26,
+      "19": 120.13,
+      "20": 117.74,
+      "21": 117.76,
+      "22": 117.76,
+      "23": 117.73,
+      "24": 117.73,
+      "25": 117.73,
+      "26": 117.73,
+      "27": 117.74,
+      "28": 117.73,
+      "29": 117.74,
+      "30": 117.73,
+      "31": 117.73
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 19.35,
+   "bulk_gib_s": 63.08,
+   "small_cycles": 116.58,
+   "bulk_selected_run": 2,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 19.345,
+     "values": [
+      19.34,
+      19.35
+     ],
+     "deviations_from_median_percent": [
+      -0.02584647195656986,
+      0.025846471956580963
+     ],
+     "range_over_min_percent": 0.05170630816959676,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 116.59,
+     "values": [
+      116.6,
+      116.58
+     ],
+     "deviations_from_median_percent": [
+      0.008577064928383393,
+      -0.008577064928383393
+     ],
+     "range_over_min_percent": 0.01715560130381988,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.05170630816959676,
+   "small_run_spread_percent": 0.01715560130381988,
+   "registered_name": "chainhash-128.a0116ea",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash-128.xmm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 6.19,
+     "bulk_gib_s": 20.18,
+     "small_cycles": 127.94,
+     "raw_file": "evidence/backends/chainhash-128.xmm.run1.txt",
+     "raw_sha256": "4bc34511254de40bc375009499255609c6a48187be6e3e07d2e46acb475ae8cc",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.xmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:22:57.232281+00:00",
+     "load1_before": 0.57,
+     "load1_after": 1.01,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 122.15,
+      "2": 123.21,
+      "3": 123.21,
+      "4": 120.71,
+      "5": 128.45,
+      "6": 128.44,
+      "7": 128.45,
+      "8": 127.01,
+      "9": 127.73,
+      "10": 127.7,
+      "11": 127.69,
+      "12": 127.18,
+      "13": 127.05,
+      "14": 127.13,
+      "15": 127.09,
+      "16": 125.4,
+      "17": 130.32,
+      "18": 130.31,
+      "19": 130.05,
+      "20": 129.73,
+      "21": 129.76,
+      "22": 129.77,
+      "23": 129.76,
+      "24": 129.76,
+      "25": 129.47,
+      "26": 129.77,
+      "27": 129.76,
+      "28": 129.75,
+      "29": 129.77,
+      "30": 129.76,
+      "31": 129.75
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 6.13,
+     "bulk_gib_s": 19.97,
+     "small_cycles": 127.98,
+     "raw_file": "evidence/backends/chainhash-128.xmm.run2.txt",
+     "raw_sha256": "03e537d868bc226b361fd3b2ec3dbe2946c9276e5ad1de48ee49d12850d2ae4b",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.xmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:34:12.989562+00:00",
+     "load1_before": 0.88,
+     "load1_after": 0.98,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 122.06,
+      "2": 123.23,
+      "3": 123.23,
+      "4": 120.75,
+      "5": 128.48,
+      "6": 128.47,
+      "7": 128.47,
+      "8": 127.03,
+      "9": 127.75,
+      "10": 127.75,
+      "11": 127.7,
+      "12": 127.31,
+      "13": 127.04,
+      "14": 127.05,
+      "15": 127.04,
+      "16": 125.42,
+      "17": 130.36,
+      "18": 130.5,
+      "19": 130.62,
+      "20": 129.72,
+      "21": 129.79,
+      "22": 129.78,
+      "23": 129.79,
+      "24": 129.76,
+      "25": 129.64,
+      "26": 129.77,
+      "27": 129.79,
+      "28": 129.77,
+      "29": 129.79,
+      "30": 129.76,
+      "31": 129.76
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 6.19,
+   "bulk_gib_s": 20.18,
+   "small_cycles": 127.94,
+   "bulk_selected_run": 1,
+   "small_selected_run": 1,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 6.16,
+     "values": [
+      6.19,
+      6.13
+     ],
+     "deviations_from_median_percent": [
+      0.48701298701299134,
+      -0.48701298701299134
+     ],
+     "range_over_min_percent": 0.978792822185981,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 127.96000000000001,
+     "values": [
+      127.94,
+      127.98
+     ],
+     "deviations_from_median_percent": [
+      -0.015629884338863587,
+      0.015629884338852484
+     ],
+     "range_over_min_percent": 0.03126465530718381,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.978792822185981,
+   "small_run_spread_percent": 0.03126465530718381,
+   "registered_name": "chainhash-128.xmm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash-128.ymm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 12.4,
+     "bulk_gib_s": 40.41,
+     "small_cycles": 127.62,
+     "raw_file": "evidence/backends/chainhash-128.ymm.run1.txt",
+     "raw_sha256": "a6c20e873aab3e69197e8ad15b16ebbac51e0d0c3615d55ef18013c278051cda",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.ymm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:18:22.671756+00:00",
+     "load1_before": 1.02,
+     "load1_after": 1.01,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 121.89,
+      "2": 123.0,
+      "3": 123.02,
+      "4": 120.36,
+      "5": 128.1,
+      "6": 128.12,
+      "7": 128.12,
+      "8": 126.8,
+      "9": 127.45,
+      "10": 127.46,
+      "11": 127.46,
+      "12": 126.76,
+      "13": 126.76,
+      "14": 126.75,
+      "15": 126.76,
+      "16": 125.25,
+      "17": 129.83,
+      "18": 129.83,
+      "19": 129.83,
+      "20": 129.52,
+      "21": 129.06,
+      "22": 129.52,
+      "23": 129.52,
+      "24": 129.52,
+      "25": 129.25,
+      "26": 129.52,
+      "27": 129.51,
+      "28": 129.51,
+      "29": 129.23,
+      "30": 129.06,
+      "31": 129.45
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 12.4,
+     "bulk_gib_s": 40.42,
+     "small_cycles": 127.53,
+     "raw_file": "evidence/backends/chainhash-128.ymm.run2.txt",
+     "raw_sha256": "99b03ec7a0d65c74aa5460abfd035e32d2d8f00e76e3c42825930c661118adc8",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.ymm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:33:01.712293+00:00",
+     "load1_before": 0.86,
+     "load1_after": 0.96,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 121.9,
+      "2": 122.95,
+      "3": 122.94,
+      "4": 120.32,
+      "5": 128.06,
+      "6": 128.06,
+      "7": 128.06,
+      "8": 126.69,
+      "9": 127.4,
+      "10": 127.4,
+      "11": 127.38,
+      "12": 126.68,
+      "13": 126.69,
+      "14": 126.7,
+      "15": 126.69,
+      "16": 125.17,
+      "17": 129.54,
+      "18": 129.75,
+      "19": 129.73,
+      "20": 129.45,
+      "21": 129.05,
+      "22": 129.45,
+      "23": 129.44,
+      "24": 128.97,
+      "25": 129.47,
+      "26": 129.36,
+      "27": 129.04,
+      "28": 129.45,
+      "29": 129.1,
+      "30": 129.23,
+      "31": 129.46
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 12.4,
+   "bulk_gib_s": 40.42,
+   "small_cycles": 127.53,
+   "bulk_selected_run": 2,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 12.4,
+     "values": [
+      12.4,
+      12.4
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 127.575,
+     "values": [
+      127.62,
+      127.53
+     ],
+     "deviations_from_median_percent": [
+      0.03527336860671415,
+      -0.03527336860670305
+     ],
+     "range_over_min_percent": 0.07057163020465218,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.07057163020465218,
+   "registered_name": "chainhash-128.ymm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash-128.zmm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 19.38,
+     "bulk_gib_s": 63.16,
+     "small_cycles": 127.8,
+     "raw_file": "evidence/backends/chainhash-128.zmm.run1.txt",
+     "raw_sha256": "d550618d1864e0a2a1130fc445763b3a1e479c8521d0b47f0668211d17a8e913",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.zmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:17:27.440726+00:00",
+     "load1_before": 1.11,
+     "load1_after": 1.11,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 121.99,
+      "2": 122.94,
+      "3": 122.94,
+      "4": 120.46,
+      "5": 128.27,
+      "6": 128.27,
+      "7": 128.27,
+      "8": 127.0,
+      "9": 127.61,
+      "10": 127.61,
+      "11": 127.61,
+      "12": 126.93,
+      "13": 126.91,
+      "14": 126.91,
+      "15": 126.92,
+      "16": 125.05,
+      "17": 130.02,
+      "18": 130.02,
+      "19": 130.21,
+      "20": 129.63,
+      "21": 129.71,
+      "22": 129.69,
+      "23": 129.66,
+      "24": 129.39,
+      "25": 129.69,
+      "26": 129.69,
+      "27": 129.72,
+      "28": 129.69,
+      "29": 129.53,
+      "30": 129.72,
+      "31": 129.71
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 19.38,
+     "bulk_gib_s": 63.17,
+     "small_cycles": 127.77,
+     "raw_file": "evidence/backends/chainhash-128.zmm.run2.txt",
+     "raw_sha256": "ca7d200dd7816642696cbf269e42a69133a78e2ca70d647f1167626cf4077dfa",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash-128.zmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:32:06.479434+00:00",
+     "load1_before": 0.86,
+     "load1_after": 0.94,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 121.97,
+      "2": 123.13,
+      "3": 123.05,
+      "4": 120.45,
+      "5": 128.25,
+      "6": 128.25,
+      "7": 128.25,
+      "8": 126.98,
+      "9": 127.6,
+      "10": 127.6,
+      "11": 127.6,
+      "12": 126.9,
+      "13": 126.88,
+      "14": 126.92,
+      "15": 126.9,
+      "16": 125.03,
+      "17": 130.36,
+      "18": 130.04,
+      "19": 130.01,
+      "20": 129.6,
+      "21": 129.58,
+      "22": 129.62,
+      "23": 129.42,
+      "24": 129.6,
+      "25": 129.44,
+      "26": 129.58,
+      "27": 129.53,
+      "28": 129.62,
+      "29": 129.69,
+      "30": 129.6,
+      "31": 129.44
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 19.38,
+   "bulk_gib_s": 63.17,
+   "small_cycles": 127.77,
+   "bulk_selected_run": 2,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 19.38,
+     "values": [
+      19.38,
+      19.38
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 127.785,
+     "values": [
+      127.8,
+      127.77
+     ],
+     "deviations_from_median_percent": [
+      0.011738466956212612,
+      -0.011738466956212612
+     ],
+     "range_over_min_percent": 0.02347969006808448,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.02347969006808448,
+   "registered_name": "chainhash-128.zmm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash.0a03c63": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 35.13,
+     "bulk_gib_s": 114.51,
+     "small_cycles": 82.11,
+     "raw_file": "evidence/backends/chainhash.0a03c63.run1.txt",
+     "raw_sha256": "88b38ecb2468d9e5f8a61d5fd32b4e6526b93a74d6bbb3bc8ecf70a3c0525683",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.0a03c63",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:29:51.880381+00:00",
+     "load1_before": 0.88,
+     "load1_after": 0.93,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 82.12,
+      "2": 82.11,
+      "3": 82.11,
+      "4": 82.1,
+      "5": 82.11,
+      "6": 82.11,
+      "7": 82.11,
+      "8": 82.11,
+      "9": 82.11,
+      "10": 82.11,
+      "11": 82.12,
+      "12": 82.11,
+      "13": 82.12,
+      "14": 82.1,
+      "15": 82.1,
+      "16": 82.11,
+      "17": 82.1,
+      "18": 82.1,
+      "19": 82.1,
+      "20": 82.1,
+      "21": 82.1,
+      "22": 82.11,
+      "23": 82.1,
+      "24": 82.11,
+      "25": 82.1,
+      "26": 82.1,
+      "27": 82.11,
+      "28": 82.11,
+      "29": 82.12,
+      "30": 82.13,
+      "31": 82.1
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 35.14,
+     "bulk_gib_s": 114.54,
+     "small_cycles": 82.09,
+     "raw_file": "evidence/backends/chainhash.0a03c63.run2.txt",
+     "raw_sha256": "26b4ede754e523fe46e6e8dc9b776acb9736e4777df0f8d8a3ddda048294bfdd",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.0a03c63",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:41:09.635153+00:00",
+     "load1_before": 0.94,
+     "load1_after": 0.99,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 82.09,
+      "2": 82.09,
+      "3": 82.1,
+      "4": 82.09,
+      "5": 82.09,
+      "6": 82.1,
+      "7": 82.1,
+      "8": 82.09,
+      "9": 82.1,
+      "10": 82.1,
+      "11": 82.09,
+      "12": 82.09,
+      "13": 82.1,
+      "14": 82.09,
+      "15": 82.09,
+      "16": 82.1,
+      "17": 82.1,
+      "18": 82.09,
+      "19": 82.09,
+      "20": 82.1,
+      "21": 82.09,
+      "22": 82.1,
+      "23": 82.09,
+      "24": 82.09,
+      "25": 82.09,
+      "26": 82.1,
+      "27": 82.09,
+      "28": 82.1,
+      "29": 82.1,
+      "30": 82.09,
+      "31": 82.09
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 35.14,
+   "bulk_gib_s": 114.54,
+   "small_cycles": 82.09,
+   "bulk_selected_run": 2,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 35.135000000000005,
+     "values": [
+      35.13,
+      35.14
+     ],
+     "deviations_from_median_percent": [
+      -0.014230823964711536,
+      0.014230823964700434
+     ],
+     "range_over_min_percent": 0.028465698832902397,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 82.1,
+     "values": [
+      82.11,
+      82.09
+     ],
+     "deviations_from_median_percent": [
+      0.012180267965899993,
+      -0.012180267965888891
+     ],
+     "range_over_min_percent": 0.024363503471791503,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.028465698832902397,
+   "small_run_spread_percent": 0.024363503471791503,
+   "registered_name": "chainhash.0a03c63",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash.a0116ea": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 35.14,
+     "bulk_gib_s": 114.54,
+     "small_cycles": 61.8,
+     "raw_file": "evidence/backends/chainhash.a0116ea.run1.txt",
+     "raw_sha256": "ddf8609aaa4e366e8756a1c248f4d461d8fef7f278f444dd16d93f968f41c058",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.a0116ea",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:29:17.701531+00:00",
+     "load1_before": 0.93,
+     "load1_after": 0.96,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.83,
+      "2": 55.69,
+      "3": 55.69,
+      "4": 50.34,
+      "5": 62.91,
+      "6": 62.91,
+      "7": 62.91,
+      "8": 60.8,
+      "9": 61.18,
+      "10": 61.18,
+      "11": 61.18,
+      "12": 59.79,
+      "13": 59.79,
+      "14": 59.79,
+      "15": 59.79,
+      "16": 59.43,
+      "17": 64.64,
+      "18": 64.64,
+      "19": 64.64,
+      "20": 64.17,
+      "21": 64.26,
+      "22": 64.26,
+      "23": 64.26,
+      "24": 64.26,
+      "25": 64.65,
+      "26": 64.65,
+      "27": 64.65,
+      "28": 64.65,
+      "29": 64.65,
+      "30": 64.65,
+      "31": 64.65
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 35.14,
+     "bulk_gib_s": 114.54,
+     "small_cycles": 61.78,
+     "raw_file": "evidence/backends/chainhash.a0116ea.run2.txt",
+     "raw_sha256": "f060812bee2285d162a085aee236800bbf597bb5da43c2360b5f77c6849e7908",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.a0116ea",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:40:35.458658+00:00",
+     "load1_before": 0.97,
+     "load1_after": 0.94,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.8,
+      "2": 55.67,
+      "3": 55.67,
+      "4": 50.32,
+      "5": 62.88,
+      "6": 62.88,
+      "7": 62.88,
+      "8": 60.77,
+      "9": 61.15,
+      "10": 61.15,
+      "11": 61.15,
+      "12": 59.76,
+      "13": 59.76,
+      "14": 59.76,
+      "15": 59.76,
+      "16": 59.41,
+      "17": 64.61,
+      "18": 64.61,
+      "19": 64.61,
+      "20": 64.23,
+      "21": 64.23,
+      "22": 64.39,
+      "23": 64.23,
+      "24": 64.23,
+      "25": 64.62,
+      "26": 64.62,
+      "27": 64.62,
+      "28": 64.62,
+      "29": 64.62,
+      "30": 64.62,
+      "31": 64.62
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 35.14,
+   "bulk_gib_s": 114.54,
+   "small_cycles": 61.78,
+   "bulk_selected_run": 1,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 35.14,
+     "values": [
+      35.14,
+      35.14
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 61.79,
+     "values": [
+      61.8,
+      61.78
+     ],
+     "deviations_from_median_percent": [
+      0.01618384851918009,
+      -0.01618384851918009
+     ],
+     "range_over_min_percent": 0.03237293622531112,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.03237293622531112,
+   "registered_name": "chainhash.a0116ea",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash.xmm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 10.07,
+     "bulk_gib_s": 32.83,
+     "small_cycles": 61.79,
+     "raw_file": "evidence/backends/chainhash.xmm.run1.txt",
+     "raw_sha256": "cfa322c1bcc77b0afe1d5d5c59f48421948944c1cd2a212fb85287ad4e0128bb",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.xmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:28:04.437469+00:00",
+     "load1_before": 0.99,
+     "load1_after": 1.01,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.75,
+      "2": 55.84,
+      "3": 55.86,
+      "4": 49.91,
+      "5": 62.89,
+      "6": 62.89,
+      "7": 62.89,
+      "8": 60.78,
+      "9": 61.17,
+      "10": 61.17,
+      "11": 61.17,
+      "12": 59.77,
+      "13": 59.77,
+      "14": 59.77,
+      "15": 59.77,
+      "16": 59.42,
+      "17": 64.68,
+      "18": 64.68,
+      "19": 64.68,
+      "20": 64.15,
+      "21": 64.31,
+      "22": 64.24,
+      "23": 64.24,
+      "24": 64.4,
+      "25": 64.63,
+      "26": 64.63,
+      "27": 64.63,
+      "28": 64.63,
+      "29": 64.63,
+      "30": 64.63,
+      "31": 64.63
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 10.07,
+     "bulk_gib_s": 32.83,
+     "small_cycles": 61.81,
+     "raw_file": "evidence/backends/chainhash.xmm.run2.txt",
+     "raw_sha256": "74050954451affd7708e36adcc2c706a9e42c1024100c123b51cec4435d6842a",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.xmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:39:22.190849+00:00",
+     "load1_before": 0.9,
+     "load1_after": 0.97,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.74,
+      "2": 55.9,
+      "3": 55.81,
+      "4": 49.91,
+      "5": 62.89,
+      "6": 62.89,
+      "7": 62.89,
+      "8": 60.78,
+      "9": 61.18,
+      "10": 61.17,
+      "11": 61.17,
+      "12": 59.77,
+      "13": 59.77,
+      "14": 59.77,
+      "15": 59.77,
+      "16": 59.42,
+      "17": 64.68,
+      "18": 64.68,
+      "19": 64.68,
+      "20": 64.4,
+      "21": 64.4,
+      "22": 64.15,
+      "23": 64.4,
+      "24": 64.4,
+      "25": 64.63,
+      "26": 64.63,
+      "27": 64.63,
+      "28": 64.63,
+      "29": 64.63,
+      "30": 64.63,
+      "31": 64.63
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 10.07,
+   "bulk_gib_s": 32.83,
+   "small_cycles": 61.79,
+   "bulk_selected_run": 1,
+   "small_selected_run": 1,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 10.07,
+     "values": [
+      10.07,
+      10.07
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 61.8,
+     "values": [
+      61.79,
+      61.81
+     ],
+     "deviations_from_median_percent": [
+      -0.016181229773459815,
+      0.016181229773470918
+     ],
+     "range_over_min_percent": 0.03236769703836018,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.03236769703836018,
+   "registered_name": "chainhash.xmm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash.ymm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 20.14,
+     "bulk_gib_s": 65.66,
+     "small_cycles": 61.79,
+     "raw_file": "evidence/backends/chainhash.ymm.run1.txt",
+     "raw_sha256": "8bb86716771daa14bf194390a189249d0eeb65da2c68ec48f6c4697701ee1243",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.ymm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:27:18.245399+00:00",
+     "load1_before": 0.98,
+     "load1_after": 0.99,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.7,
+      "2": 55.78,
+      "3": 55.78,
+      "4": 49.87,
+      "5": 62.86,
+      "6": 62.86,
+      "7": 62.86,
+      "8": 60.75,
+      "9": 61.17,
+      "10": 61.17,
+      "11": 61.17,
+      "12": 59.82,
+      "13": 59.74,
+      "14": 59.74,
+      "15": 59.74,
+      "16": 59.38,
+      "17": 64.68,
+      "18": 64.69,
+      "19": 64.65,
+      "20": 64.36,
+      "21": 64.36,
+      "22": 64.36,
+      "23": 64.36,
+      "24": 64.36,
+      "25": 64.6,
+      "26": 64.6,
+      "27": 64.6,
+      "28": 64.6,
+      "29": 64.6,
+      "30": 64.6,
+      "31": 64.6
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 20.14,
+     "bulk_gib_s": 65.66,
+     "small_cycles": 61.72,
+     "raw_file": "evidence/backends/chainhash.ymm.run2.txt",
+     "raw_sha256": "0e20d84bdc1966d8c1240c4820d2e6d06caa399f12e6fc4b5e44bdf727cf0183",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.ymm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:38:36.002139+00:00",
+     "load1_before": 0.93,
+     "load1_after": 0.98,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.72,
+      "2": 55.77,
+      "3": 55.79,
+      "4": 49.87,
+      "5": 62.86,
+      "6": 62.86,
+      "7": 62.86,
+      "8": 60.75,
+      "9": 61.17,
+      "10": 61.17,
+      "11": 61.17,
+      "12": 59.75,
+      "13": 59.74,
+      "14": 59.76,
+      "15": 59.74,
+      "16": 59.38,
+      "17": 64.32,
+      "18": 64.7,
+      "19": 64.69,
+      "20": 64.12,
+      "21": 64.36,
+      "22": 64.27,
+      "23": 64.36,
+      "24": 64.25,
+      "25": 64.6,
+      "26": 64.41,
+      "27": 64.41,
+      "28": 64.41,
+      "29": 64.41,
+      "30": 64.41,
+      "31": 64.4
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 20.14,
+   "bulk_gib_s": 65.66,
+   "small_cycles": 61.72,
+   "bulk_selected_run": 1,
+   "small_selected_run": 2,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 20.14,
+     "values": [
+      20.14,
+      20.14
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 61.754999999999995,
+     "values": [
+      61.79,
+      61.72
+     ],
+     "deviations_from_median_percent": [
+      0.056675572828113197,
+      -0.056675572828102094
+     ],
+     "range_over_min_percent": 0.11341542449774256,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.0,
+   "small_run_spread_percent": 0.11341542449774256,
+   "registered_name": "chainhash.ymm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "chainhash.zmm": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 35.15,
+     "bulk_gib_s": 114.56,
+     "small_cycles": 61.75,
+     "raw_file": "evidence/backends/chainhash.zmm.run1.txt",
+     "raw_sha256": "f28c802ff465d3438c5f1a711faeeba03a30802f9c60e7c252a02cf4889fac86",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.zmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:26:44.069625+00:00",
+     "load1_before": 0.97,
+     "load1_after": 0.98,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.72,
+      "2": 55.77,
+      "3": 55.78,
+      "4": 49.88,
+      "5": 62.86,
+      "6": 62.86,
+      "7": 62.86,
+      "8": 60.75,
+      "9": 61.15,
+      "10": 61.15,
+      "11": 61.15,
+      "12": 59.75,
+      "13": 59.75,
+      "14": 59.74,
+      "15": 59.74,
+      "16": 59.39,
+      "17": 64.54,
+      "18": 64.54,
+      "19": 64.54,
+      "20": 64.12,
+      "21": 64.37,
+      "22": 64.12,
+      "23": 64.12,
+      "24": 64.37,
+      "25": 64.6,
+      "26": 64.6,
+      "27": 64.6,
+      "28": 64.6,
+      "29": 64.5,
+      "30": 64.6,
+      "31": 64.6
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 35.12,
+     "bulk_gib_s": 114.49,
+     "small_cycles": 61.75,
+     "raw_file": "evidence/backends/chainhash.zmm.run2.txt",
+     "raw_sha256": "d6a9bfc7439312baf4e7c4180d051b762fb2ebae44ea6dbfe68b3d48a5d94bfd",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "chainhash.zmm",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:38:01.827701+00:00",
+     "load1_before": 0.87,
+     "load1_after": 0.93,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 54.71,
+      "2": 55.77,
+      "3": 55.77,
+      "4": 49.87,
+      "5": 62.86,
+      "6": 62.86,
+      "7": 62.86,
+      "8": 60.75,
+      "9": 61.14,
+      "10": 61.14,
+      "11": 61.14,
+      "12": 59.73,
+      "13": 59.74,
+      "14": 59.74,
+      "15": 59.74,
+      "16": 59.38,
+      "17": 64.53,
+      "18": 64.54,
+      "19": 64.54,
+      "20": 64.11,
+      "21": 64.42,
+      "22": 64.36,
+      "23": 64.36,
+      "24": 64.11,
+      "25": 64.6,
+      "26": 64.6,
+      "27": 64.6,
+      "28": 64.6,
+      "29": 64.59,
+      "30": 64.6,
+      "31": 64.6
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 35.15,
+   "bulk_gib_s": 114.56,
+   "small_cycles": 61.75,
+   "bulk_selected_run": 1,
+   "small_selected_run": 1,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 35.135,
+     "values": [
+      35.15,
+      35.12
+     ],
+     "deviations_from_median_percent": [
+      0.04269247189412351,
+      -0.04269247189412351
+     ],
+     "range_over_min_percent": 0.08542141230067912,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 61.75,
+     "values": [
+      61.75,
+      61.75
+     ],
+     "deviations_from_median_percent": [
+      0.0,
+      0.0
+     ],
+     "range_over_min_percent": 0.0,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.08542141230067912,
+   "small_run_spread_percent": 0.0,
+   "registered_name": "chainhash.zmm",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "polyxor-128": {
+  "EPYC9R14": {
+   "status": "complete",
+   "runs": [
+    {
+     "run": 1,
+     "bulk_bytes_per_cycle": 19.65,
+     "bulk_gib_s": 64.04,
+     "small_cycles": 129.98,
+     "raw_file": "evidence/backends/polyxor-128.run1.txt",
+     "raw_sha256": "1400259639eb1b13d033d162ef2a0b78e0627461e27e60c322cafa5339b1eb4d",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "polyxor-128",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:30:28.058089+00:00",
+     "load1_before": 0.85,
+     "load1_after": 0.94,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 121.7,
+      "2": 122.82,
+      "3": 122.81,
+      "4": 122.4,
+      "5": 130.5,
+      "6": 130.48,
+      "7": 130.48,
+      "8": 130.63,
+      "9": 130.63,
+      "10": 130.61,
+      "11": 130.62,
+      "12": 130.8,
+      "13": 130.82,
+      "14": 130.8,
+      "15": 130.81,
+      "16": 131.46,
+      "17": 131.68,
+      "18": 131.7,
+      "19": 131.68,
+      "20": 131.4,
+      "21": 131.44,
+      "22": 131.46,
+      "23": 131.45,
+      "24": 131.27,
+      "25": 131.29,
+      "26": 131.26,
+      "27": 131.26,
+      "28": 131.29,
+      "29": 131.28,
+      "30": 131.27,
+      "31": 131.21
+     }
+    },
+    {
+     "run": 2,
+     "bulk_bytes_per_cycle": 19.63,
+     "bulk_gib_s": 63.98,
+     "small_cycles": 131.68,
+     "raw_file": "evidence/backends/polyxor-128.run2.txt",
+     "raw_sha256": "5171d76912de74a9e73867b65547b7d46bbf7dd7a9886ddce7945795a3919b48",
+     "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "8-15",
+      "SMHasher3",
+      "polyxor-128",
+      "--test=Speed"
+     ],
+     "started": "2026-09-29T00:41:45.821090+00:00",
+     "load1_before": 0.99,
+     "load1_after": 1.0,
+     "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4",
+     "small_per_length": {
+      "1": 124.12,
+      "2": 124.52,
+      "3": 124.56,
+      "4": 124.52,
+      "5": 132.13,
+      "6": 132.15,
+      "7": 132.14,
+      "8": 132.45,
+      "9": 132.45,
+      "10": 132.45,
+      "11": 132.46,
+      "12": 132.06,
+      "13": 132.09,
+      "14": 132.1,
+      "15": 132.11,
+      "16": 129.08,
+      "17": 132.84,
+      "18": 132.83,
+      "19": 132.85,
+      "20": 133.62,
+      "21": 133.65,
+      "22": 133.64,
+      "23": 133.65,
+      "24": 133.47,
+      "25": 133.38,
+      "26": 133.5,
+      "27": 133.5,
+      "28": 133.49,
+      "29": 133.47,
+      "30": 133.48,
+      "31": 133.47
+     }
+    }
+   ],
+   "bulk_bytes_per_cycle": 19.65,
+   "bulk_gib_s": 64.04,
+   "small_cycles": 129.98,
+   "bulk_selected_run": 1,
+   "small_selected_run": 1,
+   "aggregation": "higher bulk of two passes; independently lower small average",
+   "variation": {
+    "bulk_bytes_per_cycle": {
+     "median": 19.64,
+     "values": [
+      19.65,
+      19.63
+     ],
+     "deviations_from_median_percent": [
+      0.050916496944997114,
+      -0.05091649694501932
+     ],
+     "range_over_min_percent": 0.10188487009679115,
+     "flag_over_15_percent": false
+    },
+    "small_cycles": {
+     "median": 130.82999999999998,
+     "values": [
+      129.98,
+      131.68
+     ],
+     "deviations_from_median_percent": [
+      -0.649698081479777,
+      0.6496980814798103
+     ],
+     "range_over_min_percent": 1.307893522080339,
+     "flag_over_15_percent": false
+    }
+   },
+   "bulk_run_spread_percent": 0.10188487009679115,
+   "small_run_spread_percent": 1.307893522080339,
+   "registered_name": "polyxor-128",
+   "binary_sha256": "a1fc90a1cfe3d605d079a39f6bb481ddee77b11b6300897fef33ecce834e83e4"
+  }
+ },
+ "meta": {
+  "purpose": "ChainHash backends on Zen 4: forced ZMM, YMM and XMM entry points (chainhash_with_backend / chainhash128_with_backend with the product method chainhash128() pairs with each backend) against the run-time dispatch, at a0116ea, with the previous main 0a03c63 and PolyXOR128/XXH3-128 as same-binary controls.",
+  "binary": "the reproduction build at a0116ea plus the registrations in records/chainhash/refresh-a0116ea/bench (evidence/backends/provenance.json)",
+  "protocol": "nice -n 10 taskset -c 8-15; two complete passes; higher bulk, lower small; every start waits for no SMHasher3 process anywhere; overlapping runs are discarded and repeated (evidence/backends/discarded.jsonl)",
+  "units": "B per TSC tick (TSC 2.600 GHz)"
+ }
+}

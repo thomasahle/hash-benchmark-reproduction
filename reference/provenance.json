@@ -3,8 +3,12 @@
   "extracted_utc": "2026-09-19T16:02:55.212810+00:00",
   "post_data_sha256": "f70630ac16f3d52a035e4e8987c97e08623daa9a5a2df5e596d54441e37e186d",
   "reference_files": {
-    "data.json": "48728344f40db2a13c3f74a21242a56169a8ce4cff40a5697afea6c4088f737b",
-    "speeds.json": "f99c6a8acbd950d54f41b8c4e1e9195e8d1466f3e7f82520bc202efe201185c1"
+    "data.json": "4bea1adabee2dcd87b825408c1ed96a27cd42f810222a33749532af6e8cd7932",
+    "speeds.json": "d7296889d4c15a0c8e9b52b46342dbec9c58b3e71fb5c4c23956c4deab9a7d85",
+    "EPYC9R14/speeds.json": "ed93fe8083cf03b782a893cb914942a34cb8862b4fee897f36f982636062fb97",
+    "EPYC9R14/speeds_extra.json": "d32493c9f8a26aa4c37e8473611e6ac3afff0168d23dbf1db4fbd97e4e1c2989",
+    "EPYC9R14/speeds_chainhash_backends.json": "5b3ab575a005f0bbf488140ed7039f942ecfc695c768c6009af0abe8a6b698e7",
+    "EPYC9R14/provenance.json": "becd8998a4f48eddaf2b0221f35f171bd661e7fb0898a25a22388f17a10747da"
   },
   "source_records": {
     "records/chainhash/speeds_chainhash.json": "104f1df0719caa35248647db77a556ddf43b4a2f577228eade8f60b4b6130256",
@@ -16,7 +20,10 @@
     "records/new-hashes/speeds_new_hashes.json": "883360ea8d319796bd211e11621ce157d98b095e3f3800505adc8e91d1c439c2",
     "records/polyxor/speeds_polyxor.json": "0d6b0716753415d5f18d69de8d34ff1e2ac1598b4f66877cfa6304c7fe698fd3",
     "records/speeds.json": "4527144cad003acef668c35faf0aac131d8c079efe9f8d2c310f7c4789c1602a",
-    "records/witness-searches/muse-v2-timing/speeds_museair_v2.json": "e6ae52c0a0689cb68885951cbd706bb99dab3ee9d1e89dd1c7022e510c352786"
+    "records/witness-searches/muse-v2-timing/speeds_museair_v2.json": "e6ae52c0a0689cb68885951cbd706bb99dab3ee9d1e89dd1c7022e510c352786",
+    "records/zen4/speeds_zen4.json": "ed93fe8083cf03b782a893cb914942a34cb8862b4fee897f36f982636062fb97",
+    "records/zen4/speeds_zen4_extra.json": "d32493c9f8a26aa4c37e8473611e6ac3afff0168d23dbf1db4fbd97e4e1c2989",
+    "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json": "abd3824fc0c7ac04e38ca57a38fd30a9b397fe4bb450dbf20da696572481ee38"
   },
   "amendments": [
     {
@@ -25,6 +32,15 @@
         "polyxor"
       ],
       "note": "PolyXOR128 speed cells appended from the post; earlier cells unchanged."
+    },
+    {
+      "date": "2026-09-29",
+      "rows": [
+        "all timed rows (EPYC9R14)",
+        "chainhash",
+        "chainhash128"
+      ],
+      "note": "Third host EPYC9R14 (AMD EPYC 9R14, Zen 4): cells for every manifest row from the post, full run output under reference/EPYC9R14/. ChainHash and ChainHash-128 M2Pro/Xeon8375C cells replaced by the post's same-binary refresh at thomasahle/chainhash a0116ea (the pin of patch 0006). Other M2Pro/Xeon8375C cells unchanged."
     }
   ]
 }

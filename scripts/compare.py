@@ -6,14 +6,14 @@ import json
 import pathlib
 import sys
 from build import ROOT
-from benchmark import SUBSET, write_json
+from benchmark import HOSTS, SUBSET, write_json
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--speeds', type=pathlib.Path, default=ROOT / 'speeds.json')
     ap.add_argument('--reference', type=pathlib.Path, default=ROOT / 'reference/speeds.json')
-    ap.add_argument('--host', default='Xeon8375C', choices=['Xeon8375C', 'M2Pro'])
+    ap.add_argument('--host', default='Xeon8375C', choices=HOSTS)
     ap.add_argument('--tolerance', type=float, default=5.0)
     ap.add_argument('--subset', action='store_true', help='Require every preselected panel member')
     ap.add_argument('--output', type=pathlib.Path)
@@ -39,7 +39,7 @@ def main():
                              within_tolerance=abs(delta) <= args.tolerance))
     result = dict(host=args.host, tolerance_percent=args.tolerance, rows=rows, errors=failures,
                   passed=bool(rows) and not failures and all(r['within_tolerance'] for r in rows))
-    lines = ['# Xeon timing comparison' if args.host == 'Xeon8375C' else '# M2 timing comparison', '',
+    lines = ['# ' + {'Xeon8375C': 'Xeon', 'M2Pro': 'M2', 'EPYC9R14': 'EPYC 9R14'}[args.host] + ' timing comparison', '',
              'Tolerance: ±' + str(args.tolerance) + '%. All differences are relative to the frozen published chart cells. No rescaling or outlier removal.', '',
              '| Hash | Metric | Recorded | Reproduced | Difference | Within tolerance |',
              '|---|---|---:|---:|---:|---|']

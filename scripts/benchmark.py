@@ -16,7 +16,11 @@ import time
 from build import ROOT, build, sha, verify_build
 
 MONITORED_CPUS = None
-HOSTS = ('M2Pro', 'Xeon8375C')
+MAX_LOAD = None  # optional x86 one-minute load gate (--max-load); M2 always uses 4.5
+HOSTS = ('M2Pro', 'Xeon8375C', 'EPYC9R14')
+# Linux x86-64 profiles: two passes, taskset affinity. EPYC9R14 is the added Zen 4 host.
+X86_HOSTS = ('Xeon8375C', 'EPYC9R14')
+DEFAULT_CPUS = {'Xeon8375C': '32-39', 'EPYC9R14': '8-15'}
 SUBSET = ['rapidhash', 'XXH3-64', 'komihash', 'chainhash', 'chainhash-128',
           'HalftimeHash24-shipped', 'MuseAir-v2', 'foldhash-fast', 'GoMapHash']
 
@@ -94,9 +98,10 @@ def gate(host, out):
         snapshot = state()
         with (out / 'gate.jsonl').open('a') as f:
             f.write(json.dumps(snapshot) + '\n')
-        if not snapshot['smhasher_pids'] and (host != 'M2Pro' or snapshot['load'][0] < 4.5):
+        limit = 4.5 if host == 'M2Pro' else MAX_LOAD
+        if not snapshot['smhasher_pids'] and (limit is None or snapshot['load'][0] < limit):
             return snapshot
-        print(now(), 'waiting for no SMHasher3 process' + (' and load1 < 4.5' if host == 'M2Pro' else ''), flush=True)
+        print(now(), 'waiting for no SMHasher3 process' + (' and load1 < ' + str(limit) if limit else ''), flush=True)
         time.sleep(60)
 
 
@@ -111,21 +116,25 @@ def cpu_set(spec):
 
 
 def main():
-    global MONITORED_CPUS
+    global MONITORED_CPUS, MAX_LOAD
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--host', choices=HOSTS)
     ap.add_argument('--names', nargs='+', help='Manifest names or chart row IDs; default: all 42 timed rows')
     ap.add_argument('--subset', action='store_true', help='The preselected nine-hash verification panel')
-    ap.add_argument('--cpus', default='32-39', help='Xeon taskset CPU set (default: 32-39)')
+    ap.add_argument('--cpus', help='x86 taskset CPU set (default: 32-39 on Xeon8375C, 8-15 on EPYC9R14)')
+    ap.add_argument('--max-load', type=float, help='x86 only: also wait until the one-minute load is below this (default: no load gate)')
+    ap.add_argument('--nice', type=int, default=0, help='x86 niceness of the timed process (default: 0, unchanged)')
     ap.add_argument('--jobs', type=int, default=min(os.cpu_count() or 2, 8))
     ap.add_argument('--skip-build', action='store_true', help='Use the existing verified build')
     ap.add_argument('--out', type=pathlib.Path, default=ROOT / 'out')
     ap.add_argument('--output', type=pathlib.Path, default=ROOT / 'speeds.json')
     args = ap.parse_args()
     host = args.host or ('M2Pro' if platform.system() == 'Darwin' and platform.machine() == 'arm64' else 'Xeon8375C')
-    if (host == 'M2Pro' and (platform.system(), platform.machine()) != ('Darwin', 'arm64')) or (host == 'Xeon8375C' and (platform.system(), platform.machine()) != ('Linux', 'x86_64')):
+    if (host == 'M2Pro' and (platform.system(), platform.machine()) != ('Darwin', 'arm64')) or (host in X86_HOSTS and (platform.system(), platform.machine()) != ('Linux', 'x86_64')):
         ap.error('Host profile requires macOS arm64 or Linux x86_64 respectively')
-    if host == 'Xeon8375C':
+    args.cpus = args.cpus or DEFAULT_CPUS.get(host)
+    MAX_LOAD = args.max_load if host in X86_HOSTS else None
+    if host in X86_HOSTS:
         MONITORED_CPUS = cpu_set(args.cpus)
         for cpu in list(MONITORED_CPUS):
             siblings = pathlib.Path('/sys/devices/system/cpu/cpu' + str(cpu) + '/topology/thread_siblings_list')
@@ -153,7 +162,7 @@ def main():
         build_info = verify_build()
         if sha(binary) != build_info['binary_sha256']:
             raise SystemExit('Binary differs from build manifest')
-        prefix = ['taskset', '-c', args.cpus] if host == 'Xeon8375C' else []
+        prefix = (['nice', '-n', str(args.nice)] if args.nice else []) + ['taskset', '-c', args.cpus] if host in X86_HOSTS else []
         listing = subprocess.check_output(prefix + [str(binary), '--list'], text=True, stderr=subprocess.STDOUT)
         (out / 'registrations.txt').write_text(listing)
         registrations = {line.split()[0]: line.strip() for line in listing.splitlines() if line.split()}
@@ -161,8 +170,12 @@ def main():
             if row['registered_names'][host] not in registrations:
                 raise SystemExit('Missing registration: ' + row['registered_names'][host])
         config = dict(host=host, names=[r['name'] for r in rows], registered_names=[r['registered_names'][host] for r in rows],
-                      cpus=args.cpus if host == 'Xeon8375C' else None, binary_sha256=sha(binary),
+                      cpus=args.cpus if host in X86_HOSTS else None, binary_sha256=sha(binary),
                       passes=3 if host == 'M2Pro' else 2, protocol_version=1, monitored_cpus=sorted(MONITORED_CPUS) if MONITORED_CPUS else None)
+        if args.nice:
+            config['nice'] = args.nice
+        if MAX_LOAD is not None:
+            config['max_load'] = MAX_LOAD
         execution = dict(config=config, started=now(), build=build_info, runs=[], excluded_runs=[])
         execution_file = out / 'execution.json'
         if execution_file.exists():
@@ -184,7 +197,8 @@ def main():
                     raw = out / (registered + '.run' + str(rep) + '.txt')
                     command = prefix + [str(binary), registered, '--test=Speed']
                     run = dict(name=name, registered_name=registered, run=rep, started=now(), load_before=before,
-                               command=prefix + ['.work/build/SMHasher3', registered, '--test=Speed'], samples=[], overlaps=[])
+                               command=prefix + ['.work/build/SMHasher3', registered, '--test=Speed'], samples=[], overlaps=[],
+                               cpus=args.cpus if host in X86_HOSTS else None)
                     print(now(), host, registered, 'pass', rep, flush=True)
                     start = time.monotonic()
                     with raw.open('w') as f:
@@ -235,7 +249,7 @@ def main():
             result.setdefault(name, {})[host] = entry
         result.setdefault('meta', {}).setdefault('hosts', {})[host] = dict(config=config, build=build_info,
             started=execution['started'], finished=execution['finished'], excluded_overlap_runs=len(execution['excluded_runs']))
-        result['meta']['protocol'] = 'Fixed 262144-byte alignment Average; small 1–31-byte Average; Xeon best of two independently, M2 independent median of three; GiB/s assumes 3.5 GHz.'
+        result['meta']['protocol'] = 'Fixed 262144-byte alignment Average; small 1–31-byte Average; x86 (Xeon, EPYC) best of two independently, M2 independent median of three; GiB/s assumes 3.5 GHz.'
         write_json(args.output, result)
         print('Wrote', args.output.name, flush=True)
 

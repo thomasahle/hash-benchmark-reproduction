@@ -11,7 +11,7 @@ from build import ROOT
 from benchmark import write_json
 
 METRICS = {'bulk_Bpc': 'bulk_bytes_per_cycle', 'small_cycles': 'small_cycles'}
-HOSTS = {'m2': 'M2Pro', 'xeon': 'Xeon8375C'}
+HOSTS = {'m2': 'M2Pro', 'xeon': 'Xeon8375C', 'epyc': 'EPYC9R14'}
 
 
 def merge(data, records, manifest):

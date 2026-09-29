@@ -106,7 +106,7 @@ def build(jobs):
                     cmake=run(['cmake', '--version']).splitlines()[0])
     flags = output / 'CMakeFiles/SMHasher3Hashlib.dir/flags.make'
     if flags.exists():
-        identity['compiler_flags'] = flags.read_text().replace(str(ROOT), '<reproduction>')
+        identity['compiler_flags'] = flags.read_text().replace(str(ROOT), '<reproduction>').replace(str(pathlib.Path.home()), '<home>')
     (work / 'build.json').write_text(json.dumps(identity, indent=2) + '\n')
     return binary
 

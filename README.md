@@ -30,6 +30,25 @@ On the Xeon, with GCC 11 and OpenSSL 3 development packages installed:
 python3 scripts/benchmark.py --host Xeon8375C --cpus 32-39
 ```
 
+On the AMD EPYC 9R14 (Zen 4, the third chart host), with GCC 11 and the same
+dependencies:
+
+```sh
+python3 scripts/sanity.py --host EPYC9R14 --cpus 8-15
+python3 scripts/benchmark.py --host EPYC9R14 --cpus 8-15 --nice 10
+```
+
+`--nice` and `--max-load` are optional x86 flags (default: unchanged priority,
+no load gate); the recorded EPYC run used `--nice 10` and no load gate, because
+another job ran on the other core complex (CPUs 0–7, a separate 32 MiB L3).
+Without root on RHEL 9 or Rocky 9 the build still works with user-space
+dependencies: `python3 -m pip install --user "cmake<4"`, the matching
+`openssl-devel` RPM unpacked with `rpm2cpio | cpio -idm` and passed as
+`OPENSSL_ROOT_DIR`, and rustup in the home directory. Set `CC=gcc CXX=g++` if the
+shell exports another compiler. If `CARGO_HOME` is on a network file system,
+cargo's cache locking and garbage collection can stall the first build; a
+local `CARGO_HOME` avoids that.
+
 Each command clones the source, checks out the pin, applies `patches/series`,
 builds a Release binary, runs every manifest entry, and writes `speeds.json`.
 `make benchmark` auto-selects the host profile. `make reproduce` also merges
@@ -110,7 +129,9 @@ The ordered patch set supplies:
 4. MuseAir v2, ported from crate 0.6.0.
 5. HalftimeHash24 shipped and fixed headers and their distinct registrations.
 6. ChainHash and ChainHash-128: the registration adapter and the two public
-   headers, copied unchanged from the ChainHash repository.
+   headers, copied unchanged from the ChainHash repository at commit
+   [`a0116ea`](https://github.com/thomasahle/chainhash/tree/a0116ea2072c0d9605acc6b47f0dc9f9d57b0c58)
+   (verification values 0x66672BD6 and 0x1FCA728C, unchanged from earlier revisions).
 7. Build integration and a 192-bit Speed/Sanity dispatch for fixed HalftimeHash24.
 8. The Darwin RNG counter type correction (`size_t` to `uint64_t`).
 9. PolyXOR128: the registration, a C ABI shim over the pinned Rust crate, and
@@ -163,6 +184,8 @@ input generation, and runs small tests before the two bulk sections.
 * **Xeon:** two complete serial passes. Higher bulk B/cycle wins; rounded ties
   use higher reported GiB/s, then the earlier pass. GiB/s comes from that same
   pass. Lower small cycles/hash wins independently, with earlier-pass ties.
+* **EPYC 9R14:** the Xeon rule (two complete serial passes, higher bulk, lower
+  small), `taskset -c 8-15` by default.
 * **M2:** three complete serial passes. Bulk and small are independently the
   middle observations in ascending order; ties retain run order. GiB/s comes
   from the selected bulk observation. All three accepted observations remain
@@ -185,10 +208,12 @@ input generation, and runs small tests before the two bulk sections.
   more than 15% from their median. Flags do not delete observations, trigger
   performance-based retries, or modify the selected values.
 
-The original Xeon uses RDTSC/RDTSCP **TSC ticks**. M2 uses a per-process calibrated
-monotonic-clock cycle estimate. Neither column should be interpreted as directly
-comparable physical core cycles. The printed GiB/s assumes **3.5 GHz** on both
-hosts; it is a conversion of B/cycle, not measured wall-clock throughput. No
+The original Xeon uses RDTSC/RDTSCP **TSC ticks**; so does the EPYC 9R14, whose TSC
+runs at 2.600 GHz while a busy core boosts to about 3.66 GHz, so its B/cycle is B per
+TSC tick (multiply by 2.6 for GB/s, by 0.71 for B per core cycle). M2 uses a per-process calibrated
+monotonic-clock cycle estimate. No column should be interpreted as directly
+comparable physical core cycles. The printed GiB/s assumes **3.5 GHz** on every
+host; it is a conversion of B/cycle, not measured wall-clock throughput. No
 frequency normalization or wall-clock replacement is applied here. Start/end
 load, raw text, per-run hashes and selected pass numbers are retained in `out/`.
 The Speed trailer's `0x00000001` is not an implementation verification code.
@@ -296,6 +321,12 @@ constructions) with raw evidence. All ten bulk results met ±5%
 5.29% lower, so the archived strict comparison exits nonzero. Compilation
 and registration availability are also checked on the M2; a full M2 timing run
 is not part of this delivery's end-to-end Xeon check.
+
+[reference/EPYC9R14/](reference/EPYC9R14/) holds the third chart host's run (AMD EPYC 9R14, Zen 4,
+September 2026). It contains the complete `speeds.json` of the 42 rows, the chart rows outside the
+manifest, a ChainHash backend comparison and the host and build provenance. Its cells are in
+`reference/speeds.json`, so `python3 scripts/compare.py --host EPYC9R14` checks a new run against it.
+The `chainhash` and `chainhash-128` cells on all three hosts are at the current pin, `a0116ea`.
 
 The optional `scripts/compare_elf_text.py ORIGINAL_BUILD REPRODUCTION_BUILD`
 audit compares pre-link `.text` sections of SpeedTest and three original control

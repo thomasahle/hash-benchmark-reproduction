@@ -31,6 +31,20 @@
           "record": "records/speeds.json#/CityHash-64/Xeon8375C",
           "registered_name": "CityHash-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.82,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/CityHash-64/EPYC9R14",
+          "registered_name": "CityHash-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 34.57,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/CityHash-64/EPYC9R14",
+          "registered_name": "CityHash-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -65,6 +79,20 @@
           "record": "records/speeds.json#/FarmHash-64.NA/Xeon8375C",
           "registered_name": "FarmHash-64.NA",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.74,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/FarmHash-64.NA/EPYC9R14",
+          "registered_name": "FarmHash-64.NA",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 34.48,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/FarmHash-64.NA/EPYC9R14",
+          "registered_name": "FarmHash-64.NA",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -99,6 +127,20 @@
           "record": "records/speeds.json#/MurmurHash3-128/Xeon8375C",
           "registered_name": "MurmurHash3-128",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 2.95,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/MurmurHash3-128/EPYC9R14",
+          "registered_name": "MurmurHash3-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 36.88,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/MurmurHash3-128/EPYC9R14",
+          "registered_name": "MurmurHash3-128",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -133,6 +175,20 @@
           "record": "records/speeds.json#/mx3.v3/Xeon8375C",
           "registered_name": "mx3.v3",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 4.34,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/mx3.v3/EPYC9R14",
+          "registered_name": "mx3.v3",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 32.52,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/mx3.v3/EPYC9R14",
+          "registered_name": "mx3.v3",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -167,6 +223,20 @@
           "record": "records/speeds.json#/fasthash-64/Xeon8375C",
           "registered_name": "fasthash-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 2.85,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/fasthash-64/EPYC9R14",
+          "registered_name": "fasthash-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 26.14,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/fasthash-64/EPYC9R14",
+          "registered_name": "fasthash-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -201,6 +271,20 @@
           "record": "records/speeds.json#/fasthash-32/Xeon8375C",
           "registered_name": "fasthash-32",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 2.85,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/fasthash-32/EPYC9R14",
+          "registered_name": "fasthash-32",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 27.6,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/fasthash-32/EPYC9R14",
+          "registered_name": "fasthash-32",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -235,6 +319,20 @@
           "record": "records/speeds.json#/MuseAir/Xeon8375C",
           "registered_name": "MuseAir",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 9.95,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/MuseAir/EPYC9R14",
+          "registered_name": "MuseAir",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 13.27,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/MuseAir/EPYC9R14",
+          "registered_name": "MuseAir",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -269,6 +367,20 @@
           "record": "records/witness-searches/muse-v2-timing/speeds_museair_v2.json#/MuseAir-v2/Xeon8375C",
           "registered_name": "MuseAir-v2",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 7.33,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/MuseAir-v2/EPYC9R14",
+          "registered_name": "MuseAir-v2",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 19.92,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/MuseAir-v2/EPYC9R14",
+          "registered_name": "MuseAir-v2",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -303,6 +415,20 @@
           "record": "records/speeds.json#/komihash/Xeon8375C",
           "registered_name": "komihash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 7.71,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/komihash/EPYC9R14",
+          "registered_name": "komihash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 21.65,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/komihash/EPYC9R14",
+          "registered_name": "komihash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -337,6 +463,20 @@
           "record": "records/speeds.json#/t1ha2-64/Xeon8375C",
           "registered_name": "t1ha2-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 7.0,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/t1ha2-64/EPYC9R14",
+          "registered_name": "t1ha2-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 28.59,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/t1ha2-64/EPYC9R14",
+          "registered_name": "t1ha2-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -371,6 +511,20 @@
           "record": "records/speeds.json#/a5hash/Xeon8375C",
           "registered_name": "a5hash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 3.8,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/a5hash/EPYC9R14",
+          "registered_name": "a5hash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 11.04,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/a5hash/EPYC9R14",
+          "registered_name": "a5hash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -405,6 +559,20 @@
           "record": "records/speeds.json#/a5hash-128/Xeon8375C",
           "registered_name": "a5hash-128",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 10.0,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/a5hash-128/EPYC9R14",
+          "registered_name": "a5hash-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 19.36,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/a5hash-128/EPYC9R14",
+          "registered_name": "a5hash-128",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -431,6 +599,20 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.2,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4_extra.json#/wyhash/EPYC9R14",
+          "registered_name": "wyhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 17.46,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4_extra.json#/wyhash/EPYC9R14",
+          "registered_name": "wyhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -457,6 +639,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -491,6 +683,20 @@
           "record": "records/speeds.json#/rapidhash/Xeon8375C",
           "registered_name": "rapidhash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.61,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/rapidhash/EPYC9R14",
+          "registered_name": "rapidhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 19.84,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/rapidhash/EPYC9R14",
+          "registered_name": "rapidhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -525,6 +731,20 @@
           "record": "records/foldhash/speeds_foldhash.json#/foldhash-fast/Xeon8375C",
           "registered_name": "foldhash-fast",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.41,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/foldhash-fast/EPYC9R14",
+          "registered_name": "foldhash-fast",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 14.03,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/foldhash-fast/EPYC9R14",
+          "registered_name": "foldhash-fast",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -559,6 +779,20 @@
           "record": "records/foldhash/speeds_foldhash.json#/foldhash-quality/Xeon8375C",
           "registered_name": "foldhash-quality",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.25,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/foldhash-quality/EPYC9R14",
+          "registered_name": "foldhash-quality",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 17.47,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/foldhash-quality/EPYC9R14",
+          "registered_name": "foldhash-quality",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -593,6 +827,20 @@
           "record": "records/speeds.json#/mum3.exact.unroll3/Xeon8375C",
           "registered_name": "mum3.exact.unroll3",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 8.8,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/mum3.exact.unroll3/EPYC9R14",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 17.3,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/mum3.exact.unroll3/EPYC9R14",
+          "registered_name": "mum3.exact.unroll3",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -627,6 +875,20 @@
           "record": "records/speeds.json#/mir.exact/Xeon8375C",
           "registered_name": "mir.exact",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 3.25,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/mir.exact/EPYC9R14",
+          "registered_name": "mir.exact",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 24.5,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/mir.exact/EPYC9R14",
+          "registered_name": "mir.exact",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -661,6 +923,20 @@
           "record": "records/speeds.json#/XXH3-64/Xeon8375C",
           "registered_name": "XXH3-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 18.81,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/XXH3-64/EPYC9R14",
+          "registered_name": "XXH3-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 20.38,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/XXH3-64/EPYC9R14",
+          "registered_name": "XXH3-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -695,6 +971,20 @@
           "record": "records/speeds.json#/XXH3-128/Xeon8375C",
           "registered_name": "XXH3-128",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 18.79,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/XXH3-128/EPYC9R14",
+          "registered_name": "XXH3-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 23.66,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/XXH3-128/EPYC9R14",
+          "registered_name": "XXH3-128",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -729,6 +1019,20 @@
           "record": "records/speeds.json#/HighwayHash-64/Xeon8375C",
           "registered_name": "HighwayHash-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 3.88,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/HighwayHash-64/EPYC9R14",
+          "registered_name": "HighwayHash-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 59.71,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/HighwayHash-64/EPYC9R14",
+          "registered_name": "HighwayHash-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -763,6 +1067,20 @@
           "record": "records/speeds.json#/SpookyHash2-64/Xeon8375C",
           "registered_name": "SpookyHash2-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.65,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/SpookyHash2-64/EPYC9R14",
+          "registered_name": "SpookyHash2-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 34.76,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/SpookyHash2-64/EPYC9R14",
+          "registered_name": "SpookyHash2-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -797,6 +1115,20 @@
           "record": "records/speeds.json#/pengyhash/Xeon8375C",
           "registered_name": "pengyhash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.15,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/pengyhash/EPYC9R14",
+          "registered_name": "pengyhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 52.48,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/pengyhash/EPYC9R14",
+          "registered_name": "pengyhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -831,6 +1163,20 @@
           "record": "records/speeds.json#/NMHASH/Xeon8375C",
           "registered_name": "NMHASH",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.43,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/NMHASH/EPYC9R14",
+          "registered_name": "NMHASH",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 32.07,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/NMHASH/EPYC9R14",
+          "registered_name": "NMHASH",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -865,6 +1211,20 @@
           "record": "records/speeds.json#/NMHASHX/Xeon8375C",
           "registered_name": "NMHASHX",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 11.45,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/NMHASHX/EPYC9R14",
+          "registered_name": "NMHASHX",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 20.73,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/NMHASHX/EPYC9R14",
+          "registered_name": "NMHASHX",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -899,6 +1259,20 @@
           "record": "records/speeds.json#/gxhash-64/Xeon8375C",
           "registered_name": "gxhash-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 30.79,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/gxhash-64/EPYC9R14",
+          "registered_name": "gxhash-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 31.28,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/gxhash-64/EPYC9R14",
+          "registered_name": "gxhash-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -933,6 +1307,20 @@
           "record": "records/speeds.json#/rust-ahash/Xeon8375C",
           "registered_name": "rust-ahash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 0.78,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/rust-ahash/EPYC9R14",
+          "registered_name": "rust-ahash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 72.07,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/rust-ahash/EPYC9R14",
+          "registered_name": "rust-ahash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -967,6 +1355,20 @@
           "record": "records/speeds.json#/SipHash-1-3/Xeon8375C",
           "registered_name": "SipHash-1-3",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 1.03,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/SipHash-1-3/EPYC9R14",
+          "registered_name": "SipHash-1-3",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 62.06,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/SipHash-1-3/EPYC9R14",
+          "registered_name": "SipHash-1-3",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1001,6 +1403,20 @@
           "record": "records/speeds.json#/SipHash-2-4/Xeon8375C",
           "registered_name": "SipHash-2-4",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 0.55,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/SipHash-2-4/EPYC9R14",
+          "registered_name": "SipHash-2-4",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 86.3,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/SipHash-2-4/EPYC9R14",
+          "registered_name": "SipHash-2-4",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1027,6 +1443,20 @@
           "value": 64.91,
           "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
           "record": "records/halftime24-shipped/speeds_halftime24_shipped.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 15.96,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/HalftimeHash24-shipped/EPYC9R14",
+          "registered_name": "HalftimeHash24-shipped",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 54.51,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/HalftimeHash24-shipped/EPYC9R14",
+          "registered_name": "HalftimeHash24-shipped",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1057,6 +1487,20 @@
           "record": "records/new-hashes/speeds_new_hashes.json#/go-maphash/Xeon8375C",
           "registered_name": "GoMapHash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 22.38,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/GoMapHash/EPYC9R14",
+          "registered_name": "GoMapHash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 74.12,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/GoMapHash/EPYC9R14",
+          "registered_name": "GoMapHash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1087,6 +1531,20 @@
           "record": "records/new-hashes/speeds_new_hashes.json#/abseil-hash/Xeon8375C",
           "registered_name": "AbseilHash-default",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 9.77,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/AbseilHash-default/EPYC9R14",
+          "registered_name": "AbseilHash-default",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 14.06,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/AbseilHash-default/EPYC9R14",
+          "registered_name": "AbseilHash-default",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1117,6 +1575,20 @@
           "record": "records/new-hashes/speeds_new_hashes.json#/dotnet-marvin/Xeon8375C",
           "registered_name": "Marvin32",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 1.14,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/Marvin32/EPYC9R14",
+          "registered_name": "Marvin32",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 22.0,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/Marvin32/EPYC9R14",
+          "registered_name": "Marvin32",
+          "host": "EPYC9R14"
         }
       }
     }
@@ -1153,6 +1625,20 @@
           "record": "records/speeds.json#/polymurhash/Xeon8375C",
           "registered_name": "polymurhash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.13,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/polymurhash/EPYC9R14",
+          "registered_name": "polymurhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 28.32,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/polymurhash/EPYC9R14",
+          "registered_name": "polymurhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1187,6 +1673,20 @@
           "record": "records/speeds.json#/poly1305-hash/Xeon8375C",
           "registered_name": "poly1305-hash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 5.05,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/poly1305-hash/EPYC9R14",
+          "registered_name": "poly1305-hash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 195.97,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/poly1305-hash/EPYC9R14",
+          "registered_name": "poly1305-hash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1213,6 +1713,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1239,6 +1749,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1265,6 +1785,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1291,6 +1821,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1325,6 +1865,20 @@
           "record": "records/speeds.json#/ghash/Xeon8375C",
           "registered_name": "ghash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 8.91,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/ghash/EPYC9R14",
+          "registered_name": "ghash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 1418.97,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/ghash/EPYC9R14",
+          "registered_name": "ghash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1351,6 +1905,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1377,6 +1941,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1411,6 +1985,20 @@
           "record": "records/speeds.json#/UMASH-64/Xeon8375C",
           "registered_name": "UMASH-64",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 9.1,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/UMASH-64/EPYC9R14",
+          "registered_name": "UMASH-64",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 26.91,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/UMASH-64/EPYC9R14",
+          "registered_name": "UMASH-64",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1445,6 +2033,20 @@
           "record": "records/speeds.json#/UMASH-128/Xeon8375C",
           "registered_name": "UMASH-128",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 6.39,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/UMASH-128/EPYC9R14",
+          "registered_name": "UMASH-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 31.13,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/UMASH-128/EPYC9R14",
+          "registered_name": "UMASH-128",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1479,6 +2081,20 @@
           "record": "records/speeds.json#/CLhash/Xeon8375C",
           "registered_name": "CLhash",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 10.55,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/CLhash/EPYC9R14",
+          "registered_name": "CLhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 31.23,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/CLhash/EPYC9R14",
+          "registered_name": "CLhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1505,6 +2121,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1513,32 +2139,46 @@
       "name": "ChainHash (ours)",
       "speeds": {
         "smh_m2_bulk_Bpc": {
-          "value": 26.26,
+          "value": 30.15,
           "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
-          "registered_name": "chainhash",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/M2Pro",
+          "registered_name": "chainhash.a0116ea",
           "host": "M2Pro"
         },
         "smh_m2_small_cycles": {
-          "value": 87.49,
+          "value": 89.2,
           "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/speeds_chainhash.json#/chainhash/M2Pro",
-          "registered_name": "chainhash",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/M2Pro",
+          "registered_name": "chainhash.a0116ea",
           "host": "M2Pro"
         },
         "smh_xeon_bulk_Bpc": {
-          "value": 28.31,
+          "value": 28.25,
           "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
-          "registered_name": "chainhash",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/Xeon8375C",
+          "registered_name": "chainhash.a0116ea",
           "host": "Xeon8375C"
         },
         "smh_xeon_small_cycles": {
-          "value": 155.14,
+          "value": 80.38,
           "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/speeds_chainhash.json#/chainhash/Xeon8375C",
-          "registered_name": "chainhash",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash.a0116ea/Xeon8375C",
+          "registered_name": "chainhash.a0116ea",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 35.09,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/chainhash/EPYC9R14",
+          "registered_name": "chainhash",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 62.46,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/chainhash/EPYC9R14",
+          "registered_name": "chainhash",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1565,6 +2205,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1591,6 +2241,16 @@
           "value": null,
           "source": "No matching registration for this version/API",
           "record": "records/speeds.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
+        },
+        "smh_epyc_small_cycles": {
+          "value": null,
+          "source": "Not timed on EPYC9R14",
+          "record": "records/zen4/README.html"
         }
       }
     },
@@ -1617,6 +2277,20 @@
           "value": 79.42,
           "source": "median of three complete runs",
           "record": "records/halftime/speeds_halftime_fixed.json"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 12.44,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/HalftimeHash24-fixed/EPYC9R14",
+          "registered_name": "HalftimeHash24-fixed",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 71.63,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/HalftimeHash24-fixed/EPYC9R14",
+          "registered_name": "HalftimeHash24-fixed",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1625,32 +2299,46 @@
       "name": "ChainHash-128 (ours)",
       "speeds": {
         "smh_m2_bulk_Bpc": {
-          "value": 10.26,
+          "value": 16.85,
           "source": "SMHasher3 M2Pro, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
-          "registered_name": "chainhash-128",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/M2Pro",
+          "registered_name": "chainhash-128.a0116ea",
           "host": "M2Pro"
         },
         "smh_m2_small_cycles": {
-          "value": 167.89,
+          "value": 158.25,
           "source": "SMHasher3 M2Pro, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/M2Pro",
-          "registered_name": "chainhash-128",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/M2Pro",
+          "registered_name": "chainhash-128.a0116ea",
           "host": "M2Pro"
         },
         "smh_xeon_bulk_Bpc": {
-          "value": 14.43,
+          "value": 14.9,
           "source": "SMHasher3 Xeon8375C, 262144 B bulk, B/cycle",
-          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
-          "registered_name": "chainhash-128",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/Xeon8375C",
+          "registered_name": "chainhash-128.a0116ea",
           "host": "Xeon8375C"
         },
         "smh_xeon_small_cycles": {
-          "value": 175.93,
+          "value": 129.3,
           "source": "SMHasher3 Xeon8375C, 1\u201331 B, cycles/hash",
-          "record": "records/chainhash/speeds_chainhash128.json#/chainhash-128/Xeon8375C",
-          "registered_name": "chainhash-128",
+          "record": "records/chainhash/refresh-a0116ea/speeds_chainhash_a0116ea.json#/chainhash-128.a0116ea/Xeon8375C",
+          "registered_name": "chainhash-128.a0116ea",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 19.32,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/chainhash-128/EPYC9R14",
+          "registered_name": "chainhash-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 116.78,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/chainhash-128/EPYC9R14",
+          "registered_name": "chainhash-128",
+          "host": "EPYC9R14"
         }
       }
     },
@@ -1685,6 +2373,20 @@
           "record": "records/polyxor/speeds_polyxor.json#/polyxor-128/Xeon8375C",
           "registered_name": "polyxor-128",
           "host": "Xeon8375C"
+        },
+        "smh_epyc_bulk_Bpc": {
+          "value": 19.79,
+          "source": "SMHasher3 EPYC9R14, 262144 B bulk, B/cycle (B per TSC tick, TSC 2.600 GHz)",
+          "record": "records/zen4/speeds_zen4.json#/polyxor-128/EPYC9R14",
+          "registered_name": "polyxor-128",
+          "host": "EPYC9R14"
+        },
+        "smh_epyc_small_cycles": {
+          "value": 129.96,
+          "source": "SMHasher3 EPYC9R14, 1\u201331 B, cycles/hash (TSC ticks)",
+          "record": "records/zen4/speeds_zen4.json#/polyxor-128/EPYC9R14",
+          "registered_name": "polyxor-128",
+          "host": "EPYC9R14"
         }
       }
     }

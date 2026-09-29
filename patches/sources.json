@@ -114,19 +114,19 @@
     "sha256": "a5de8d63ce55339f97322ff9d6747e29b9d20728f2458f9d4831ee4d8f6b7dfa"
   },
   "hashes/chainhash.cpp": {
-    "origin": "thomasahle/chainhash: smhasher3/chainhash.cpp",
+    "origin": "thomasahle/chainhash@a0116ea: smhasher3/chainhash.cpp",
     "sha256": "53e1847ab2168245fbe322ed197afe850a0b96fa90180bd6db81b94663b7b5a3"
   },
   "hashes/chainhash/chainhash.h": {
-    "origin": "thomasahle/chainhash: include/chainhash.h",
-    "sha256": "a5730797bc9aafbf8ff11f6a2c4919d2f1622c55a3a40d439f50242d4b10ee6e"
+    "origin": "thomasahle/chainhash@a0116ea: include/chainhash.h",
+    "sha256": "d3a2f3694950ebf7e242f0beb0f72baf9c8be55dc40ecf1d701fdc1d7b6f08e9"
   },
   "hashes/chainhash/chainhash128.h": {
-    "origin": "thomasahle/chainhash: include/chainhash128.h",
-    "sha256": "370ea4ba5d3b96a1a930487db8ab5f547d56696b9482157c79843a8780b00a9d"
+    "origin": "thomasahle/chainhash@a0116ea: include/chainhash128.h",
+    "sha256": "61ff0949a8fde6314458dd9e1a1dee73be2885b7ca7b89825f0b8df8f6f7323c"
   },
   "hashes/chainhash/LICENSE": {
-    "origin": "thomasahle/chainhash: LICENSE",
+    "origin": "thomasahle/chainhash@a0116ea: LICENSE",
     "sha256": "6bdeeaa0909267a1ca2abcb35448081429a18bad06a7a505890a5416c4edb1ca"
   },
   "hashes/polyxor.cpp": {
